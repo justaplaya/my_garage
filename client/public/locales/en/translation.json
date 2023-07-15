@@ -1,0 +1,57 @@
+{
+  "links": {
+    "garage": "Garage",
+    "scratch": "Scratch"
+  },
+  "sortOptions": {
+    "0": "No sorting",
+    "1": "Brand A -> Z",
+    "2": "Brand Z -> A",
+    "3": "Model A -> Z",
+    "4": "Model Z -> A",
+    "5": "Release year 0 -> 1",
+    "6": "Release year 1 -> 0",
+    "7": "Max speed 0 -> 1",
+    "8": "Max speed 1 -> 0",
+    "9": "Acceleration time up to 100 km/h 0 -> 1",
+    "10": "Acceleration time up to 100 km/h 1 -> 0"
+  },
+  "components": {
+    "bottomRow": {
+      "apply": "Apply",
+      "close": "Close"
+    },
+    "brandSelect": {
+      "brand": "Brand"
+    },
+    "createModal": {
+      "model": "Model",
+      "year": "Release year",
+      "maxSpeed": "Max speed",
+      "timeUpTo100": "Acceleration time up to 100 km/h",
+      "create": "Create"
+    },
+    "editModal": {
+      "model": "Model",
+      "year": "Release year",
+      "maxSpeed": "Max speed",
+      "timeUpTo100": "Acceleration time up to 100 km/h"
+    }
+  },
+  "pages": {
+    "garage": {
+      "main": {
+        "create": "Create",
+        "search": "Search by brand or model"
+      },
+      "car": {
+        "back": "Back",
+        "edit": "Edit",
+        "delete": "Delete",
+        "year": "Release year",
+        "maxSpeed": "Max speed",
+        "timeUpTo100": "Acceleration time up to 100 km/h"
+      }
+    }
+  }
+}

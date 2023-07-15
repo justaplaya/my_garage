@@ -1,0 +1,23 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    font-family: "Courier New", 'sans-serif';
+    user-select: none;
+}
+/*body{*/
+/*    -webkit-overflow-scrolling: touch;*/
+/*}*/
+/*body::-webkit-scrollbar {*/
+/*    width: 10px;*/
+/*}*/
+/*body::-webkit-scrollbar-track {*/
+/*    background: rgb(16, 24, 39);*/
+/*    border-radius: 2.5px;*/
+/*}*/
+
+/*body::-webkit-scrollbar-thumb {*/
+/*    background-color: rgba(255, 0, 80,0.75);*/
+/*    border-radius: 2.5px;*/
+/*}*/
