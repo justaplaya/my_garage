@@ -1,4 +1,4 @@
-import { CarType } from 'Pages/garage/types';
+import { CarType } from 'Pages/garage/models/car';
 import React, { useEffect, useRef, useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { UPDATE_CAR as UPDATE_CAR_MUTATION } from 'Apollo/mutations/mutcar';

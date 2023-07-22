@@ -1,5 +1,5 @@
-import { CarType } from './types';
-import React, { Suspense, useEffect, useRef, useState } from 'react';
+import { CarType } from './models/car';
+import React, { useEffect, useRef, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { EditModal } from '../../Components/SideModal/EditModal/EditModal';
 import { useLazyQuery, useMutation, useQuery } from '@apollo/client';
@@ -9,8 +9,6 @@ import { Car as CarStyle } from './style';
 import { figureCountry } from '../../utils';
 import { GetBrandIcon } from 'utils/Car';
 import { useMeasure } from '../../Hooks';
-import Test from './test';
-import { useResource, useUseGetOneCar } from './resource';
 import { Img } from './loaders/Card/Img';
 import { Text } from './loaders/Card/Text';
 import { useTranslation } from 'react-i18next';

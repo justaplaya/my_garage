@@ -1,27 +1,12 @@
-import { TypeFromConst } from '../../utils';
-
-export type CarType = {
-  id: number;
-  brand: CarBrandType;
-  model: string | null;
-  year: number | null;
-  maxSpeed: number | null;
-  timeUpTo100: number | null;
-};
-
-const countries = ['japan', 'korea', 'china'] as const;
-
-const initialCars = [
-  'subaru',
-  'mitsubishi',
-  'toyota',
-  'kia',
-  'hyundai',
-  'ssangyong',
-  'haval',
-  'chery',
-  'exeed',
-] as const;
-
-export type CarBrandType = TypeFromConst<typeof initialCars> & string;
-export type CountryType = TypeFromConst<typeof countries> & string;
+/** клади в глобальный контекст только реально глобальные вещи
+//  там, где можно обойтись без контекста, используй обычные стейты/редюсеры
+//  если контекст необходим во избежание проп-дриллинга, создавай малые контексты
+//  стор даты и стор под UI это не одно и то же:
+//  помни об этом в конетексте ререндера всех компонентов при изменении value контекста
+*/
+// TODO переложи всё, что нужно, в глобальный контекст
+// TODO разбей компоненты на более мелкие(включая связь с сервером, это должно лежать в папке АПИ или типа того)
+// TODO унифицируй модалку и переработай глобальные компоненты
+// TODO избавься от проп-дриллинга в сторы
+// TODO ?закинуть Country и StateNumber в модель Car
+export type Country = 'japan' | 'korea' | 'china';

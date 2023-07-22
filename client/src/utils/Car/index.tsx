@@ -11,9 +11,10 @@ import NoName from 'img/carBrands/noName.webp';
 import Japan from 'img/countries/background/japan.webp';
 import Korea from 'img/countries/background/korea.webp';
 import China from 'img/countries/background/china.webp';
-import { CarBrandType, CountryType } from 'Pages/garage/types';
+import { Brand } from 'Pages/garage/models/car';
+import { Country } from 'Pages/garage/types';
 
-export const GetBrandIcon = (brand: CarBrandType | null) => {
+export const GetBrandIcon = (brand: Brand | null) => {
   switch (brand) {
     case 'subaru':
       return Subaru;
@@ -38,7 +39,7 @@ export const GetBrandIcon = (brand: CarBrandType | null) => {
   }
 };
 
-export const GetCountryBg = (country: CountryType) => {
+export const GetCountryBg = (country: Country) => {
   switch (country) {
     case 'japan':
       return Japan;

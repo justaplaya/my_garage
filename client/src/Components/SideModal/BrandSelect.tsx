@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
-import { AllCarBrands } from '../../utils';
-import { CarBrandType } from '../../Pages/garage/types';
+import { brands } from 'Pages/garage/models/car';
+import { Brand } from '../../Pages/garage/models/car';
 import styled, { css } from 'styled-components';
 import { scrollBar } from '../../styles/mixins';
 import { useOnClickOutside } from '../../Hooks/useOnClickOutside';
@@ -10,8 +10,8 @@ import { useTranslation } from 'react-i18next';
 type PropsType = {
   show: boolean;
   setShow: (x: boolean) => void;
-  pick: (x: CarBrandType) => void;
-  brand: CarBrandType | null;
+  pick: (x: Brand) => void;
+  brand: Brand | null;
   disabled: boolean;
 };
 
@@ -28,7 +28,7 @@ export const BrandSelect = ({ show, setShow, pick, brand, disabled }: PropsType)
   return (
     <Container onClick={containerClick} ref={container} $disabled={disabled}>
       {brand ?? <PlaceholderOption>{t('components.brandSelect.brand')}</PlaceholderOption>}
-      <Dropdown show={show} data={AllCarBrands} pick={(brand) => pick(brand as CarBrandType)} />
+      <Dropdown show={show} data={brands} pick={(brand) => pick(brand as Brand)} />
     </Container>
   );
 };

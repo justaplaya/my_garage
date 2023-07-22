@@ -1,8 +1,8 @@
 import { ChangeEvent, Dispatch, SetStateAction, useMemo, useReducer } from 'react';
 import { toString } from 'utils';
-import { CarBrandType, CarType } from 'Pages/garage/types';
+import { Brand, CarType } from 'Pages/garage/models/car';
 
-type InputCarType = Record<keyof Omit<CarType, 'id' | 'brand'>, string> & { id: number; brand: CarBrandType };
+type InputCarType = Record<keyof Omit<CarType, 'id' | 'brand'>, string> & { id: number; brand: Brand };
 interface ResetAction {
   type: 'RESET';
 }
@@ -95,7 +95,7 @@ export const applyDisable = (newCar: InputCarType, initialCar: InputCarType) => 
   );
 };
 
-export const BrandOptionClick = (brand: CarBrandType, dispatch: Dispatch<ActionType>) =>
+export const BrandOptionClick = (brand: Brand, dispatch: Dispatch<ActionType>) =>
   dispatch({ type: 'UPDATE', target: 'brand', value: brand });
 
 export const CloseButtonClick = (

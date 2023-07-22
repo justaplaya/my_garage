@@ -1,5 +1,5 @@
-import React, { ChangeEvent, Suspense, useContext, useEffect, useMemo, useRef, useState } from 'react';
-import { CarType } from './types';
+import React, { ChangeEvent, useContext, useEffect, useMemo, useRef, useState } from 'react';
+import { CarType } from './models/car';
 import { useQuery, useLazyQuery, ApolloProvider } from '@apollo/client';
 import { ApolloProvider as ApolloProviderHooks, useQuery as useQueryHooks } from '@apollo/react-hooks';
 import { GET_ALL_CARS } from '../../Apollo/query/quecar';
@@ -11,19 +11,11 @@ import { NotFound } from './NotFound';
 import { SortOptionType, useSortOptions } from '../../utils';
 import SearchIcon from 'img/search.png';
 import { GetBrandIcon } from 'utils/Car';
-import { useDispatch, useSelector } from 'react-redux';
-import { GlobalContext } from '../../globalContext';
 import { useOnClickOutside } from '../../Hooks/useOnClickOutside';
-import { client } from '../../index';
-import Test from './test';
-import { TreeSkeletonLoading } from './loaders/Desktop/TreeSkeletonLoading';
-import styled from 'styled-components';
-import { blurredBack } from '../../styles/mixins';
-import { Skeleton } from './loaders/skeletonLoading/skeleton';
+
 import { CardLoader } from './loaders/Card';
 import { useTranslation } from 'react-i18next';
 import 'utils/i18next';
-import i18next from 'i18next';
 
 export const Garage = () => {
   const navigate = useNavigate();
@@ -41,8 +33,8 @@ export const Garage = () => {
   const [showModal, setShowModal] = useState(false);
   const [showSort, setShowSort] = useState(false);
   const sortOptions = useSortOptions();
-  const initialSortValue = sortOptions[0] ?? null; // /
-  const [sortValue, setSortValue] = useState<SortOptionType | null>(initialSortValue);
+  const initialSortValue = sortOptions[0];
+  const [sortValue, setSortValue] = useState<SortOptionType>(initialSortValue);
   const [displayValue, setDisplayValue] = useState('');
   const searchValue = useDebounce(displayValue, 500);
   const convertor = (arg: string | number | null, typeOfOutput: 'string' | 'number'): string | number => {
@@ -52,18 +44,16 @@ export const Garage = () => {
       case 'number':
         return arg;
       default:
-        return typeOfOutput === 'string' ? 'ÿ' : 99999;
+        return typeOfOutput === 'string' ? 'ÿ' : 99999; //TODO костыль
     }
   };
-  const figureSortOutput = (first: CarType, second: CarType, option: SortOptionType | null) => {
-    if (!option || option.id === 0) return 0;
-    const typeOfOutput =
-      option.by === 'year' || option.by === 'maxSpeed' || option.by === 'timeUpTo100' ? 'number' : 'string';
-    if (convertor(first[option.by], typeOfOutput) === convertor(second[option.by], typeOfOutput)) return 0;
-    if (option.direction === 'asc')
-      return convertor(first[option.by], typeOfOutput) > convertor(second[option.by], typeOfOutput) ? 1 : -1;
-    if (option.direction === 'desc')
-      return convertor(first[option.by], typeOfOutput) < convertor(second[option.by], typeOfOutput) ? 1 : -1;
+  const figureSortOutput = (first: CarType, second: CarType, option: SortOptionType) => {
+    const { id, by, direction } = option;
+    if (id === 0) return 0;
+    const typeOfOutput = by === 'year' || by === 'maxSpeed' || by === 'timeUpTo100' ? 'number' : 'string';
+    if (convertor(first[by], typeOfOutput) === convertor(second[by], typeOfOutput)) return 0;
+    if (direction === 'asc') return convertor(first[by], typeOfOutput) > convertor(second[by], typeOfOutput) ? 1 : -1;
+    if (direction === 'desc') return convertor(first[by], typeOfOutput) < convertor(second[by], typeOfOutput) ? 1 : -1;
     throw Error(`invalid direction field of the sort option`);
   };
 
@@ -118,14 +108,16 @@ export const Garage = () => {
     setShowSort(false);
   });
   const { t, i18n } = useTranslation();
-  const changeLang = (lang: string) => {
-    i18n.changeLanguage(lang);
-  };
-  const dynamicPickedSortOption = useMemo(
-    () => sortOptions.find((option) => option.id === sortValue?.id),
-    [sortValue, i18n.language],
-  );
+  // const changeLang = (lang: string) => {
+  //   i18n.changeLanguage(lang);
+  // };
+  // const dynamicPickedSortOption = useMemo(
+  //   () => sortOptions.find((option) => option.id === sortValue?.id),
+  //   [sortValue, i18n.language],
+  // );
   useEffect(() => {
+    console.log('sortOptions');
+    console.log(sortOptions);
     const relevantSortValue = sortOptions.find((option) => option.id === sortValue?.id);
     if (relevantSortValue) {
       setSortValue(relevantSortValue);

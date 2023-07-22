@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import { blurredBack, scrollBar } from 'styles/mixins';
-import { CountryType } from './types';
+import { Country } from './types';
 import { GetCountryBg } from 'utils/Car';
 import TextureDark from '../../img/textureDark.webp';
 import TextureLight from '../../img/textureLight2.webp';
@@ -245,9 +245,8 @@ export namespace Card {
       `linear-gradient(to right, transparent 0%, ${props.theme.colors.secondary()} 50%, transparent 100%)`};
   `;
 }
-//         /
 export namespace Car {
-  export const Container = styled.div<{ $country: CountryType | null }>`
+  export const Container = styled.div<{ $country: Country | null }>`
     position: relative;
     min-height: calc(100vh - 75px);
     width: 100%;

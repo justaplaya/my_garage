@@ -5,17 +5,13 @@ import { GlobalNotFound } from './Pages/GlobalNotFound';
 import { Car as GarageCar } from './Pages/garage/Car';
 import { NavigateTo } from './utils/NavigateTo';
 import styled, { css } from 'styled-components';
-import React, { Suspense, useContext, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { ReactComponent as GarageIcon } from 'img/pageIcons/garage.svg';
 import { Theme } from './theme';
 import { GlobalContext } from './globalContext';
-import MoonIcon from 'img/moon.png';
-import SunIcon from 'img/sun.png';
 import { useTranslation } from 'react-i18next';
 import { ReactComponent as Globe } from 'img/globe.svg';
 import { Header, Link, LinkIconWrapper, Line, Toggle, Moon, Sun } from './style';
-import { AllCarBrands } from './utils';
-import { CarBrandType } from './Pages/garage/types';
 import { Dropdown } from './Components/Dropdown';
 const App = () => {
   const { toggleTheme } = useContext(GlobalContext);

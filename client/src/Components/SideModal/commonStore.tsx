@@ -1,4 +1,4 @@
-import { CarBrandType } from 'Pages/garage/types';
+import { Brand } from 'Pages/garage/models/car';
 import { GetBrandIcon } from 'utils/Car';
 
-export const iconSrc = (brand: CarBrandType | null) => GetBrandIcon(brand);
+export const iconSrc = (brand: Brand | null) => GetBrandIcon(brand);
