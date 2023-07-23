@@ -1,7 +1,7 @@
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Car } from './models/car';
-import { SortOptionType, useSortOptions } from 'utils';
+import { SortOptionType, useSortOptions } from 'Pages/garage/utils';
 import { useDebounce } from 'Hooks/useDebounce';
 import { useQuery } from '@apollo/client';
 import { GET_ALL_CARS } from 'Apollo/query/quecar';
@@ -10,6 +10,7 @@ import { useTranslation } from 'react-i18next';
 
 export const useGarage = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const [allCars, setAllCars] = useState<Car[]>([]);
   const [loading, setLoading] = useState(true);
   const [showModal, setShowModal] = useState(false);
@@ -36,7 +37,6 @@ export const useGarage = () => {
         return arg;
       default:
         return typeOfOutput === 'string' ? '' : 0;
-      // return typeOfOutput === 'string' ? 'ÿ' : 99999;
     }
   };
   const figureSortOutput = (_first: Car, _second: Car, option: SortOptionType) => {
@@ -65,6 +65,7 @@ export const useGarage = () => {
   }, [allCars, searchValue, sortValue]);
 
   useEffect(() => {
+    location && location.pathname === '/' && navigate('/garage');
     if (location && location.state && location.state.refetchRequired) {
       refetch();
       setLoading(true);
@@ -88,7 +89,7 @@ export const useGarage = () => {
       setSortValue(relevantSortValue);
     }
   }, [i18n.language]);
-  const createText = t('pages.garage.main.create');
+  const text = { create: t('pages.garage.main.create') };
   const props = {
     sort: {
       showSort: showSort,
@@ -114,5 +115,5 @@ export const useGarage = () => {
       refetch: refetch,
     },
   };
-  return { props, createText };
+  return { props, text };
 };

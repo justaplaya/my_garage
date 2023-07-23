@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { scrollBar } from '../../styles/mixins';
+import { scrollBar } from '../../mixins';
 
 export const Select = styled.div<{ $show: boolean; $width?: string; $side?: 'left' | 'right' }>`
   transition: all 0.3s ease-in-out;

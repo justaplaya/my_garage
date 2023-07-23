@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { blurredBack, scrollBar } from 'styles/mixins';
+import { blurredBack, scrollBar } from 'mixins';
 
 export namespace InputStyle {
   export const Wrapper = styled.div<{ $disabled: boolean }>`

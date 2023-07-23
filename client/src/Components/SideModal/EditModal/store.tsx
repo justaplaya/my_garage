@@ -1,5 +1,5 @@
 import { ChangeEvent, Dispatch, SetStateAction, useMemo, useReducer } from 'react';
-import { toString } from 'utils';
+import { toString } from 'utils/helpers';
 import { Brand, Car } from 'Pages/garage/models/car';
 
 type InputCarType = Record<keyof Omit<Car, 'id' | 'brand'>, string> & { id: number; brand: Brand };

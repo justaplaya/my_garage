@@ -1,7 +1,7 @@
 import React from 'react';
 import { HeaderContainer } from './style';
 import { useHeader } from './useHeader';
-import { SetState } from 'utils';
+import { SetState } from 'utils/types';
 import { Car } from 'Pages/garage/models/car';
 import { Top } from './top';
 import { Bottom } from './bottom';

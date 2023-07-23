@@ -39,7 +39,7 @@ export const getBrandIcon = (brand: Brand | null) => {
   }
 };
 
-export const GetCountryBg = (country: Country) => {
+export const getCountryBg = (country: Country) => {
   switch (country) {
     case 'japan':
       return Japan;
@@ -48,6 +48,6 @@ export const GetCountryBg = (country: Country) => {
     case 'china':
       return China;
     default:
-      return Japan;
+      return '';
   }
 };

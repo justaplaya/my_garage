@@ -1,16 +1,15 @@
 import Garage from 'Pages/garage';
 import { Routes, Route } from 'react-router-dom';
-import { Scratch } from './Pages/scratch';
-import { CarPage as GarageCar } from './Pages/garage/components/Car';
-import { NavigateTo } from './utils/NavigateTo';
+import { Scratch } from 'Pages/scratch';
+import { CarPage as GarageCar } from 'Pages/garage/components/Car';
 import React, { useState } from 'react';
 import { ReactComponent as GarageIcon } from 'img/pageIcons/garage.svg';
-import { Theme } from './theme';
+import { Theme } from 'theme';
 import { useTranslation } from 'react-i18next';
 import { ReactComponent as Globe } from 'img/globe.svg';
-import { Head, Link, LinkIconWrapper, Line, Toggle, Moon, Sun } from './style';
-import { Dropdown } from './Components/Dropdown';
-import { changeTheme } from './reducer';
+import { Head, Link, LinkIconWrapper, Line, Toggle, Moon, Sun } from 'style';
+import { Dropdown } from 'Components/Dropdown';
+import { changeTheme } from 'reducer';
 import { useDispatch } from 'react-redux';
 
 const App = () => {
@@ -93,7 +92,7 @@ const PickTheme = () => {
 const AllRoutes = () => {
   return (
     <Routes>
-      <Route path="/" element={<NavigateTo to="/garage" />} />
+      <Route path="/" element={<Garage />} />
       <Route path="/garage" element={<Garage />} />
       <Route path="/garage/:id" element={<GarageCar />} />
       <Route path="*" element={<NotFound />} />

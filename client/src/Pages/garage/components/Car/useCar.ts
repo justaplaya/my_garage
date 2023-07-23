@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { Car } from '../../models/car';
 import { useQuery } from '@apollo/client';
 import { GET_ONE_CAR } from '../../../../Apollo/query/quecar';
-import { getCountry } from '../../../../utils';
+import { getCountry } from 'Pages/garage/utils';
 
 export const useCar = () => {
   const location = useLocation();

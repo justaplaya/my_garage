@@ -20,6 +20,7 @@ import {
 import * as CommonStore from '../commonStore';
 import { useOnClickOutside } from 'Hooks/useOnClickOutside';
 import { useTranslation } from 'react-i18next';
+import { brands } from 'Pages/garage/utils';
 
 type PropsType = {
   car: Car;
@@ -54,6 +55,7 @@ export const EditModal = ({ car, show, setShow }: PropsType) => {
     updateCarFunction(updateCar, newCar, setShow, setLoading, dispatch);
   };
   const { t } = useTranslation();
+  const _brands = Object.values(brands).flat();
 
   return (
     <Common.Wrapper $show={show}>
@@ -66,6 +68,7 @@ export const EditModal = ({ car, show, setShow }: PropsType) => {
             pick={(brand) => BrandOptionClick(brand, dispatch)}
             brand={newCar.brand}
             disabled={loading}
+            data={_brands}
           />
           <Input
             disabled={loading}

@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { scrollBar } from 'styles/mixins';
+import { scrollBar } from 'mixins';
 import TextureDark from 'img/textureDark.webp';
 import TextureLight from 'img/textureLight2.webp';
 

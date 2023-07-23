@@ -1,4 +1,4 @@
-import { SetState } from 'utils';
+import { SetState } from 'utils/types';
 import { useTranslation } from 'react-i18next';
 
 type Props = {

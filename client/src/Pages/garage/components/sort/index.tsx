@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { Container, Placeholder, Wrapper, Option } from './style';
-import { SetState, SortOptionType, useSortOptions } from 'utils';
+import { SortOptionType, useSortOptions } from 'Pages/garage/utils';
+import { SetState } from 'utils/types';
 import { useOnClickOutside } from 'Hooks/useOnClickOutside';
 
 type Props = {

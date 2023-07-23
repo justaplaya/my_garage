@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, Title, Separator, Description, AddText } from './style';
-import { SetState } from 'utils';
+import { SetState } from 'utils/types';
 import { useNotFound } from './useNotFound';
 
 type Props = {

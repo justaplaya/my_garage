@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Country } from 'Pages/garage/types';
-import { GetCountryBg } from 'Pages/garage/components/Car/utils';
-import { blurredBack, scrollBar } from 'styles/mixins';
+import { getCountryBg } from 'Pages/garage/components/Car/utils';
+import { blurredBack, scrollBar } from 'mixins';
 
 export const Container = styled.div<{ $country: Country | null }>`
   position: relative;
@@ -12,7 +12,7 @@ export const Container = styled.div<{ $country: Country | null }>`
   justify-content: flex-start;
   align-items: flex-start;
   background: ${({ $country, ...props }) =>
-    $country ? `url(${GetCountryBg($country)})` : `${props.theme.colors.primary()}`};
+    $country ? `url(${getCountryBg($country)})` : `${props.theme.colors.primary()}`};
   background-repeat: no-repeat;
   background-size: 100vw 100vh;
   background-attachment: fixed;

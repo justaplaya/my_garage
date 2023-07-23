@@ -5,7 +5,7 @@ import { NotFound } from 'Pages/garage/components/notFound';
 import { Container, CardWrapper, Icon, Separator, Brand, Model } from './style';
 import { Car } from 'Pages/garage/models/car';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { SetState } from 'utils';
+import { SetState } from 'utils/types';
 
 type Props = { cars: Car[]; loading: boolean; searchValue: string; setShowModal: SetState<boolean> };
 export const List = ({ cars, loading, searchValue, setShowModal }: Props) => {

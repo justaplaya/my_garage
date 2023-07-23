@@ -8,13 +8,13 @@ import { List } from './components/list';
 import { useGarage } from './useGarage';
 
 export const Garage = () => {
-  const { props, createText } = useGarage();
+  const { props, text } = useGarage();
   return (
     <Container>
       <Row>
         <Sort {...props.sort} />
         <Search {...props.search} />
-        <CreateBtn {...props.createBtn}>{createText}</CreateBtn>
+        <CreateBtn {...props.createBtn}>{text.create}</CreateBtn>
       </Row>
       <List {...props.list} />
       <CreateModal {...props.createModal} />

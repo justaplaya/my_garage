@@ -1,5 +1,4 @@
 import React, { useRef } from 'react';
-import { brands } from 'Pages/garage/models/car';
 import { Brand } from 'Pages/garage/models/car';
 import { useOnClickOutside } from 'Hooks/useOnClickOutside';
 import { Dropdown } from '../Dropdown';
@@ -12,9 +11,10 @@ type PropsType = {
   pick: (x: Brand) => void;
   brand: Brand | null;
   disabled: boolean;
+  data: string[];
 };
 
-export const Select = ({ show, setShow, pick, brand, disabled }: PropsType) => {
+export const Select = ({ show, setShow, pick, brand, disabled, data }: PropsType) => {
   const container = useRef<HTMLDivElement>(null);
   const containerClick = () => {
     setShow(!show);
@@ -23,11 +23,10 @@ export const Select = ({ show, setShow, pick, brand, disabled }: PropsType) => {
     setShow(false);
   });
   const { t } = useTranslation();
-
   return (
     <Container onClick={containerClick} ref={container} $disabled={disabled}>
       {brand ?? <PlaceholderOption>{t('components.brandSelect.brand')}</PlaceholderOption>}
-      <Dropdown show={show} data={brands} pick={(brand) => pick(brand as Brand)} />
+      <Dropdown show={show} data={data} pick={(brand) => pick(brand as Brand)} />
     </Container>
   );
 };

@@ -2,7 +2,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { Api } from './api';
 import { BackButton, DeleteButton, EditButton, HeaderTop, HeaderTopRow } from './style';
 import React from 'react';
-import { SetState } from 'utils';
+import { SetState } from 'utils/types';
 import { Car } from 'Pages/garage/models/car';
 import { Text } from './useHeader';
 

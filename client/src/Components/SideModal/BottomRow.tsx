@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { scrollBarWidth } from 'styles/mixins';
+import { scrollBarWidth } from 'mixins';
 import React from 'react';
 import { Loader } from '../Loader';
 import { useTranslation } from 'react-i18next';

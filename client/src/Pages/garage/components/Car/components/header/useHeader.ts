@@ -1,7 +1,7 @@
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Car } from 'Pages/garage/models/car';
-import { SetState } from 'utils';
+import { SetState } from 'utils/types';
 import { ApolloError } from '@apollo/client';
 
 type TextField = 'back' | 'edit' | 'delete' | 'year' | 'maxSpeed' | 'timeUpTo100' | 'kmPerHour' | 'seconds';

@@ -18,6 +18,7 @@ import {
 import * as CommonStore from '../commonStore';
 import { useOnClickOutside } from '../../../Hooks/useOnClickOutside';
 import { useTranslation } from 'react-i18next';
+import { brands } from 'Pages/garage/utils';
 
 type PropsType = {
   show: boolean;
@@ -52,6 +53,7 @@ export const CreateModal = ({ show, setShow, refetch, setLoading }: PropsType) =
     addCarFunction(createCar, newCar, setShow, refetch, setLoading, setLocalLoading, dispatch);
   };
   const { t } = useTranslation();
+  const _brands = Object.values(brands).flat();
 
   return (
     <Common.Wrapper $show={show}>
@@ -64,6 +66,7 @@ export const CreateModal = ({ show, setShow, refetch, setLoading }: PropsType) =
             pick={(brand) => BrandOptionClick(brand, dispatch)}
             brand={newCar.brand}
             disabled={localLoading}
+            data={_brands}
           />
           <Input
             disabled={localLoading}

@@ -1,4 +1,4 @@
-import { SetState } from 'utils';
+import { SetState } from 'utils/types';
 import SearchIcon from 'img/search.png';
 import React, { ChangeEvent } from 'react';
 import { Container, Icon, Input } from './style';

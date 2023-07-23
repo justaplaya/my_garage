@@ -1,15 +1,13 @@
-import { Brand, Car } from '../Pages/garage/models/car';
-import { Country } from '../Pages/garage/types';
+import { Country } from './types';
+import { Brand, Car } from './models/car';
 import { useTranslation } from 'react-i18next';
-import { Dispatch, SetStateAction } from 'react';
 
-export type SetState<T> = Dispatch<SetStateAction<T>>;
-
-const brands: Record<Country, Brand[]> = {
+export const brands: Record<Country, Brand[]> = {
   japan: ['subaru', 'mitsubishi', 'toyota'],
   korea: ['kia', 'hyundai', 'ssangyong'],
   china: ['haval', 'chery', 'exeed'],
 };
+
 /** отдаёт страну бренда */
 export const getCountry = (brand: Brand | null): Country | null => {
   if (!brand) return null;
@@ -26,7 +24,7 @@ export type SortOptionType = {
   direction: Direction;
   text: string;
 };
-/** отдаёт массив опций сортировки */
+/** отдаёт массив всех опций сортировки */
 export const useSortOptions = (): SortOptionType[] => {
   const { t } = useTranslation();
   return [
@@ -42,9 +40,4 @@ export const useSortOptions = (): SortOptionType[] => {
     { id: 9, by: 'timeUpTo100', direction: 'asc', text: t('sortOptions.9') },
     { id: 10, by: 'timeUpTo100', direction: 'desc', text: t('sortOptions.10') },
   ];
-};
-/** отдаёт аргумент как строку, null и undefined дают пустую строку  */
-export const toString = (arg): string => {
-  const valid = ![null, undefined].includes(arg);
-  return valid ? String(arg) : '';
 };

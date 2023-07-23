@@ -7,7 +7,7 @@ type PropsType = {
   placeholder?: string;
   disabled: boolean;
 };
-
+//TODO избавься от обёртки
 export const Input = ({ value, onChange, placeholder, disabled }: PropsType) => {
   return (
     <Wrapper $disabled={disabled}>
