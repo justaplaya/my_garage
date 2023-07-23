@@ -14,7 +14,7 @@ import China from 'img/countries/background/china.webp';
 import { Brand } from 'Pages/garage/models/car';
 import { Country } from 'Pages/garage/types';
 
-export const GetBrandIcon = (brand: Brand | null) => {
+export const getBrandIcon = (brand: Brand | null) => {
   switch (brand) {
     case 'subaru':
       return Subaru;

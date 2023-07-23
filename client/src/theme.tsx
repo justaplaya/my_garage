@@ -1,6 +1,6 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { ThemeProvider } from 'styled-components';
-import { GlobalContext, ThemeType } from './globalContext';
+import { useAppSelector, ThemeType } from './reducer';
 
 export interface GlobalThemeType {
   theme: ThemeType;
@@ -18,8 +18,8 @@ export interface GlobalThemeType {
 }
 
 export const useTheme = (): GlobalThemeType => {
-  const { theme } = useContext(GlobalContext);
-
+  // const { theme } = useContext(GlobalContext);
+  const theme = useAppSelector((state) => state.common.theme);
   const isDark = theme === 'dark';
   const darkBlue = '16, 24, 39';
   const raspberry = '255, 0, 80';

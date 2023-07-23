@@ -1,18 +1,14 @@
-import React, { createContext, ReactNode, useState } from 'react';
-import { CarType } from './models/car';
-import { ThemeType } from 'globalContext';
+import React, { createContext, ReactNode } from 'react';
 
-export type ContextType = {};
-
+type CtxType = {};
 type PropsType = {
   children?: ReactNode;
 };
 
-export const GarageContext = createContext<ContextType | null>(null);
+const initialCtx: CtxType = {};
+export const GarageCtx = createContext<CtxType>(initialCtx);
 
-export const GarageContextProvider = ({ children }: PropsType) => {
-  const [cars, setCars] = useState<CarType[]>([]);
+export const GarageCtxProvider = ({ children }: PropsType) => {
   const value = {};
-
-  return <GarageContext.Provider value={value}>{children}</GarageContext.Provider>;
+  return <GarageCtx.Provider value={value}>{children}</GarageCtx.Provider>;
 };

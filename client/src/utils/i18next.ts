@@ -8,8 +8,8 @@ i18next
   .use(I18nextBrowserLanguageDetector)
   .use(initReactI18next)
   .init({
-    fallbackLng: 'ru',
-    supportedLngs: ['ru', 'en'],
+    fallbackLng: 'ru', // дефолтный язык
+    supportedLngs: ['ru', 'en'], // поддерживаемые языки
     debug: false,
     detection: { order: ['localStorage', 'cookie'], caches: ['localStorage', 'cookie'] },
     interpolation: { escapeValue: false },

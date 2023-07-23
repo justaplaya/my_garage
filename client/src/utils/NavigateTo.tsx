@@ -14,3 +14,4 @@ export const NavigateTo = ({ to }: PropsType) => {
 
   return <></>;
 };
+// TODO очень похоже на костыль

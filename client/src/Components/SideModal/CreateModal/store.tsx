@@ -1,13 +1,13 @@
 import { ChangeEvent, Dispatch, SetStateAction, useReducer } from 'react';
-import { Brand, CarType } from 'Pages/garage/models/car';
+import { Brand, Car } from 'Pages/garage/models/car';
 
-type InputCarType = Record<keyof Omit<CarType, 'id' | 'brand'>, string> & { brand: Brand | null };
+type InputCarType = Record<keyof Omit<Car, 'id' | 'brand'>, string> & { brand: Brand | null };
 interface ResetAction {
   type: 'RESET';
 }
 interface UpdateAction {
   type: 'UPDATE';
-  target: keyof CarType;
+  target: keyof Car;
   value: string | number;
 }
 type ActionType = ResetAction | UpdateAction;
@@ -44,7 +44,7 @@ export const useSetupNewCar = (): Output => {
 export const addCarFunction = (
   createCar: (x: {
     variables: {
-      input: Omit<CarType, 'id'>;
+      input: Omit<Car, 'id'>;
     };
   }) => Promise<any>,
   newCar: InputCarType,

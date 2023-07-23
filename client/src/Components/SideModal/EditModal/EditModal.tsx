@@ -1,4 +1,4 @@
-import { CarType } from 'Pages/garage/models/car';
+import { Car } from 'Pages/garage/models/car';
 import React, { useEffect, useRef, useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { UPDATE_CAR as UPDATE_CAR_MUTATION } from 'Apollo/mutations/mutcar';
@@ -22,7 +22,7 @@ import { useOnClickOutside } from 'Hooks/useOnClickOutside';
 import { useTranslation } from 'react-i18next';
 
 type PropsType = {
-  car: CarType;
+  car: Car;
   show: boolean;
   setShow: (x: boolean) => void;
 };

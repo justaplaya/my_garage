@@ -1,10 +1,10 @@
 import { combineReducers, configureStore, createSlice } from '@reduxjs/toolkit';
 import { garageSlice, GarageStateType } from 'Pages/garage/store';
-import { ThemeType } from 'globalContext';
 import { TypedUseSelectorHook, useSelector } from 'react-redux';
 import { persistStore, persistReducer, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from 'redux-persist';
-import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web
+import storage from 'redux-persist/lib/storage';
 
+export type ThemeType = 'light' | 'dark';
 type CommonStateType = {
   theme: ThemeType;
   temp: number;
@@ -23,7 +23,7 @@ const commonPersistConfig = {
   storage,
   blacklist: ['temp'],
 };
-const commonSlice = createSlice({
+const rootSlice = createSlice({
   name: 'common',
   initialState,
   reducers: {
@@ -35,11 +35,10 @@ const commonSlice = createSlice({
     },
   },
 });
-// /
-export const { changeTheme, changeTemp } = commonSlice.actions;
+export const { changeTheme, changeTemp } = rootSlice.actions;
 const rootReducer = combineReducers<{ garage: GarageStateType; common: CommonStateType }>({
   garage: garageSlice.reducer,
-  common: persistReducer(commonPersistConfig, commonSlice.reducer),
+  common: persistReducer(commonPersistConfig, rootSlice.reducer),
 });
 export type RootState = ReturnType<typeof rootReducer>;
 

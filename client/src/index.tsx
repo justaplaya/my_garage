@@ -2,13 +2,12 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom/client';
 import App from './App';
 import './GlobalStyles.css';
-import { ApolloProvider, ApolloClient, InMemoryCache, useApolloClient } from '@apollo/client';
+import { ApolloProvider, ApolloClient, InMemoryCache } from '@apollo/client';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import store, { persistor } from './store';
-import { GlobalContextProvider } from './globalContext';
+import store, { persistor } from './reducer';
+import { GlobalCtxProvider } from './context';
 import { PersistGate } from 'redux-persist/integration/react';
-import { ApolloProvider as ApolloProviderHooks, useQuery as useQueryHooks } from '@apollo/react-hooks';
 import { Suspense } from 'react';
 
 export const client = new ApolloClient({
@@ -25,9 +24,9 @@ root.render(
         <BrowserRouter>
           <Provider store={store}>
             <PersistGate loading={null} persistor={persistor}>
-              <GlobalContextProvider>
+              <GlobalCtxProvider>
                 <App />
-              </GlobalContextProvider>
+              </GlobalCtxProvider>
             </PersistGate>
           </Provider>
         </BrowserRouter>

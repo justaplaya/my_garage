@@ -50,7 +50,9 @@
         "delete": "Delete",
         "year": "Release year",
         "maxSpeed": "Max speed",
-        "timeUpTo100": "Acceleration time up to 100 km/h"
+        "timeUpTo100": "Acceleration time up to 100 km/h",
+        "kmPerHour": "km/h",
+        "seconds": "sec."
       }
     }
   }

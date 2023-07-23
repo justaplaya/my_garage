@@ -1,4 +1,4 @@
-export type CarType = {
+export type Car = {
   id: number;
   brand: Brand;
   model: string | null;

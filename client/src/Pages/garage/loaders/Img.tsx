@@ -1,19 +1,23 @@
 import React from 'react';
 import ContentLoader from 'react-content-loader';
 
-export const TimeSkeletonLoading: React.FC = () => {
+type Props = {
+  width: number;
+  height: number;
+};
+
+export const Img = ({ width, height }: Props) => {
   return (
     <ContentLoader
-      width="70"
-      height="17"
-      viewBox="0 0 70 17"
+      width={width}
+      height={height}
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      backgroundColor={'#eaeaea'}
+      backgroundColor={'rgba(133,141,143,0.75)'}
       foregroundColor={'#f5f5f5'}
       title={'Загрузка...'}
     >
-      <rect width="70" height="17" fill="#EAEAEA" />
+      <rect width={width} height={height} fill="#D2E1E4" rx="5" />
     </ContentLoader>
   );
 };

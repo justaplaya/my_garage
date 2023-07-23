@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 
 export const HeaderHeight = '75px';
 
-export namespace Header {
+export namespace Head {
   export const Container = styled.div`
     position: sticky;
     z-index: 1;
@@ -79,7 +79,6 @@ export const LinkIconWrapper = styled.div<{ $side?: string }>`
     fill: ${(props) => props.theme.colors.secondary()};
   }
 `;
-// ${HeaderHeight}
 export const ToggleDiameter = '45px';
 export const LineWidth = '65px';
 export const Toggle = styled.div`

@@ -1,14 +1,14 @@
 import { ChangeEvent, Dispatch, SetStateAction, useMemo, useReducer } from 'react';
 import { toString } from 'utils';
-import { Brand, CarType } from 'Pages/garage/models/car';
+import { Brand, Car } from 'Pages/garage/models/car';
 
-type InputCarType = Record<keyof Omit<CarType, 'id' | 'brand'>, string> & { id: number; brand: Brand };
+type InputCarType = Record<keyof Omit<Car, 'id' | 'brand'>, string> & { id: number; brand: Brand };
 interface ResetAction {
   type: 'RESET';
 }
 interface UpdateAction {
   type: 'UPDATE';
-  target: keyof CarType;
+  target: keyof Car;
   value: string | number;
 }
 type ActionType = ResetAction | UpdateAction;
@@ -19,8 +19,8 @@ type Output = {
   dispatch: Dispatch<ActionType>;
 };
 
-export const useSetupNewCar = (car: CarType): Output => {
-  const { id, brand, model, year, maxSpeed, timeUpTo100 }: CarType = car;
+export const useSetupNewCar = (car: Car): Output => {
+  const { id, brand, model, year, maxSpeed, timeUpTo100 }: Car = car;
 
   const initialCar: InputCarType = useMemo(
     () => ({
@@ -51,7 +51,7 @@ export const useSetupNewCar = (car: CarType): Output => {
 export const updateCarFunction = (
   updateCar: (x: {
     variables: {
-      input: CarType;
+      input: Car;
     };
   }) => Promise<any>,
   newCar: InputCarType,

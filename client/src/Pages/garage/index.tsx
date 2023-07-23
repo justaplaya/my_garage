@@ -1,11 +1,11 @@
 import React from 'react';
-import { GarageContextProvider } from './context';
+import { GarageCtxProvider } from './context';
 import { Garage } from './Garage';
 const GarageIndex = () => {
   return (
-    <GarageContextProvider>
+    <GarageCtxProvider>
       <Garage />
-    </GarageContextProvider>
+    </GarageCtxProvider>
   );
 };
 export default GarageIndex;

@@ -1,7 +1,6 @@
 import React from 'react';
-import { Container, ImgWrapper, TextWrapper } from './style';
+import { Container, ImgWrapper, TextWrapper, Separator } from './style';
 import { Img } from './Img';
-import { Card } from '../../style';
 import { Text } from './Text';
 
 export const CardLoader = () => {
@@ -10,11 +9,10 @@ export const CardLoader = () => {
       <ImgWrapper>
         <Img width={210} height={210} />
       </ImgWrapper>
-      <Card.Separator />
+      <Separator />
       <TextWrapper>
         <Text width={140} height={25} />
         <Text width={210} height={25} />
-        {/*<Text width={60} height={25} />*/}
       </TextWrapper>
     </Container>
   );

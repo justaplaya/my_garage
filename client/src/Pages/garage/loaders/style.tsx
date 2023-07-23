@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { blurredBack } from '../../../../styles/mixins';
+import { blurredBack } from 'styles/mixins';
 
 export const Container = styled.div`
   position: relative;
@@ -25,7 +25,6 @@ export const ImgWrapper = styled.div`
   width: 210px;
   height: 210px;
 `;
-
 export const TextWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -33,4 +32,11 @@ export const TextWrapper = styled.div`
   justify-content: center;
   gap: 10px;
   padding-bottom: 40px;
+`;
+export const Separator = styled.div`
+  content: '';
+  width: 100%;
+  height: 2px;
+  background: ${(props) =>
+    `linear-gradient(to right, transparent 0%, ${props.theme.colors.secondary()} 50%, transparent 100%)`};
 `;
