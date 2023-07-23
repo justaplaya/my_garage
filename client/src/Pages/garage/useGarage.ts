@@ -105,6 +105,7 @@ export const useGarage = () => {
       cars: cars,
       loading: loading,
       searchValue: searchValue,
+      setShowModal,
     },
     createModal: {
       show: showModal,

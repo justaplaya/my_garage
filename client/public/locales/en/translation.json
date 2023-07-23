@@ -42,7 +42,12 @@
     "garage": {
       "main": {
         "create": "Create",
-        "search": "Search by brand or model"
+        "search": "Search by brand or model",
+        "404SearchTop": "Nothing found by query",
+        "404SearchBottom": "Try to enter another one",
+        "404AllTop": "No cars found",
+        "404AllBottomStatic": "Try to",
+        "404AllBottomInteractive": "add one"
       },
       "car": {
         "back": "Back",

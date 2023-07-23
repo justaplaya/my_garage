@@ -35,3 +35,9 @@ export const Description = styled.p`
   font-size: 30px;
   font-weight: 700;
 `;
+export const AddText = styled.p`
+  &:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+`;

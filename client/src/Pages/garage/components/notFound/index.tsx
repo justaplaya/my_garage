@@ -1,26 +1,23 @@
-import React, { useMemo } from 'react';
-import { Container, Title, Separator, Description } from './style';
+import React from 'react';
+import { Container, Title, Separator, Description, AddText } from './style';
+import { SetState } from 'utils';
+import { useNotFound } from './useNotFound';
 
 type Props = {
   searchValue: string;
+  setShowModal: SetState<boolean>;
 };
 
-export const NotFound = ({ searchValue: value }: Props) => {
-  const maxLength = 45;
-  const cut = (value: string) => (value.length > maxLength ? `${value.slice(0, maxLength)}...` : value);
-  const getTitle = (value: string) => (value ? `По запросу «${cut(value)}» ничего не найдено` : `Машины не найдены`);
-  const getDesc = (value: string) => (value ? `Попробуйте ввести другой запрос` : `Вы можете их создать`);
-  // TODO "создать" с underline
-  const text = {
-    title: getTitle(value),
-    desc: getDesc(value),
-  };
-
+export const NotFound = ({ searchValue: value, setShowModal }: Props) => {
+  const { getTitle, getDesc, openModal, text } = useNotFound({ setShowModal });
   return (
     <Container>
-      <Title>{text.title}</Title>
+      <Title>{getTitle(value)}</Title>
       <Separator />
-      <Description>{text.desc}</Description>
+      <Description>
+        {getDesc(value)}
+        {!value && <AddText onClick={openModal}>{text.all.bottomActive}</AddText>}
+      </Description>
     </Container>
   );
 };
