@@ -97,6 +97,6 @@ const BrandOption = styled.div`
   text-transform: capitalize;
   background: ${(props) => props.theme.colors.primary()};
   &:hover {
-    background: ${(props) => props.theme.colors.primaryLight6()};
+    background: ${(props) => props.theme.colors.primaryLite6()};
   }
 `;

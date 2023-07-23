@@ -46,16 +46,16 @@ export const Link = styled(NavLink)`
   &.active {
     color: ${(props) => props.theme.colors.secondary()};
     background: ${(props) =>
-      props.theme.theme === 'dark' ? props.theme.colors.primaryLight6() : props.theme.colors.primaryLight12()};
+      props.theme.theme === 'dark' ? props.theme.colors.primaryLite6() : props.theme.colors.primaryLite12()};
     font-weight: 700;
   }
   &.active:hover {
     background: ${(props) =>
-      props.theme.theme === 'dark' ? props.theme.colors.primaryLight6() : props.theme.colors.primaryLight12()};
+      props.theme.theme === 'dark' ? props.theme.colors.primaryLite6() : props.theme.colors.primaryLite12()};
   }
   &:hover {
     background: ${(props) =>
-      props.theme.theme === 'dark' ? props.theme.colors.primaryLight3() : props.theme.colors.primaryLight6()};
+      props.theme.theme === 'dark' ? props.theme.colors.primaryLite3() : props.theme.colors.primaryLite6()};
   }
   svg g {
     fill: ${(props) => props.theme.colors.primaryContrast()};
@@ -73,6 +73,7 @@ export const LinkIconWrapper = styled.div<{ $side?: string }>`
   height: ${({ $side }) => ($side ? $side : `${HeaderHeight}`)};
   width: ${({ $side }) => ($side ? $side : `${HeaderHeight}`)};
   cursor: pointer;
+  font-weight: 700;
   > svg {
     height: ${({ $side }) => ($side ? $side : `${HeaderHeight}`)};
     width: ${({ $side }) => ($side ? $side : `${HeaderHeight}`)};
@@ -98,7 +99,7 @@ export const Line = styled.div`
   position: relative;
   height: 25px;
   width: ${LineWidth};
-  background-color: ${(props) => props.theme.colors.primaryLight24()};
+  background-color: ${(props) => props.theme.colors.primaryLite24()};
   border-radius: 50px;
   cursor: pointer;
 `;

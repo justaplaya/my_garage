@@ -73,7 +73,7 @@ export const Option = styled.div<{ $smallFontSize: boolean }>`
   color: ${(props) => props.theme.colors.secondary()};
   background: ${(props) => props.theme.colors.primary()};
   &:hover {
-    background: ${(props) => props.theme.colors.primaryLight6()};
+    background: ${(props) => props.theme.colors.primaryLite6()};
   }
   font-size: 20px;
   ${({ $smallFontSize }) =>

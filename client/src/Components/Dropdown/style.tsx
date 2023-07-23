@@ -44,7 +44,7 @@ export const Option = styled.div<{ $upperCase?: boolean; $padding?: string }>`
   text-transform: capitalize;
   background: ${(props) => props.theme.colors.primary()};
   &:hover {
-    background: ${(props) => props.theme.colors.primaryLight6()};
+    background: ${(props) => props.theme.colors.primaryLite6()};
   } //  /
   ${({ $upperCase }) =>
     $upperCase &&
