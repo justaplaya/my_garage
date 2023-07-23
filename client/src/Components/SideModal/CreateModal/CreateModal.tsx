@@ -2,8 +2,8 @@ import React, { Dispatch, SetStateAction, useRef, useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { CREATE_CAR as CREATE_CAR_MUTATION } from 'Apollo/mutations/mutcar';
 import { BottomRow } from '../BottomRow';
-import { BrandSelect } from '../BrandSelect';
-import { Input } from '../Input';
+import { Select } from '../../Select';
+import { Input } from '../../Input';
 import { Common } from '../style';
 import {
   addCarFunction,
@@ -17,7 +17,6 @@ import {
 } from './store';
 import * as CommonStore from '../commonStore';
 import { useOnClickOutside } from '../../../Hooks/useOnClickOutside';
-import { updateCarFunction } from '../EditModal/store';
 import { useTranslation } from 'react-i18next';
 
 type PropsType = {
@@ -59,7 +58,7 @@ export const CreateModal = ({ show, setShow, refetch, setLoading }: PropsType) =
       <Common.Container $show={show} ref={container}>
         <Common.Data>
           <Common.Icon src={CommonStore.iconSrc(newCar.brand)} />
-          <BrandSelect
+          <Select
             show={showBrandSelect}
             setShow={setShowBrandSelect}
             pick={(brand) => BrandOptionClick(brand, dispatch)}

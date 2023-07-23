@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import { scrollBarWidth } from 'styles/mixins';
 import React from 'react';
-import { Loader } from './Loader';
+import { Loader } from '../Loader';
 import { useTranslation } from 'react-i18next';
 
 type Props = {

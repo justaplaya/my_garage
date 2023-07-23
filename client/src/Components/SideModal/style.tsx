@@ -14,12 +14,8 @@ export namespace InputStyle {
     outline: none;
     font-size: 30px;
     font-weight: 700;
-    //color: rgb(16,  24, 39);
     width: 100%;
     position: relative;
-    &::placeholder {
-      //color: rgba(16, 24, 39, 0.5);
-    }
     ${({ $disabled }) =>
       $disabled &&
       css`
@@ -82,7 +78,6 @@ export namespace Common {
     gap: 10px;
     background: ${(props) => props.theme.colors.secondary(0.75)};
     backdrop-filter: blur(6px);
-    //padding: 20px   10px;
   `;
   export const Data = styled.div`
     width: 100%;

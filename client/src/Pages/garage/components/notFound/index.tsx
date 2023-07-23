@@ -11,12 +11,11 @@ export const NotFound = ({ searchValue: value }: Props) => {
   const getTitle = (value: string) => (value ? `По запросу «${cut(value)}» ничего не найдено` : `Машины не найдены`);
   const getDesc = (value: string) => (value ? `Попробуйте ввести другой запрос` : `Вы можете их создать`);
   // TODO "создать" с underline
-  const text = useMemo(() => {
-    return {
-      title: getTitle(value),
-      desc: getDesc(value),
-    };
-  }, [value]);
+  const text = {
+    title: getTitle(value),
+    desc: getDesc(value),
+  };
+
   return (
     <Container>
       <Title>{text.title}</Title>
