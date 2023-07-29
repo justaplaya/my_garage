@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Country } from 'Pages/garage/types';
-import { getCountryBg } from 'Pages/garage/components/Car/utils';
+import { getCountryBg } from 'Pages/garage/components/carPage/utils';
 import { blurredBack, scrollBar } from 'mixins';
 
 export const Container = styled.div<{ $country: Country | null }>`

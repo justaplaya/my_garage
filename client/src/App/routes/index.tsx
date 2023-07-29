@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
-import { CarPage as GarageCar } from 'Pages/garage/components/Car';
+import { CarPage as GarageCar } from 'Pages/garage/components/carPage';
 import { Scratch } from 'Pages/scratch';
 import React from 'react';
 import Garage from 'Pages/garage';

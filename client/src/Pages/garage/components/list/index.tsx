@@ -1,6 +1,6 @@
 import React from 'react';
 import { CardLoader } from 'Pages/garage/loaders';
-import { getBrandIcon } from 'Pages/garage/components/Car/utils';
+import { getBrandIcon } from 'Pages/garage/components/carPage/utils';
 import { NotFound } from 'Pages/garage/components/notFound';
 import { Container, CardWrapper, Icon, Separator, Brand, Model } from './style';
 import { Car } from 'Pages/garage/models/car';
