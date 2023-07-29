@@ -1,6 +1,7 @@
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
-import { useAppSelector, ThemeType } from './reducer';
+import { useAppSelector } from './reducer';
+import { ThemeType } from './reducer/types';
 
 /**
  * каждый цвет это функция, опционально принимающая альфа-канал. если аргумент не пришёл, в альфа-канал ставится 1

@@ -24,7 +24,6 @@ export const Container = styled.div<{ $country: Country | null }>`
   padding: 10px 20px;
   gap: 10px;
 `;
-// /
 export const HeaderContainer = styled.div`
   width: 100%;
   height: fit-content;
@@ -32,7 +31,6 @@ export const HeaderContainer = styled.div`
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
-
   gap: 10px;
 `;
 export const HeaderTop = styled.div`
@@ -111,7 +109,6 @@ export const InfoWrapper = styled.div`
   justify-content: center;
   gap: 5px;
 `;
-//  /
 export const Brand = styled.p`
   width: 100%;
   color: ${(props) =>
@@ -149,7 +146,6 @@ export const Model = styled.p`
   text-transform: capitalize;
   display: -webkit-box;
   overflow: hidden;
-  //height: 58px;
   max-height: 58px;
   -webkit-box-orient: vertical;
   text-overflow: ellipsis;
@@ -170,7 +166,6 @@ export const InfoText = styled.p`
 const BodyRadius = `5px`;
 export const BodyWrapper = styled.div`
   width: 100%;
-  //margin: 0 20px 10px;
   border-radius: ${BodyRadius};
   background-attachment: fixed;
   ${blurredBack()};

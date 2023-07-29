@@ -1,4 +1,4 @@
-import { Car } from 'Pages/garage/models/car';
+import { Brand, Car } from 'Pages/garage/models/car';
 import React, { useEffect, useRef, useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { UPDATE_CAR as UPDATE_CAR_MUTATION } from 'Apollo/mutations/mutcar';
@@ -62,11 +62,11 @@ export const EditModal = ({ car, show, setShow }: PropsType) => {
       <Common.Container $show={show} ref={container}>
         <Common.Data>
           <Common.Icon src={CommonStore.iconSrc(newCar.brand)} />
-          <Select
+          <Select<Brand>
             show={showBrandSelect}
             setShow={setShowBrandSelect}
             pick={(brand) => BrandOptionClick(brand, dispatch)}
-            brand={newCar.brand}
+            picked={newCar.brand}
             disabled={loading}
             data={_brands}
           />

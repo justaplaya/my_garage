@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { blurredBack } from '../../../../mixins';
+import { blurredBack } from 'mixins';
 
 export const Container = styled.div`
   display: flex;
@@ -16,27 +16,13 @@ export const Container = styled.div`
   outline: none;
   font-size: 30px;
   font-weight: 700;
+  input {
+    background: transparent;
+    backdrop-filter: none;
+  }
 `;
 export const Icon = styled.img`
   height: 100%;
   object-fit: contain;
   padding: 10px 20px;
-`;
-export const Input = styled.input`
-  width: 100%;
-  background: transparent;
-  height: 100%;
-  border: none;
-  outline: none;
-  font-size: 30px;
-  font-weight: 700;
-  color: ${(props) =>
-    props.theme.theme === 'dark' ? props.theme.colors.primary() : props.theme.colors.primaryContrast()};
-  &::placeholder {
-    color: ${(props) =>
-      props.theme.theme === 'dark' ? props.theme.colors.primary(0.5) : props.theme.colors.primaryContrast(0.5)};
-  }
-  &::selection {
-    background: ${(props) => props.theme.colors.secondary(0.75)};
-  }
 `;

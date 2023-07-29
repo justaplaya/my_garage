@@ -64,7 +64,7 @@ export const CreateModal = ({ show, setShow, refetch, setLoading }: PropsType) =
             show={showBrandSelect}
             setShow={setShowBrandSelect}
             pick={(brand) => BrandOptionClick(brand, dispatch)}
-            brand={newCar.brand}
+            picked={newCar.brand}
             disabled={localLoading}
             data={_brands}
           />

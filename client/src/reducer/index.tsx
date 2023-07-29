@@ -1,14 +1,11 @@
 import { combineReducers, configureStore, createSlice } from '@reduxjs/toolkit';
-import { garageSlice, GarageStateType } from 'Pages/garage/store';
+import { garageSlice } from 'Pages/garage/reducer';
+import { GarageStateType } from 'Pages/garage/reducer/types';
 import { TypedUseSelectorHook, useSelector } from 'react-redux';
 import { persistStore, persistReducer, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+import { CommonStateType } from './types';
 
-export type ThemeType = 'light' | 'dark';
-type CommonStateType = {
-  theme: ThemeType;
-  temp: number;
-};
 const initialState: CommonStateType = {
   theme: 'dark',
   temp: 0,

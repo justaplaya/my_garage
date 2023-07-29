@@ -2,22 +2,13 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { Api } from './api';
 import { BackButton, DeleteButton, EditButton, HeaderTop, HeaderTopRow } from './style';
 import React from 'react';
-import { SetState } from 'utils/types';
-import { Car } from 'Pages/garage/models/car';
-import { Text } from './useHeader';
+import { TopTypes } from './types';
 
-type Props = {
-  loading: boolean;
-  car: Car | null;
-  text: Text;
-  setShowModal: SetState<boolean>;
-  onDeleteSuccess: () => void;
-};
-
-export const Top = ({ loading, car, text, setShowModal, onDeleteSuccess }: Props) => {
+export const Top = ({ loading, car, text, setShowModal, onDeleteSuccess }: TopTypes.Props) => {
   const location = useLocation();
   const navigate = useNavigate();
   const { deleteCarFunction } = Api({ onDeleteSuccess });
+
   const click = {
     back: () => navigate(location.state?.from || '/garage'),
     edit: () => {
@@ -29,6 +20,7 @@ export const Top = ({ loading, car, text, setShowModal, onDeleteSuccess }: Props
       valid(id) && deleteCarFunction(id);
     },
   };
+
   const props = {
     edit: {
       disabled: loading,
@@ -39,6 +31,7 @@ export const Top = ({ loading, car, text, setShowModal, onDeleteSuccess }: Props
       onClick: () => click.delete(car?.id),
     },
   };
+
   return (
     <HeaderTop>
       <BackButton onClick={click.back}>{text.back}</BackButton>

@@ -1,32 +1,36 @@
 import React, { useRef } from 'react';
-import { Brand } from 'Pages/garage/models/car';
 import { useOnClickOutside } from 'Hooks/useOnClickOutside';
 import { Dropdown } from '../Dropdown';
 import { useTranslation } from 'react-i18next';
-import { Container, PlaceholderOption } from './style';
+import { Container, Placeholder } from './style';
+import { SetState } from '../../utils/types';
 
-type PropsType = {
+type PropsType<T = string> = {
   show: boolean;
-  setShow: (x: boolean) => void;
-  pick: (x: Brand) => void;
-  brand: Brand | null;
+  setShow: SetState<boolean>;
+  pick: (x: T) => void;
+  picked: T | null;
   disabled: boolean;
   data: string[];
 };
 
-export const Select = ({ show, setShow, pick, brand, disabled, data }: PropsType) => {
+export const Select = <T,>({ show, setShow, pick, picked, disabled, data }: PropsType<T & string>) => {
   const container = useRef<HTMLDivElement>(null);
-  const containerClick = () => {
-    setShow(!show);
+  const { t } = useTranslation();
+  const text = {
+    placeholder: t('components.brandSelect.brand'),
   };
+
+  const containerClick = () => setShow((prev) => !prev);
+
   useOnClickOutside(container, () => {
     setShow(false);
   });
-  const { t } = useTranslation();
+
   return (
     <Container onClick={containerClick} ref={container} $disabled={disabled}>
-      {brand ?? <PlaceholderOption>{t('components.brandSelect.brand')}</PlaceholderOption>}
-      <Dropdown show={show} data={data} pick={(brand) => pick(brand as Brand)} />
+      {picked ?? <Placeholder>{text.placeholder}</Placeholder>}
+      <Dropdown<T & string> show={show} data={data} pick={(brand) => pick(brand)} />
     </Container>
   );
 };

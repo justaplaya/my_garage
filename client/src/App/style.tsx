@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import MoonIcon from './img/moon.png';
-import SunIcon from './img/sun.png';
+import MoonIcon from 'img/garage/theme/moon.png';
+import SunIcon from 'img/garage/theme/sun.png';
 import { NavLink } from 'react-router-dom';
 
 export const HeaderHeight = '75px';
@@ -32,6 +32,14 @@ export namespace Head {
     align-items: center;
     justify-content: center;
     gap: 10px;
+    > div {
+      max-height: 70px;
+      max-width: 70px;
+      > svg {
+        max-height: 70px;
+        max-width: 70px;
+      }
+    }
   `;
 }
 export const Link = styled(NavLink)`
@@ -68,16 +76,30 @@ export const Link = styled(NavLink)`
   gap: 10px;
   position: relative;
 `;
-export const LinkIconWrapper = styled.div<{ $side?: string }>`
+export const LinkIconWrapper = styled.div`
   position: relative;
-  height: ${({ $side }) => ($side ? $side : `${HeaderHeight}`)};
-  width: ${({ $side }) => ($side ? $side : `${HeaderHeight}`)};
+  height: ${HeaderHeight};
+  width: ${HeaderHeight};
   cursor: pointer;
   font-weight: 700;
   > svg {
-    height: ${({ $side }) => ($side ? $side : `${HeaderHeight}`)};
-    width: ${({ $side }) => ($side ? $side : `${HeaderHeight}`)};
+    height: ${HeaderHeight};
+    width: ${HeaderHeight};
     fill: ${(props) => props.theme.colors.secondary()};
+  }
+`;
+export const DropWrap = styled.div`
+  > div {
+    width: 100%;
+    > div {
+       {
+        text-transform: uppercase;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+      }
+    }
   }
 `;
 export const ToggleDiameter = '45px';

@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
-import { scrollBar } from '../../mixins';
+import { scrollBar } from 'mixins';
 
-export const Select = styled.div<{ $show: boolean; $width?: string; $side?: 'left' | 'right' }>`
+export const Select = styled.div<{ $show: boolean; $side?: 'left' | 'right' }>`
   transition: all 0.3s ease-in-out;
   cursor: pointer;
   z-index: 3;
@@ -23,7 +23,7 @@ export const Select = styled.div<{ $show: boolean; $width?: string; $side?: 'lef
     css`
       pointer-events: all;
       opacity: 1;
-    `}
+    `};
   ${({ $side }) =>
     $side === 'right'
       ? css`
@@ -31,28 +31,22 @@ export const Select = styled.div<{ $show: boolean; $width?: string; $side?: 'lef
         `
       : css`
           left: 0;
-        `}
-  ${scrollBar('dark')}
- width:${({ $width }) => ($width ? $width : 'auto')}
+        `};
+  ${scrollBar('dark')};
 `;
 
-export const Option = styled.div<{ $upperCase?: boolean; $padding?: string }>`
+export const Option = styled.div`
   width: 100%;
   height: 100%;
-  padding: ${({ $padding }) => ($padding ? $padding : '15px 10px')};
+  padding: 15px 10px;
   color: ${(props) => props.theme.colors.secondary()};
   text-transform: capitalize;
   background: ${(props) => props.theme.colors.primary()};
   &:hover {
     background: ${(props) => props.theme.colors.primaryLite6()};
-  } //  /
-  ${({ $upperCase }) =>
-    $upperCase &&
-    css`
-      text-transform: uppercase;
-    `}
+  }
 `;
-export const Text = styled.p<{ $textWidth?: string }>`
-  width: ${({ $textWidth }) => ($textWidth ? $textWidth : 'fit-content')};
+export const Text = styled.p`
+  width: fit-content;
   text-align: center;
 `;

@@ -1,27 +1,25 @@
 import React, { useRef } from 'react';
 import { Container, Placeholder, Wrapper, Option } from './style';
 import { SortOptionType, useSortOptions } from 'Pages/garage/utils';
-import { SetState } from 'utils/types';
 import { useOnClickOutside } from 'Hooks/useOnClickOutside';
-
-type Props = {
-  showSort: boolean;
-  setShowSort: SetState<boolean>;
-  sortValue: SortOptionType;
-  setSortValue: SetState<SortOptionType>;
-};
+import { Props } from './types';
 
 export const Sort = ({ showSort, setShowSort, sortValue, setSortValue }: Props) => {
   const sortOptions = useSortOptions();
-  const containerClick = () => setShowSort((prev) => !prev);
-  const optionClick = (option: SortOptionType) => setSortValue(option);
   const sortContainer = useRef<HTMLDivElement>(null);
+  const longOptions = [9, 10];
+  const placeholder = sortValue?.text ?? '';
+
   useOnClickOutside(sortContainer, () => {
     setShowSort(false);
   });
-  const longOptions = [9, 10];
+
+  const containerClick = () => setShowSort((prev) => !prev);
+
+  const optionClick = (option: SortOptionType) => setSortValue(option);
+
   const isLong = (id: number) => longOptions.includes(id);
-  const placeholder = sortValue?.text ?? '';
+
   return (
     <Container onClick={containerClick} ref={sortContainer}>
       <Placeholder $smallFontSize={isLong(sortValue.id)}>{placeholder}</Placeholder>

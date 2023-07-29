@@ -1,23 +1,28 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Option, Select, Text } from './style';
+import { useOnClickOutside } from 'Hooks/useOnClickOutside';
+import { SetState } from 'utils/types';
 
-type Props = {
+export type Props<T> = {
   show: boolean;
   data: string[];
-  pick: (x: string) => void;
+  pick: (x: T) => void;
   side?: 'left' | 'right';
-  width?: string;
-  upperCase?: boolean;
-  padding?: string;
-  textWidth?: string;
+  setShow?: SetState<boolean>;
 };
 
-export const Dropdown = ({ show, data, pick, side, width, upperCase, padding, textWidth }: Props) => {
+export const Dropdown = <T,>({ show, data, pick, side, setShow }: Props<T>) => {
+  const ref = useRef(null);
+  useOnClickOutside(ref, () => {
+    setShow && setShow(false);
+  });
+  const click = (item) => () => pick(item);
+  // TODO дорефактори все кейсы с dropdown(от теперь умеет в useOnClickOutside сам)
   return (
-    <Select $show={show} $width={width} $side={side}>
+    <Select $show={show} $side={side} ref={ref}>
       {data.map((item, index) => (
-        <Option key={index} onClick={() => pick(item)} $upperCase={upperCase} $padding={padding}>
-          <Text $textWidth={textWidth}>{item}</Text>
+        <Option key={index} onClick={click(item)}>
+          <Text>{item}</Text>
         </Option>
       ))}
     </Select>

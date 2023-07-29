@@ -1,19 +1,20 @@
-import { SetState } from 'utils/types';
-import SearchIcon from 'img/search.png';
+import SearchIcon from 'img/garage/search.png';
 import React, { ChangeEvent } from 'react';
-import { Container, Icon, Input } from './style';
+import { Container, Icon } from './style';
 import { useTranslation } from 'react-i18next';
-
-type Props = { displayValue: string; setDisplayValue: SetState<string> };
+import { Input } from 'Components/Input';
+import { Props } from './types';
 
 export const Search = ({ displayValue, setDisplayValue }: Props) => {
   const { t } = useTranslation();
-  const searchOnChange = (e: ChangeEvent<HTMLInputElement>) => setDisplayValue(e.target.value);
   const placeholder = t('pages.garage.main.search');
+
+  const onChange = (e: ChangeEvent<HTMLInputElement>) => setDisplayValue(e.target.value);
+
   return (
     <Container>
       <Icon src={SearchIcon} />
-      <Input value={displayValue} onChange={searchOnChange} placeholder={placeholder} />
+      <Input value={displayValue} onChange={onChange} placeholder={placeholder} />
     </Container>
   );
 };

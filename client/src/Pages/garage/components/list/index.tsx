@@ -5,9 +5,8 @@ import { NotFound } from 'Pages/garage/components/notFound';
 import { Container, CardWrapper, Icon, Separator, Brand, Model } from './style';
 import { Car } from 'Pages/garage/models/car';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { SetState } from 'utils/types';
+import { Props } from './types';
 
-type Props = { cars: Car[]; loading: boolean; searchValue: string; setShowModal: SetState<boolean> };
 export const List = ({ cars, loading, searchValue, setShowModal }: Props) => {
   const centerItems = !cars.length && !loading;
   const props = { notFound: { searchValue, setShowModal } };

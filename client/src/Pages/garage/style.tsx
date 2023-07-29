@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import { scrollBar } from 'mixins';
-import TextureDark from 'img/textureDark.webp';
-import TextureLight from 'img/textureLight2.webp';
+import TextureDark from 'img/garage/textures/dark.webp';
+import TextureLight from 'img/garage/textures/light.webp';
 
 export const Row = styled.div`
   display: flex;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, ImgWrapper, TextWrapper, Separator } from './style';
-import { Img } from './Img';
-import { Text } from './Text';
+import { Img } from './img';
+import { Text } from './text';
 
 export const CardLoader = () => {
   return (

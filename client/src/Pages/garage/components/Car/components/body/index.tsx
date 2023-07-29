@@ -1,9 +1,7 @@
 import { BodyTxt, BodyWrapper } from '../../style';
-import { Text } from '../../../../loaders/Text';
+import { Text } from '../../../../loaders/text';
 import React from 'react';
-import { Car } from '../../../../models/car';
-
-type Props = { car: Car | null };
+import { Props } from './types';
 
 export const Body = ({ car }: Props) => {
   return (

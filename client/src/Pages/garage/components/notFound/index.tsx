@@ -1,12 +1,7 @@
 import React from 'react';
 import { Container, Title, Separator, Description, AddText } from './style';
-import { SetState } from 'utils/types';
 import { useNotFound } from './useNotFound';
-
-type Props = {
-  searchValue: string;
-  setShowModal: SetState<boolean>;
-};
+import { Props } from './types';
 
 export const NotFound = ({ searchValue: value, setShowModal }: Props) => {
   const { getTitle, getDesc, openModal, text } = useNotFound({ setShowModal });

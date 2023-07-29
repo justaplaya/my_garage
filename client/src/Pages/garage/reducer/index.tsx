@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
-export type GarageStateType = { G: 59 };
+import { GarageStateType } from './types';
+
 const initialState: GarageStateType = { G: 59 };
 
 export const garageSlice = createSlice({

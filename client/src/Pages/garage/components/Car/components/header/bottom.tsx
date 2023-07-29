@@ -1,26 +1,17 @@
-import { Car } from 'Pages/garage/models/car';
 import { Brand, HeaderBottom, Icon, InfoText, InfoWrapper, Model, XSeparator, YSeparator } from './style';
 import { getBrandIcon } from '../../utils';
-import { Img } from 'Pages/garage/loaders/Img';
+import { Img } from 'Pages/garage/loaders/img';
 import React from 'react';
-import { ApolloError } from '@apollo/client';
-import { Text as TextType } from './useHeader';
-import { Text } from 'Pages/garage/loaders/Text';
+import { Text } from 'Pages/garage/loaders/text';
+import { BottomTypes } from './types';
 
-type Props = {
-  loading: boolean;
-  error: ApolloError | undefined;
-  car: Car | null;
-  text: TextType;
-};
-
-export const Bottom = ({ loading, error, car, text }: Props) => {
+export const Bottom = ({ loading, error, car, text }: BottomTypes.Props) => {
   const renderContent = !loading && !error && car;
+
   return <>{renderContent ? <Content car={car} text={text} /> : <Loading text={text} />}</>;
 };
 
-type ContentProps = { car: Car; text: TextType };
-const Content = ({ car, text }: ContentProps) => {
+const Content = ({ car, text }: BottomTypes.Content) => {
   const { brand, model, year, timeUpTo100, maxSpeed } = car;
   const brandIcon = getBrandIcon(brand);
   const show = {
@@ -29,6 +20,7 @@ const Content = ({ car, text }: ContentProps) => {
     time: timeUpTo100 !== null,
   };
   const showInfo = car ? !!Object.values(show).filter((i) => i).length : false;
+
   return (
     <HeaderBottom>
       <Icon src={brandIcon} />
@@ -46,13 +38,10 @@ const Content = ({ car, text }: ContentProps) => {
     </HeaderBottom>
   );
 };
-type InfoProps = {
-  car: Car;
-  show;
-  text: TextType;
-};
-const Info = ({ car, show, text }: InfoProps) => {
+
+const Info = ({ car, show, text }: BottomTypes.Info) => {
   const { year, timeUpTo100, maxSpeed } = car;
+
   return (
     <>
       <YSeparator />
@@ -77,8 +66,7 @@ const Info = ({ car, show, text }: InfoProps) => {
     </>
   );
 };
-type LoadingProps = { text: TextType };
-const Loading = ({ text }: LoadingProps) => {
+const Loading = ({ text }: BottomTypes.Loading) => {
   return (
     <HeaderBottom>
       <Img width={250} height={250} />

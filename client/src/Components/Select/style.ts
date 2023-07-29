@@ -21,7 +21,7 @@ export const Container = styled.div<{ $disabled: boolean }>`
       pointer-events: none;
     `}}
 `;
-export const PlaceholderOption = styled.div`
+export const Placeholder = styled.div`
   color: ${(props) =>
     props.theme.theme === 'dark' ? props.theme.colors.primary(0.5) : props.theme.colors.primaryContrast(0.5)};
   text-transform: capitalize;

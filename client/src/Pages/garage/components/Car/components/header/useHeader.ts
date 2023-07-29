@@ -1,16 +1,12 @@
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { Car } from 'Pages/garage/models/car';
-import { SetState } from 'utils/types';
-import { ApolloError } from '@apollo/client';
-
-type TextField = 'back' | 'edit' | 'delete' | 'year' | 'maxSpeed' | 'timeUpTo100' | 'kmPerHour' | 'seconds';
-export type Text = Record<TextField, string>;
-type Props = { car: Car | null; loading: boolean; setShowModal: SetState<boolean>; error: ApolloError | undefined };
+import { Props, Text } from './types';
 
 export const useHeader = ({ car, loading, setShowModal, error }: Props) => {
+  const { t } = useTranslation();
   const location = useLocation();
   const navigate = useNavigate();
+
   const onDeleteSuccess = () => {
     navigate(location.state?.from || '/garage', {
       state: {
@@ -18,7 +14,7 @@ export const useHeader = ({ car, loading, setShowModal, error }: Props) => {
       },
     });
   };
-  const { t } = useTranslation();
+
   const text: Text = {
     back: t('pages.garage.car.back'),
     edit: t('pages.garage.car.edit'),
@@ -29,6 +25,7 @@ export const useHeader = ({ car, loading, setShowModal, error }: Props) => {
     kmPerHour: t('pages.garage.car.kmPerHour'),
     seconds: t('pages.garage.car.seconds'),
   };
+
   const props = {
     top: {
       loading,
@@ -44,5 +41,6 @@ export const useHeader = ({ car, loading, setShowModal, error }: Props) => {
       text,
     },
   };
+
   return { onDeleteSuccess, props };
 };
