@@ -1,11 +1,12 @@
-/** клади в глобальный контекст только реально глобальные вещи
-//  там, где можно обойтись без контекста, используй обычные стейты/редюсеры
-//  если контекст необходим во избежание проп-дриллинга, создавай малые контексты
-//  стор даты и стор под UI это не одно и то же:
-//  помни об этом в конетексте ререндера всех компонентов при изменении value контекста
-*/
-// TODO переделай компонент Input
-// TODO SideModals это просто пиздец, сядь и сделай одну обёртку для всех, уникальную логику пиши на месте использования
-// TODO по дороге избавься от проп-дриллинга в сторы, там верно можно юзать контекст WRONG! подойдёт и простой useModal
-// TODO ?закинуть Country и StateNumber в модель Car
+import { Car } from './models/car';
+
 export type Country = 'japan' | 'korea' | 'china';
+
+export type Direction = 'asc' | 'desc';
+
+export type SortOptionType = {
+  id: number;
+  by: keyof Extract<Car, 'brand' | 'model' | 'year' | 'maxSpeed' | 'timeUpTo100'> & string;
+  direction: Direction;
+  text: string;
+};

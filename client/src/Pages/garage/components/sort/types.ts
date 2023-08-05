@@ -1,5 +1,5 @@
 import { SetState } from 'utils/types';
-import { SortOptionType } from '../../utils';
+import { SortOptionType } from '../../types';
 
 export type Props = {
   showSort: boolean;

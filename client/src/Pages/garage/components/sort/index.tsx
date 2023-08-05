@@ -1,8 +1,9 @@
 import React, { useRef } from 'react';
 import { Container, Placeholder, Wrapper, Option } from './style';
-import { SortOptionType, useSortOptions } from 'Pages/garage/utils';
+import { useSortOptions } from 'Pages/garage/utils';
 import { useOnClickOutside } from 'Hooks/useOnClickOutside';
 import { Props } from './types';
+import { SortOptionType } from '../../types';
 
 export const Sort = ({ showSort, setShowSort, sortValue, setSortValue }: Props) => {
   const sortOptions = useSortOptions();
