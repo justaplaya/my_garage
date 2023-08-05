@@ -13,7 +13,8 @@ export const Container = styled.div<{ $disabled: boolean }>`
   font-weight: 700;
   color: ${(props) =>
     props.theme.theme === 'dark' ? props.theme.colors.primary() : props.theme.colors.primaryContrast()};
-  cursor: pointer; 
+  cursor: pointer;
+  text-transform: capitalize;
   ${({ $disabled }) =>
     $disabled &&
     css`
@@ -23,7 +24,6 @@ export const Container = styled.div<{ $disabled: boolean }>`
 export const Placeholder = styled.div`
   color: ${(props) =>
     props.theme.theme === 'dark' ? props.theme.colors.primary(0.5) : props.theme.colors.primaryContrast(0.5)};
-  text-transform: capitalize;
   transition: all 0.15s ease-in-out;
   &:hover {
     color: ${(props) =>

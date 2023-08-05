@@ -12,6 +12,23 @@ const cars = [
     year: 2005,
     maxSpeed: 329,
     timeUpTo100: 2.3,
+    incidents: {
+      evacuation: {
+        week: 2,
+        month: 9,
+        year: 4,
+      },
+      violation: {
+        week: 5,
+        month: 7,
+        year: 3,
+      },
+      crash: {
+        week: 7,
+        month: 1,
+        year: 2,
+      },
+    },
   },
   {
     id: 2,
@@ -20,6 +37,23 @@ const cars = [
     year: null,
     maxSpeed: null,
     timeUpTo100: null,
+    incidents: {
+      evacuation: {
+        week: 8,
+        month: 7,
+        year: 10,
+      },
+      violation: {
+        week: 3,
+        month: 4,
+        year: 6,
+      },
+      crash: {
+        week: 5,
+        month: 3,
+        year: 9,
+      },
+    },
   },
   {
     id: 3,
@@ -28,6 +62,23 @@ const cars = [
     year: 2002,
     maxSpeed: 305,
     timeUpTo100: 2.7,
+    incidents: {
+      evacuation: {
+        week: 6,
+        month: 8,
+        year: 2,
+      },
+      violation: {
+        week: 6,
+        month: 7,
+        year: 4,
+      },
+      crash: {
+        week: 8,
+        month: 4,
+        year: 4,
+      },
+    },
   },
   {
     id: 4,
@@ -36,16 +87,45 @@ const cars = [
     year: 2007,
     maxSpeed: 294,
     timeUpTo100: 3.1,
+    incidents: {
+      evacuation: {
+        week: 2,
+        month: 9,
+        year: 7,
+      },
+      violation: {
+        week: 5,
+        month: 4,
+        year: 6,
+      },
+      crash: {
+        week: 8,
+        month: 3,
+        year: 5,
+      },
+    },
   },
 ];
 
 const app = express();
 app.use(cors());
 
+const getRand = () => Math.ceil(Math.random() * 10);
+
+const getIncidentData = () =>
+  ["week", "month", "year"].reduce((acc, item) => {
+    return { ...acc, [item]: getRand() };
+  }, {});
+
 const createCar = (input) => {
   const id = Date.now();
+  const incidents = ["evacuation", "violation", "crash"].reduce((acc, item) => {
+    return { ...acc, [item]: getIncidentData() };
+  }, {});
+
   return {
     id,
+    incidents,
     ...input,
   };
 };
@@ -56,7 +136,8 @@ const delay = (ms) => {
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve();
-    }, ms);
+      // }, ms);
+    }, 0);
   });
 };
 const root = {

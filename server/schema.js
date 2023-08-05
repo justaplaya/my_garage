@@ -1,6 +1,18 @@
-const {buildSchema}=require('graphql')
+const { buildSchema } = require("graphql");
 
-const schema =buildSchema(`
+const schema = buildSchema(`
+
+type IncidentData {
+    week: Float
+    month: Float
+    year: Float
+}
+
+type Incidents {
+    evacuation: IncidentData
+    violation: IncidentData
+    crash: IncidentData
+}
 
 type Car {
     id: ID
@@ -9,6 +21,7 @@ type Car {
     year: Float
     maxSpeed: Float
     timeUpTo100: Float
+    incidents: Incidents
 }
 
 input CarInput {
@@ -44,6 +57,6 @@ type Mutation {
     deleteCar(input: IdInput): Car
 }
 
-`)
+`);
 
-module.exports=schema
+module.exports = schema;
