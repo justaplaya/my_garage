@@ -1,12 +1,7 @@
 import { Country, SortOptionType } from './types';
 import { Brand, Car } from './models/car';
 import { useTranslation } from 'react-i18next';
-
-export const brands: Record<Country, Brand[]> = {
-  japan: ['subaru', 'mitsubishi', 'toyota'],
-  korea: ['kia', 'hyundai', 'ssangyong'],
-  china: ['haval', 'chery', 'exeed'],
-};
+import { brands } from './config';
 
 /** отдаёт страну бренда */
 export const getCountry = (brand: Brand | null): Country | null => {

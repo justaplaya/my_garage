@@ -3,12 +3,12 @@ import { Brand } from '../../models/car';
 import { useMutation } from '@apollo/client';
 import { CREATE_CAR as CREATE_CAR_MUTATION, UPDATE_CAR as UPDATE_CAR_MUTATION } from 'Apollo/mutations/mutcar';
 import { useTranslation } from 'react-i18next';
-import { brands as _brands } from '../../utils';
 import { getBrandIcon } from '../../components/carPage/utils';
 import { Controller } from 'Components/Controller';
 import { toStr } from 'utils/helpers';
 import { CtxType } from './ctx/types';
 import { PropsType } from './types';
+import { brands as _brands } from '../../config';
 
 export const useCreateUpdate = ({ show, setShow, refetch, setLoading, car }: PropsType): CtxType => {
   const { t } = useTranslation();

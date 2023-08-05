@@ -110,11 +110,11 @@ const cars = [
 const app = express();
 app.use(cors());
 
-const getRand = () => Math.ceil(Math.random() * 10);
+const getRand = (multiplier) => Math.ceil(Math.random() * multiplier);
 
 const getIncidentData = () =>
-  ["week", "month", "year"].reduce((acc, item) => {
-    return { ...acc, [item]: getRand() };
+  ["week", "month", "year"].reduce((acc, item, index) => {
+    return { ...acc, [item]: getRand(10 * (index + 2)) };
   }, {});
 
 const createCar = (input) => {

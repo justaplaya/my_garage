@@ -1,5 +1,5 @@
 import { BodyTxt, BodyWrapper } from '../../style';
-import { Text } from '../../../../loaders/text';
+import { Text } from 'Pages/garage/loaders/text';
 import React from 'react';
 import { Props } from './types';
 import { Graph } from './graph';
@@ -12,6 +12,7 @@ export const Body = (props: Props.Common) => {
   );
 };
 const Content = ({ car }: Props.Content) => {
+  //TODO no incs case(falsy or nullish)
   return <Graph incidents={car.incidents} />;
 };
 const Loading = () => {
