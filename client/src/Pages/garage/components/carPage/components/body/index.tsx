@@ -2,26 +2,17 @@ import { BodyTxt, BodyWrapper } from '../../style';
 import { Text } from '../../../../loaders/text';
 import React from 'react';
 import { Props } from './types';
+import { Graph } from './graph';
 
-export const Body = ({ car }: Props) => {
+export const Body = (props: Props.Common) => {
   return (
     <BodyWrapper>
-      <BodyTxt>{car ? <Content /> : <Loading />}</BodyTxt>
+      <BodyTxt>{props.car ? <Content car={props.car} /> : <Loading />}</BodyTxt>
     </BodyWrapper>
   );
 };
-const Content = () => {
-  return (
-    <>
-      'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis cupiditate enim non obcaecati quod soluta
-      suscipit vitae voluptatum? Animi aperiam asperiores at consectetur culpa cupiditate debitis eligendi est eum
-      excepturi expedita incidunt laboriosam magni maiores maxime modi non quae quas quasi quisquam repellat repudiandae,
-      sapiente vel veniam vero. Accusamus aliquam autem cumque, eius est ex maiores possimus quo repellat. A adipisci
-      alias aperiam architecto blanditiis distinctio enim, eveniet explicabo fugit labore maiores maxime minima nobis non
-      praesentium quis repellendus rerum saepe sit ut! Ab accusantium doloremque dolores fugit numquam officia
-      perspiciatis quia repellendus saepe voluptate? Id, molestias mollitia! Ad, necessitatibus.'
-    </>
-  );
+const Content = ({ car }: Props.Content) => {
+  return <Graph incidents={car.incidents} />;
 };
 const Loading = () => {
   return (

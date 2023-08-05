@@ -1,3 +1,9 @@
-import { Car } from 'Pages/garage/models/car';
+import { Car, Incidents } from 'Pages/garage/models/car';
 
-export type Props = { car: Car | null };
+export namespace Props {
+  export type Common = { car: Car | null };
+  export type Content = { car: Car };
+  export type Graph = {
+    incidents: Incidents;
+  };
+}

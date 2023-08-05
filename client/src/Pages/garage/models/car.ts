@@ -5,8 +5,10 @@ export type Car = {
   year: number | null;
   maxSpeed: number | null;
   timeUpTo100: number | null;
-  incidents: Record<IncidentType, Record<IncidentPeriod, number>>;
+  incidents: Incidents;
 };
+
+export type Incidents = Record<IncidentType, Record<IncidentPeriod, number>>;
 
 export type IncidentType = 'evacuation' | 'violation' | 'crash';
 
