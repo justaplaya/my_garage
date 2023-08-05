@@ -13,7 +13,6 @@ export const Container = styled.div<{ $disabled: boolean }>`
   font-weight: 700;
   color: ${(props) =>
     props.theme.theme === 'dark' ? props.theme.colors.primary() : props.theme.colors.primaryContrast()};
-  text-transform: capitalize;
   cursor: pointer; 
   ${({ $disabled }) =>
     $disabled &&

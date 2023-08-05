@@ -21,21 +21,17 @@
       "apply": "Применить",
       "close": "Закрыть"
     },
-    "brandSelect": {
-      "brand": "Марка"
+    "select": {
+      "placeholder": "Выберите из списка"
     },
-    "createModal": {
+    "createUpdateCarModal": {
+      "brand": "Марка",
       "model": "Модель",
       "year": "Год выпуска",
       "maxSpeed": "Макс. скорость",
       "timeUpTo100": "Разгон до 100 км/ч",
-      "create": "Создать"
-    },
-    "editModal": {
-      "model": "Модель",
-      "year": "Год выпуска",
-      "maxSpeed": "Макс. скорость",
-      "timeUpTo100": "Разгон до 100 км/ч"
+      "create": "Создать",
+      "update": "Изменить"
     }
   },
   "pages": {

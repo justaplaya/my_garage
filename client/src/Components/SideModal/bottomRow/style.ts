@@ -1,30 +1,7 @@
 import styled, { css } from 'styled-components';
 import { scrollBarWidth } from 'mixins';
-import React from 'react';
-import { Loader } from '../Loader';
-import { useTranslation } from 'react-i18next';
 
-type Props = {
-  apply: () => void;
-  close: () => void;
-  applyDisable: boolean;
-  applyText?: string;
-  loading: boolean;
-};
-
-export const BottomRow = ({ apply, close, applyDisable, applyText, loading }: Props) => {
-  const { t } = useTranslation();
-  return (
-    <Container>
-      <ApplyButton $isDisabled={applyDisable} onClick={apply}>
-        {loading ? <Loader /> : applyText || t('components.bottomRow.apply')}
-      </ApplyButton>
-      <CloseButton onClick={close}>{t('components.bottomRow.close')}</CloseButton>
-    </Container>
-  );
-};
-
-const Container = styled.div`
+export const Container = styled.div`
   position: fixed;
   bottom: 0;
   left: 0;
@@ -37,7 +14,7 @@ const Container = styled.div`
   backdrop-filter: blur(2px);
   width: calc(100% - ${scrollBarWidth});
 `;
-const ApplyButton = styled.button<{ $isDisabled: boolean }>`
+export const ApplyButton = styled.button<{ $isDisabled: boolean }>`
   position: relative;
   width: 175px;
   border: none;
@@ -60,7 +37,7 @@ const ApplyButton = styled.button<{ $isDisabled: boolean }>`
   align-items: center;
   justify-content: center;
 `;
-const CloseButton = styled.button`
+export const CloseButton = styled.button`
   width: 40%;
   border: none;
   border-radius: 5px;

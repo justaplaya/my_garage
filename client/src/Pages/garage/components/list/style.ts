@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { blurredBack } from '../../../../mixins';
+import { blurredBack } from 'mixins';
 
 export const Container = styled.div<{ $centerItems: boolean }>`
   padding: 20px 40px;

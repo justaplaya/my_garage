@@ -1,9 +1,9 @@
 import React from 'react';
-import { EditModal } from 'Components/SideModal/EditModal/EditModal';
 import { Container } from './style';
 import { Header } from './components/header';
 import { Body } from './components/body';
 import { useCar } from './useCar';
+import { CreateUpdateCarModal } from '../../modals/createUpdateCar';
 
 export const CarPage = () => {
   const { car, props } = useCar();
@@ -11,7 +11,7 @@ export const CarPage = () => {
     <Container {...props.container}>
       <Header {...props.header} />
       <Body {...props.body} />
-      {car && <EditModal car={car} {...props.editModal} />}
+      {car && <CreateUpdateCarModal car={car} {...props.modal} />}
     </Container>
   );
 };

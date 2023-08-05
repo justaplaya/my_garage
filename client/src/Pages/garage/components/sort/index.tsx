@@ -7,6 +7,7 @@ import { Props } from './types';
 export const Sort = ({ showSort, setShowSort, sortValue, setSortValue }: Props) => {
   const sortOptions = useSortOptions();
   const sortContainer = useRef<HTMLDivElement>(null);
+
   const longOptions = [9, 10];
   const placeholder = sortValue?.text ?? '';
 

@@ -1,12 +1,9 @@
-import { SetState } from 'utils/types';
 import { useTranslation } from 'react-i18next';
-
-type Props = {
-  setShowModal: SetState<boolean>;
-};
+import { Props } from './types';
 
 export const useNotFound = ({ setShowModal }: Props) => {
   const { t } = useTranslation();
+
   const text = {
     search: {
       top: t('pages.garage.main.404SearchTop'),
@@ -19,6 +16,7 @@ export const useNotFound = ({ setShowModal }: Props) => {
     },
   };
   const maxLength = 45;
+
   const cut = (value: string) => (value.length > maxLength ? `${value.slice(0, maxLength)}...` : value);
   const getTitle = (value: string) => (value ? `${text.search.top} «${cut(value)}»` : text.all.top);
   const getDesc = (value: string) => (value ? text.search.bottom : `${text.all.bottomStatic}`);

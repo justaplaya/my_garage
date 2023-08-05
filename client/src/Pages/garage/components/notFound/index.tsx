@@ -3,8 +3,10 @@ import { Container, Title, Separator, Description, AddText } from './style';
 import { useNotFound } from './useNotFound';
 import { Props } from './types';
 
-export const NotFound = ({ searchValue: value, setShowModal }: Props) => {
-  const { getTitle, getDesc, openModal, text } = useNotFound({ setShowModal });
+export const NotFound = (props: Props) => {
+  const { searchValue: value } = props;
+  const { getTitle, getDesc, openModal, text } = useNotFound(props);
+
   return (
     <Container>
       <Title>{getTitle(value)}</Title>

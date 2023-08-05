@@ -7,7 +7,7 @@ import { Car } from 'Pages/garage/models/car';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Props } from './types';
 
-export const List = ({ cars, loading, searchValue, setShowModal }: Props) => {
+export const List = ({ cars, loading, searchValue, setShowModal }: Props.Common) => {
   const centerItems = !cars.length && !loading;
   const props = { notFound: { searchValue, setShowModal } };
   return (
@@ -16,8 +16,8 @@ export const List = ({ cars, loading, searchValue, setShowModal }: Props) => {
     </Container>
   );
 };
-type ContentProps = { cars: Car[] };
-const Content = ({ cars }: ContentProps) => {
+
+const Content = ({ cars }: Props.Content) => {
   return (
     <>
       {cars.map((car, index) => (
@@ -26,16 +26,18 @@ const Content = ({ cars }: ContentProps) => {
     </>
   );
 };
-type CardProps = { car: Car };
-const Card = ({ car }: CardProps) => {
+
+const Card = ({ car }: Props.Card) => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
+
   const cardClick = (car: Car) =>
     navigate(`/garage/id=${car.id}`, {
       state: {
         from: pathname,
       },
     });
+
   return (
     <CardWrapper onClick={() => cardClick(car)}>
       <Icon src={getBrandIcon(car.brand)} />
