@@ -48,12 +48,11 @@ export const BodyWrapper = styled.div`
   background-size: cover;
   position: relative;
   height: fit-content;
-  padding: 20px;
+  padding: 40px 20px;
 `;
-export const BodyTxt = styled.p`
+export const BodyTxt = styled.div`
   width: 100%;
   height: 100%;
-  overflow: hidden;
   font-weight: 700;
   font-size: 20px;
   display: flex;

@@ -3,6 +3,19 @@
     "garage": "Garage",
     "scratch": "Scratch"
   },
+  "incidents": {
+    "incidents": "incidents",
+    "types": {
+      "evacuation": "evacuation",
+      "violation": "violation",
+      "crash": "crash"
+    },
+    "periods": {
+      "week": "week",
+      "month": "month",
+      "year": "year"
+    }
+  },
   "sortOptions": {
     "0": "No sorting",
     "1": "Brand A -> Z",

@@ -3,6 +3,19 @@
     "garage": "Гараж",
     "scratch": "Scratch"
   },
+  "incidents": {
+    "incidents": "происшествия",
+    "types": {
+      "evacuation": "эвакуация",
+      "violation": "нарушение",
+      "crash": "авария"
+    },
+    "periods": {
+      "week": "неделя",
+      "month": "месяц",
+      "year": "год"
+    }
+  },
   "sortOptions": {
     "0": "Без сортировки",
     "1": "Марка А -> Я",

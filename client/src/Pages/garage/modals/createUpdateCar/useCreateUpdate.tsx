@@ -46,13 +46,15 @@ export const useCreateUpdate = ({ show, setShow, refetch, setLoading, car }: Pro
 
   const applyDisable = car ? !inputs.filter((item) => item.isChanged).length : !brand.value;
 
-  const close = () => {
+  const setAllToDefault = () => inputs.forEach((item) => item.setToDefault());
+
+  const close = (out?: boolean) => {
     if (localLoading) return;
     setShow(false);
     setShowBrandSelect(false);
     document.body.style.overflow = 'visible';
     const handler = setTimeout(() => {
-      !car && inputs.forEach((item) => item.setToDefault());
+      (!car || out) && setAllToDefault();
       setLocalLoading(false);
     }, 500);
     return () => {
@@ -87,7 +89,7 @@ export const useCreateUpdate = ({ show, setShow, refetch, setLoading, car }: Pro
       .catch(() => console.error(`Failed to create car`));
   };
 
-  const onClickOutside = () => close();
+  const onClickOutside = () => close(true);
 
   return {
     show,

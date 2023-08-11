@@ -3,7 +3,7 @@ import * as ReactDOM from 'react-dom/client';
 import App from './App';
 import './GlobalStyles.css';
 import { ApolloProvider, ApolloClient, InMemoryCache } from '@apollo/client';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, HashRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store, { persistor } from './reducer';
 import { GlobalCtxProvider } from './context';
