@@ -4,121 +4,19 @@ const cors = require("cors");
 const schema = require("./schema");
 const { GraphQLError } = require("graphql/error");
 
-const cars = [
-  {
-    id: 1,
-    brand: "subaru",
-    model: "Impreza 2003",
-    year: 2005,
-    maxSpeed: 329,
-    timeUpTo100: 2.3,
-    incidents: {
-      evacuation: {
-        week: 2,
-        month: 9,
-        year: 4,
-      },
-      violation: {
-        week: 5,
-        month: 7,
-        year: 3,
-      },
-      crash: {
-        week: 7,
-        month: 1,
-        year: 2,
-      },
-    },
-  },
-  {
-    id: 2,
-    brand: "chery",
-    model: null,
-    year: null,
-    maxSpeed: null,
-    timeUpTo100: null,
-    incidents: {
-      evacuation: {
-        week: 8,
-        month: 7,
-        year: 10,
-      },
-      violation: {
-        week: 3,
-        month: 4,
-        year: 6,
-      },
-      crash: {
-        week: 5,
-        month: 3,
-        year: 9,
-      },
-    },
-  },
-  {
-    id: 3,
-    brand: "mitsubishi",
-    model: "Lancer Evo VII",
-    year: 2002,
-    maxSpeed: 305,
-    timeUpTo100: 2.7,
-    incidents: {
-      evacuation: {
-        week: 6,
-        month: 8,
-        year: 2,
-      },
-      violation: {
-        week: 6,
-        month: 7,
-        year: 4,
-      },
-      crash: {
-        week: 8,
-        month: 4,
-        year: 4,
-      },
-    },
-  },
-  {
-    id: 4,
-    brand: "hyundai",
-    model: "accent",
-    year: 2007,
-    maxSpeed: 294,
-    timeUpTo100: 3.1,
-    incidents: {
-      evacuation: {
-        week: 2,
-        month: 9,
-        year: 7,
-      },
-      violation: {
-        week: 5,
-        month: 4,
-        year: 6,
-      },
-      crash: {
-        week: 8,
-        month: 3,
-        year: 5,
-      },
-    },
-  },
-];
-
-const app = express();
-app.use(cors());
-
+/** отдаёт рандомное число, помноженное на multiplier и округлённое вверх */
 const getRand = (multiplier) => Math.ceil(Math.random() * multiplier);
 
+const periods = ["week", "month", "year"];
+
+/** отдаёт объект [период]: количество инцидентов  */
 const getIncidentData = () =>
-  ["week", "month", "year"].reduce((acc, item, index) => {
-    return { ...acc, [item]: getRand(10 * (index + 2)) };
+  periods.reduce((acc, item, index) => {
+    return { ...acc, [item]: getRand(Math.pow(10, index + 1)) };
   }, {});
 
-const createCar = (input) => {
-  const id = Date.now();
+const createCarFunction = (input) => {
+  const id = Date.now() * Math.trunc(Math.random() * 10000);
   const incidents = ["evacuation", "violation", "crash"].reduce((acc, item) => {
     return { ...acc, [item]: getIncidentData() };
   }, {});
@@ -129,6 +27,41 @@ const createCar = (input) => {
     ...input,
   };
 };
+const mock = [
+  {
+    brand: "subaru",
+    model: "Impreza 2003",
+    year: 2005,
+    maxSpeed: 329,
+    timeUpTo100: 2.3,
+  },
+  {
+    brand: "chery",
+    model: null,
+    year: null,
+    maxSpeed: null,
+    timeUpTo100: null,
+  },
+  {
+    brand: "mitsubishi",
+    model: "Lancer Evo VII",
+    year: 2002,
+    maxSpeed: 305,
+    timeUpTo100: 2.7,
+  },
+  {
+    brand: "hyundai",
+    model: "accent",
+    year: 2007,
+    maxSpeed: 294,
+    timeUpTo100: 3.1,
+  },
+];
+const cars = mock.map((car) => createCarFunction(car));
+
+const app = express();
+app.use(cors());
+
 const updateCar = (input) => {
   return cars.find((car) => car.id === input.id);
 };
@@ -158,7 +91,7 @@ const root = {
   },
   createCar: async ({ input }) => {
     await delay(2000);
-    const car = createCar(input);
+    const car = createCarFunction(input);
     cars.push(car);
     return car;
   },
