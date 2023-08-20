@@ -14,10 +14,10 @@ export const useHeader = ({ period, pickPeriod, baseLeftOffset }: Props.Header) 
 
   const [coords, setCoords] = useState<DOMRect | undefined>();
 
-  useEffect(
-    () => setCoords(refs[period]?.current?.getBoundingClientRect()),
-    [period, i18n.language, refs.week, refs.month, refs.year],
-  );
+  useEffect(() => {
+    const periodRef = refs[period].current;
+    periodRef && setCoords(periodRef.getBoundingClientRect());
+  }, [period, i18n.language, refs.week, refs.month, refs.year]);
 
   const text = {
     title: t('incidents.incidents'),
