@@ -1,7 +1,7 @@
 {
   "links": {
     "garage": "Garage",
-    "scratch": "Scratch"
+    "incidents": "Incidents"
   },
   "incidents": {
     "incidents": "incidents",

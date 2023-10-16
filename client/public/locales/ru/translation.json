@@ -1,7 +1,7 @@
 {
   "links": {
     "garage": "Гараж",
-    "scratch": "Scratch"
+    "incidents": "Инциденты"
   },
   "incidents": {
     "incidents": "происшествия",

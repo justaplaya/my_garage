@@ -7,7 +7,7 @@ export const Left = () => {
   const { t } = useTranslation();
   const text = {
     garage: t('links.garage'),
-    scratch: t('links.scratch'),
+    incidents: t('links.incidents'),
   };
 
   return (
@@ -18,7 +18,7 @@ export const Left = () => {
         </LinkIconWrapper>
         {text.garage}
       </Link>
-      <Link to={'/scratch'}>{text.scratch}</Link>
+      <Link to={'/incidents'}>{text.incidents}</Link>
     </Head.Left>
   );
 };

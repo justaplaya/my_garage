@@ -3,11 +3,24 @@ const { graphqlHTTP } = require("express-graphql");
 const cors = require("cors");
 const schema = require("./schema");
 const { GraphQLError } = require("graphql/error");
+// const express = require("express");
+const app = express();
+const WSServer = require("express-ws")(app);
+const aWss = WSServer.getWss();
+// const cors  = require("cors");
+const PORT = process.env.PORT || 5000;
+
+app.use(cors());
+app.use(express.json());
+
+app.ws("/", () => {});
 
 /** отдаёт рандомное число, помноженное на multiplier и округлённое вверх */
 const getRand = (multiplier) => Math.ceil(Math.random() * multiplier);
+const getRandId = () => Date.now() * Math.trunc(Math.random() * 10000);
 
 const periods = ["week", "month", "year"];
+const incidents = ["evacuation", "violation", "crash"];
 
 /** отдаёт объект [период]: количество инцидентов  */
 const getIncidentData = () =>
@@ -16,14 +29,14 @@ const getIncidentData = () =>
   }, {});
 
 const createCarFunction = (input) => {
-  const id = Date.now() * Math.trunc(Math.random() * 10000);
-  const incidents = ["evacuation", "violation", "crash"].reduce((acc, item) => {
+  const id = getRandId();
+  const _incidents = incidents.reduce((acc, item) => {
     return { ...acc, [item]: getIncidentData() };
   }, {});
 
   return {
     id,
-    incidents,
+    incidents: _incidents,
     ...input,
   };
 };
@@ -59,8 +72,8 @@ const mock = [
 ];
 const cars = mock.map((car) => createCarFunction(car));
 
-const app = express();
-app.use(cors());
+// const app = express();
+// app.use(cors());
 
 const updateCar = (input) => {
   return cars.find((car) => car.id === input.id);
@@ -69,8 +82,8 @@ const delay = (ms) => {
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve();
-      // }, ms);
-    }, 0);
+    }, ms);
+    // }, 0);
   });
 };
 const root = {
@@ -128,6 +141,27 @@ const root = {
   },
 };
 
+const getRandIntBetween = (min, max) => {
+  return Math.floor(Math.random() * (max - min + 1) + min);
+};
+
+const getRandIncident = () => {
+  const id = getRandId();
+  const car = cars[getRandIntBetween(0, cars.length - 1)];
+  const incident = incidents[getRandIntBetween(0, incidents.length - 1)];
+
+  return { id, car, incident };
+};
+
+setInterval(async () => {
+  await delay(Math.trunc(Math.random() * 10000));
+  aWss.clients.forEach((client) => {
+    client.send(
+      JSON.stringify({ method: "new_incident", data: getRandIncident() })
+    );
+  });
+}, 1500);
+
 app.use(
   "/graphql",
   graphqlHTTP({
@@ -137,4 +171,4 @@ app.use(
   })
 );
 
-app.listen(5000, () => console.log("server been running"));
+app.listen(PORT, () => console.log("server been running"));

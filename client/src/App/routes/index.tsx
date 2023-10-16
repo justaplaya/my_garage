@@ -1,8 +1,8 @@
+import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { CarPage as GarageCar } from 'Pages/garage/components/carPage';
-import { Scratch } from 'Pages/scratch';
-import React from 'react';
 import Garage from 'Pages/garage';
+import Incidents from 'Pages/incidents';
 import { NotFound } from './notFound';
 
 export const AllRoutes = () => {
@@ -12,7 +12,7 @@ export const AllRoutes = () => {
       <Route path="/garage" element={<Garage />} />
       <Route path="/garage/:id" element={<GarageCar />} />
       <Route path="*" element={<NotFound />} />
-      <Route path="/scratch" element={<Scratch />} />
+      <Route path="/incidents" element={<Incidents />} />
     </Routes>
   );
 };

@@ -20,17 +20,15 @@ const root = ReactDOM.createRoot(document.getElementById('root')!);
 root.render(
   <Suspense fallback={<></>}>
     <ApolloProvider client={client}>
-      <React.StrictMode>
-        <BrowserRouter>
-          <Provider store={store}>
-            <PersistGate loading={null} persistor={persistor}>
-              <GlobalCtxProvider>
-                <App />
-              </GlobalCtxProvider>
-            </PersistGate>
-          </Provider>
-        </BrowserRouter>
-      </React.StrictMode>
+      <BrowserRouter>
+        <Provider store={store}>
+          <PersistGate loading={null} persistor={persistor}>
+            <GlobalCtxProvider>
+              <App />
+            </GlobalCtxProvider>
+          </PersistGate>
+        </Provider>
+      </BrowserRouter>
     </ApolloProvider>
   </Suspense>,
 );
