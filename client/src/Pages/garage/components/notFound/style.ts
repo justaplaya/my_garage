@@ -21,6 +21,7 @@ export const Title = styled.p`
     props.theme.theme === 'dark' ? props.theme.colors.primary() : props.theme.colors.primaryContrast()};
   font-size: 40px;
   font-weight: 700;
+  word-break: break-all;
 `;
 export const Separator = styled.div`
   content: '';

@@ -1,8 +1,7 @@
 import SearchIcon from 'img/garage/search.png';
 import React, { ChangeEvent } from 'react';
-import { Container, Icon } from './style';
+import { Icon, CustomInput } from './style';
 import { useTranslation } from 'react-i18next';
-import { Input } from 'Components/Input';
 import { Props } from './types';
 
 export const Search = ({ displayValue, setDisplayValue }: Props) => {
@@ -12,9 +11,11 @@ export const Search = ({ displayValue, setDisplayValue }: Props) => {
   const onChange = (e: ChangeEvent<HTMLInputElement>) => setDisplayValue(e.target.value);
 
   return (
-    <Container>
-      <Icon src={SearchIcon} />
-      <Input value={displayValue} onChange={onChange} placeholder={placeholder} />
-    </Container>
+    <CustomInput
+      leftAddon={<Icon src={SearchIcon} />}
+      value={displayValue}
+      onChange={onChange}
+      placeholder={placeholder}
+    />
   );
 };

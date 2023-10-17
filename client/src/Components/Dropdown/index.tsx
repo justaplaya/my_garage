@@ -13,11 +13,12 @@ export type Props<T> = {
 
 export const Dropdown = <T,>({ show, data, pick, side, setShow }: Props<T>) => {
   const ref = useRef(null);
+
   useOnClickOutside(ref, () => {
     setShow && setShow(false);
   });
   const click = (item) => () => pick(item);
-  // TODO дорефактори все кейсы с dropdown(от теперь умеет в useOnClickOutside сам)
+
   return (
     <Select $show={show} $side={side} ref={ref}>
       {data.map((item, index) => (
