@@ -6,7 +6,9 @@ export type Direction = 'asc' | 'desc';
 
 export type SortOptionType = {
   id: number;
-  by: keyof Extract<Car, 'brand' | 'model' | 'year' | 'maxSpeed' | 'timeUpTo100'> & string;
+  by: keyof Pick<Car, 'brand' | 'model' | 'year' | 'maxSpeed' | 'timeUpTo100'> & string;
   direction: Direction;
   text: string;
 };
+
+export type DefaultSortOptionType = Omit<SortOptionType, 'by' | 'direction'>;

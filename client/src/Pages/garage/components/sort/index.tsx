@@ -3,7 +3,7 @@ import { Container, Placeholder, Wrapper, Option } from './style';
 import { useSortOptions } from 'Pages/garage/utils';
 import { useOnClickOutside } from 'Hooks/useOnClickOutside';
 import { Props } from './types';
-import { SortOptionType } from '../../types';
+import { DefaultSortOptionType, SortOptionType } from '../../types';
 
 export const Sort = ({ showSort, setShowSort, sortValue, setSortValue }: Props) => {
   const sortOptions = useSortOptions();
@@ -18,7 +18,7 @@ export const Sort = ({ showSort, setShowSort, sortValue, setSortValue }: Props) 
 
   const containerClick = () => setShowSort((prev) => !prev);
 
-  const optionClick = (option: SortOptionType) => setSortValue(option);
+  const optionClick = (option: SortOptionType | DefaultSortOptionType) => setSortValue(option);
 
   const isLong = (id: number) => longOptions.includes(id);
 

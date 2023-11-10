@@ -1,4 +1,4 @@
-import { Country, SortOptionType } from './types';
+import { Country, DefaultSortOptionType, SortOptionType } from './types';
 import { Brand, Car } from './models/car';
 import { useTranslation } from 'react-i18next';
 import { brands } from './config';
@@ -13,7 +13,7 @@ export const getCountry = (brand: Brand | null): Country | null => {
   return null;
 };
 /** отдаёт массив всех опций сортировки */
-export const useSortOptions = (): SortOptionType[] => {
+export const useSortOptions = (): (SortOptionType | DefaultSortOptionType)[] => {
   const { t } = useTranslation();
   return [
     { id: 0, by: 'brand', direction: 'asc', text: t('sortOptions.0') },
@@ -40,10 +40,19 @@ const convert = (arg: string | number | null, typeOfOutput: 'string' | 'number')
       return typeOfOutput === 'string' ? '' : 0;
   }
 };
+
+const isSortOptionType = (arg): arg is SortOptionType =>
+  !!arg?.id && !!arg?.by && !!arg?.direction && typeof arg?.text === 'string';
+
 /** функция сортировки машин исходя из выбранной опции сортировки */
-export const figureSortOutput = (_first: Car, _second: Car, option: SortOptionType) => {
-  const { id, by, direction } = option;
-  if (!id) return 0;
+export const figureSortOutput = (
+  _first: Car,
+  _second: Car,
+  option: SortOptionType | DefaultSortOptionType,
+): -1 | 0 | 1 => {
+  if (!isSortOptionType(option)) return 0;
+
+  const { by, direction } = option;
 
   const numberFields = ['year', 'maxSpeed', 'timeUpTo100'];
   const typeOfOutput = numberFields.includes(by) ? 'number' : 'string';

@@ -6,7 +6,7 @@ import { useDebounce } from 'Hooks/useDebounce';
 import { useQuery } from '@apollo/client';
 import { GET_ALL_CARS } from 'Apollo/query/quecar.js';
 import { useTranslation } from 'react-i18next';
-import { SortOptionType } from './types';
+import { DefaultSortOptionType, SortOptionType } from './types';
 
 export const useGarage = () => {
   const location = useLocation();
@@ -20,8 +20,8 @@ export const useGarage = () => {
   const [showSort, setShowSort] = useState(false);
   const [displayValue, setDisplayValue] = useState('');
   const searchValue = useDebounce(displayValue, 500);
-  const initialSortValue = sortOptions[0];
-  const [sortValue, setSortValue] = useState<SortOptionType>(initialSortValue);
+  const initialSortValue: DefaultSortOptionType = sortOptions[0];
+  const [sortValue, setSortValue] = useState<SortOptionType | DefaultSortOptionType>(initialSortValue);
 
   const { data, error, refetch } = useQuery(GET_ALL_CARS);
   const text = { create: t('pages.garage.main.create') };
