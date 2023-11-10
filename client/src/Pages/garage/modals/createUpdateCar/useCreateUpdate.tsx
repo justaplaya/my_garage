@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Brand } from '../../models/car';
 import { useMutation } from '@apollo/client';
-import { CREATE_CAR as CREATE_CAR_MUTATION, UPDATE_CAR as UPDATE_CAR_MUTATION } from 'Apollo/mutations/mutcar';
+import { CREATE_CAR as CREATE_CAR_MUTATION, UPDATE_CAR as UPDATE_CAR_MUTATION } from 'Apollo/mutations/mutcar.js';
 import { useTranslation } from 'react-i18next';
 import { getBrandIcon } from '../../components/carPage/utils';
 import { Controller } from 'Components/Controller';

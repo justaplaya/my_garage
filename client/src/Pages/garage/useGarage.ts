@@ -4,7 +4,7 @@ import { Car } from './models/car';
 import { figureSortOutput, useSortOptions } from 'Pages/garage/utils';
 import { useDebounce } from 'Hooks/useDebounce';
 import { useQuery } from '@apollo/client';
-import { GET_ALL_CARS } from 'Apollo/query/quecar';
+import { GET_ALL_CARS } from 'Apollo/query/quecar.js';
 import { useTranslation } from 'react-i18next';
 import { SortOptionType } from './types';
 

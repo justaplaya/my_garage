@@ -2,7 +2,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { Car } from '../../models/car';
 import { useQuery } from '@apollo/client';
-import { GET_ONE_CAR } from 'Apollo/query/quecar';
+import { GET_ONE_CAR } from 'Apollo/query/quecar.js';
 import { getCountry } from 'Pages/garage/utils';
 
 export const useCar = () => {

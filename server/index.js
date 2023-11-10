@@ -3,14 +3,13 @@ const { graphqlHTTP } = require("express-graphql");
 const cors = require("cors");
 const schema = require("./schema");
 const { GraphQLError } = require("graphql/error");
-// const express = require("express");
 const app = express();
 const WSServer = require("express-ws")(app);
 const aWss = WSServer.getWss();
-// const cors  = require("cors");
 const PORT = process.env.PORT || 5000;
 
 app.use(cors());
+
 app.use(express.json());
 
 app.ws("/", () => {});
@@ -71,9 +70,6 @@ const mock = [
   },
 ];
 const cars = mock.map((car) => createCarFunction(car));
-
-// const app = express();
-// app.use(cors());
 
 const updateCar = (input) => {
   return cars.find((car) => car.id === input.id);

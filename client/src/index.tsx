@@ -3,10 +3,9 @@ import * as ReactDOM from 'react-dom/client';
 import App from './App';
 import './GlobalStyles.css';
 import { ApolloProvider, ApolloClient, InMemoryCache } from '@apollo/client';
-import { BrowserRouter, HashRouter } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store, { persistor } from './reducer';
-import { GlobalCtxProvider } from './context';
 import { PersistGate } from 'redux-persist/integration/react';
 import { Suspense } from 'react';
 
@@ -23,9 +22,7 @@ root.render(
       <BrowserRouter>
         <Provider store={store}>
           <PersistGate loading={null} persistor={persistor}>
-            <GlobalCtxProvider>
-              <App />
-            </GlobalCtxProvider>
+            <App />
           </PersistGate>
         </Provider>
       </BrowserRouter>
