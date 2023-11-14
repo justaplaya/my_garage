@@ -5,16 +5,17 @@ const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const webpack = require('webpack');
 
 module.exports = {
-  entry: './src/index.tsx',
+  entry: path.resolve(__dirname, 'src', 'index.tsx'),
   output: {
-    path: path.join(__dirname, '/dist'), // the bundle output path
-    filename: 'bundle.js', // the name of the bundle
-    // publicPath: '/',
+    path: path.join(__dirname, 'dist'),
+    filename: '[name].[contenthash].js',
+    publicPath: '/',
+    clean: true,
   },
   target: 'web',
   plugins: [
     new HtmlWebpackPlugin({
-      template: 'public/index.html', // to import index.html file inside index.js
+      template: 'public/index.html',
     }),
     new webpack.ProvidePlugin({
       process: 'process/browser',
@@ -22,20 +23,14 @@ module.exports = {
     new CopyPlugin({
       patterns: [{ from: 'public/assets', to: 'assets/' }],
     }),
-    // new webpack.DefinePlugin({
-    //   'process.env': JSON.stringify(process.env),
-    // }),
   ],
   devServer: {
-    port: 3030, // you can change the port
+    port: 3030,
     historyApiFallback: true,
   },
   resolve: {
     extensions: ['.js', '.jsx', '.ts', '.tsx', '.css'],
     plugins: [new TsconfigPathsPlugin()],
-    // alias: {
-    //   process: 'process/browser',
-    // },
   },
   module: {
     rules: [
@@ -46,18 +41,18 @@ module.exports = {
         },
       },
       {
-        test: /\.(js|jsx)$/, // .js and .jsx files
-        exclude: /node_modules/, // excluding the node_modules folder
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
         },
       },
       {
-        test: /\.css$/, // styles files
+        test: /\.css$/,
         use: ['style-loader', 'css-loader'],
       },
       {
-        test: /\.(png|gif|woff|woff2|eot|ttf|webp)$/, // to import images and fonts
+        test: /\.(png|gif|woff|woff2|eot|ttf|webp)$/,
         loader: 'url-loader',
         options: { limit: 1, name: 'assets/[hash].[ext]' },
       },
@@ -67,14 +62,8 @@ module.exports = {
           {
             loader: '@svgr/webpack',
             options: {
-              svgoConfig: {
-                plugins: [
-                  {
-                    name: 'removeDimensions',
-                    active: false,
-                  },
-                ],
-              },
+              dimensions: false,
+              outDir: './dist/assets',
             },
           },
           'file-loader',
