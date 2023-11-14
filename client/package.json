@@ -28,8 +28,7 @@
   },
   "scripts": {
     "start": "webpack serve --mode development",
-    "script-start": "react-scripts start",
-    "start-on-server": "node server.js",
+    "start:prod": "node server.js",
     "build": "webpack --mode production",
     "test": "jest"
   },
