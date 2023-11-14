@@ -15,7 +15,7 @@ module.exports = {
   target: 'web',
   plugins: [
     new HtmlWebpackPlugin({
-      template: 'public/index.html',
+      template: path.resolve(__dirname, 'public', 'index.html'),
     }),
     new webpack.ProvidePlugin({
       process: 'process/browser',

@@ -7,7 +7,6 @@
     "esModuleInterop": true,
     "jsx": "react",
     "sourceMap": true,
-    "watch": true,
     "allowJs": true,
     "outDir": "out",
     "noEmit": true,
