@@ -1,5 +1,4 @@
 import { periods } from 'Pages/garage/config';
-import React from 'react';
 import { Props } from '../types';
 import { useHeader } from './useHeader';
 import { Container, Title, ActiveLine, Period, Periods } from './style';

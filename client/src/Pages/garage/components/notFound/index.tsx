@@ -1,4 +1,3 @@
-import React from 'react';
 import { Container, Title, Separator, Description, AddText } from './style';
 import { useNotFound } from './useNotFound';
 import { Props } from './types';

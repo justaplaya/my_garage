@@ -1,5 +1,1 @@
-import React from 'react';
-
-export const NotFound = () => {
-  return <>404, bruh</>;
-};
+export const NotFound = () => <>404, bruh</>;

@@ -1,6 +1,5 @@
 import { Select } from 'Components/Select';
 import { Input } from 'Components/Input';
-import React from 'react';
 import { Brand } from '../../../models/car';
 import { useContent } from './useContent';
 import { Icon } from './style';

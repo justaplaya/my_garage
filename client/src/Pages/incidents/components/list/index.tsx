@@ -1,4 +1,3 @@
-import React from 'react';
 import { Card } from './card';
 import { Props } from './types';
 import { IncidentList } from './style';

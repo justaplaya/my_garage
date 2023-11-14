@@ -1,4 +1,3 @@
-import React from 'react';
 import { Container, ImgWrapper, TextWrapper, Separator } from './style';
 import { Img } from './img';
 import { Text } from './text';

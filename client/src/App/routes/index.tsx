@@ -1,4 +1,3 @@
-import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { CarPage as GarageCar } from 'Pages/garage/components/carPage';
 import Garage from 'Pages/garage';

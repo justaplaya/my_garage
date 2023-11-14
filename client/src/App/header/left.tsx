@@ -1,6 +1,5 @@
 import { useTranslation } from 'react-i18next';
 import { Head, Link, LinkIconWrapper } from '../style';
-import React from 'react';
 import { ReactComponent as GarageIcon } from 'img/pageIcons/garage.svg';
 
 export const Left = () => {

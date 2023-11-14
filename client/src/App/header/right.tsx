@@ -1,5 +1,4 @@
 import { Head } from '../style';
-import React from 'react';
 import { PickTheme } from './pickTheme';
 import { PickLanguage } from './pickLanguage';
 

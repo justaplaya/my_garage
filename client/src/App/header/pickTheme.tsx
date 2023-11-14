@@ -1,7 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { changeTheme } from 'reducer';
 import { Line, Moon, Sun, Toggle } from '../style';
-import React from 'react';
 
 export const PickTheme = () => {
   const dispatch = useDispatch();

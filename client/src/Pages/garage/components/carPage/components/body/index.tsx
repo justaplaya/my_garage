@@ -1,6 +1,5 @@
 import { BodyTxt, BodyWrapper } from '../../style';
 import { Text } from 'Pages/garage/loaders/text';
-import React from 'react';
 import { Props } from './types';
 import { Graph } from './graph';
 

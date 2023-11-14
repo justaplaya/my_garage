@@ -1,4 +1,3 @@
-import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import { useAppSelector } from './reducer';
 import { ThemeType } from './reducer/types';

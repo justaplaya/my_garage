@@ -1,7 +1,6 @@
 import { Brand, HeaderBottom, Icon, InfoText, InfoWrapper, Model, XSeparator, YSeparator } from './style';
 import { getBrandIcon } from '../../utils';
 import { Img } from 'Pages/garage/loaders/img';
-import React from 'react';
 import { Text } from 'Pages/garage/loaders/text';
 import { BottomTypes } from './types';
 

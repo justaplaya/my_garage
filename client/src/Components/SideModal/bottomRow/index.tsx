@@ -1,4 +1,3 @@
-import React from 'react';
 import { Loader } from 'Components/Loader';
 import { useTranslation } from 'react-i18next';
 import { ApplyButton, CloseButton, Container } from './style';

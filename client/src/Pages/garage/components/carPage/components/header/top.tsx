@@ -1,7 +1,6 @@
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Api } from './api';
 import { BackButton, DeleteButton, EditButton, HeaderTop, HeaderTopRow } from './style';
-import React from 'react';
 import { TopTypes } from './types';
 
 export const Top = ({ loading, car, text, setShowModal, onDeleteSuccess }: TopTypes.Props) => {

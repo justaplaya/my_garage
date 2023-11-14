@@ -1,4 +1,3 @@
-import React from 'react';
 import { Theme } from 'theme';
 import { Header } from './header';
 import { AllRoutes } from './routes';

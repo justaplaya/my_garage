@@ -1,4 +1,3 @@
-import React from 'react';
 import { CreateBtn, Container, Row } from './style';
 import 'utils/i18next';
 import { Sort } from './components/sort';

@@ -1,4 +1,3 @@
-import React from 'react';
 import { Props } from '../types';
 import { Column, ColumnCount, ColumnName, ColumnWrap } from './style';
 import { useColumns } from './useColumns';
