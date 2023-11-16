@@ -57,11 +57,11 @@ export const getLoaders = (mode: BuildOptions['mode']): ModuleOptions['rules'] =
     },
   };
 
-  const base = [webpack5esmInteropRule, jsxLoader, urlLoader, svgLoader, tsLoader];
+  const loaders = [webpack5esmInteropRule, jsxLoader, urlLoader, svgLoader, tsLoader];
 
   if (isDev) {
-    return base.concat(cssLoader);
+    return loaders.concat(cssLoader);
   } else {
-    return base.concat(miniCssLoader);
+    return loaders.concat(miniCssLoader);
   }
 };

@@ -6,7 +6,7 @@ import { getResolve } from './getResolve';
 import { getDevServer } from './getDevServer';
 import { getPlugins } from './getPlugins';
 
-export const getWebpackConfig = ({ port, paths, mode }: BuildOptions): webpack.Configuration => {
+export const getWebpackConfig = ({ port, paths, mode, analyze }: BuildOptions): webpack.Configuration => {
   return {
     mode,
     entry: paths.entry,
@@ -17,7 +17,7 @@ export const getWebpackConfig = ({ port, paths, mode }: BuildOptions): webpack.C
       clean: true,
     },
     target: 'web',
-    plugins: getPlugins(paths),
+    plugins: getPlugins(mode, paths, analyze),
     devServer: getDevServer(port),
     resolve: getResolve(),
     module: {

@@ -10,8 +10,7 @@ export default (env: EnvVars) => {
   };
   const port = env.port ?? 3030;
   const mode = env.mode ?? 'development';
+  const analyze = env.analyze ?? false;
 
-  const config = getWebpackConfig({ port, paths, mode });
-
-  return config;
+  return getWebpackConfig({ port, paths, mode, analyze });
 };

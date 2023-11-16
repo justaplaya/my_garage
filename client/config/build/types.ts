@@ -1,4 +1,4 @@
-export type EnvVars = { port?: number; mode?: BuildMode };
+export type EnvVars = { port?: number; mode?: BuildMode; analyze?: boolean };
 
 export type BuildPaths = {
   entry: string;
@@ -12,4 +12,5 @@ export type BuildOptions = {
   port: number;
   paths: BuildPaths;
   mode: BuildMode;
+  analyze: boolean;
 };
