@@ -153,7 +153,7 @@ setInterval(async () => {
   await delay(Math.trunc(Math.random() * 10000));
   aWss.clients.forEach((client) => {
     client.send(
-      JSON.stringify({ method: "new_incident", data: getRandIncident() })
+      JSON.stringify({ method: "new_incident", data: getRandIncident() }),
     );
   });
 }, 1500);
@@ -164,7 +164,7 @@ app.use(
     graphiql: true,
     schema,
     rootValue: root,
-  })
+  }),
 );
 
 app.listen(PORT, () => console.log("server been running"));

@@ -7,8 +7,7 @@ export const Incidents = () => {
   const [incidents, setIncidents] = useState<Incident[]>([]);
 
   useEffect(() => {
-    // const socket = new WebSocket(`ws://localhost:5000/`);
-    const socket = new WebSocket(`ws://45.84.227.97:5000/`);
+    const socket = new WebSocket(__MODE__ === 'development' ? `ws://localhost:5000/` : `ws://45.84.227.97:5000/`);
 
     socket.onopen = () => {
       console.log('Соединение с сокетом  установлено');

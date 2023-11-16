@@ -9,8 +9,7 @@ import { PersistGate } from 'redux-persist/integration/react';
 import { Suspense } from 'react';
 
 export const client = new ApolloClient({
-  // uri: 'http://localhost:5000/graphql',
-  uri: 'http://45.84.227.97:5000/graphql',
+  uri: __MODE__ === 'development' ? 'http://localhost:5000/graphql' : 'http://45.84.227.97:5000/graphql',
   cache: new InMemoryCache(),
 });
 
