@@ -17,10 +17,6 @@ export const getPlugins = (
     template: paths.html,
   });
 
-  const processPlugin = new webpack.ProvidePlugin({
-    process: 'process/browser',
-  });
-
   const copyPlugin = new CopyPlugin({
     patterns: [{ from: 'public/assets', to: 'assets/' }],
   });
@@ -32,7 +28,7 @@ export const getPlugins = (
 
   const analyzePlugin = new BundleAnalyzerPlugin();
 
-  const plugins = [htmlPlugin, processPlugin, copyPlugin];
+  const plugins = [htmlPlugin, copyPlugin];
 
   if (isProd) plugins.push(miniCssPlugin);
 
