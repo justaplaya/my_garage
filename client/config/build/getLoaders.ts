@@ -2,7 +2,7 @@ import { BuildOptions } from './types';
 import { ModuleOptions } from 'webpack';
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-export const loaders = (mode: BuildOptions['mode']): ModuleOptions['rules'] => {
+export const getLoaders = (mode: BuildOptions['mode']): ModuleOptions['rules'] => {
   const isDev = mode === 'development';
 
   const webpack5esmInteropRule = {
