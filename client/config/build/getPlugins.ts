@@ -20,10 +20,10 @@ export const getPlugins = (
     template: paths.html,
   });
 
-  const modePlugin = new DefinePlugin({ __MODE__: JSON.stringify(mode) });
+  const definePlugin = new DefinePlugin({ __MODE__: JSON.stringify(mode) });
 
   const copyPlugin = new CopyPlugin({
-    patterns: [{ from: 'public/assets', to: 'assets/' }],
+    patterns: [{ from: 'public/assets', to: 'assets/' }, { from: 'public/netlifyStuff' }],
   });
 
   const miniCssPlugin = new MiniCssExtractPlugin({
@@ -35,7 +35,7 @@ export const getPlugins = (
 
   const hotRefreshPlugin = new ReactRefreshWebpackPlugin();
 
-  const plugins = [htmlPlugin, copyPlugin, modePlugin];
+  const plugins = [htmlPlugin, copyPlugin, definePlugin];
 
   if (isDev) plugins.push(hotRefreshPlugin);
 
