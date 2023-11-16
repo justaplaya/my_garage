@@ -6,12 +6,14 @@ import { DefinePlugin } from 'webpack';
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 
 export const getPlugins = (
   mode: BuildOptions['mode'],
   paths: BuildOptions['paths'],
   analyze: BuildOptions['analyze'],
 ): WebpackPluginInstance[] => {
+  const isDev = mode === 'development';
   const isProd = mode === 'production';
 
   const htmlPlugin = new HtmlWebpackPlugin({
@@ -31,7 +33,11 @@ export const getPlugins = (
 
   const analyzePlugin = new BundleAnalyzerPlugin();
 
+  const hotRefreshPlugin = new ReactRefreshWebpackPlugin();
+
   const plugins = [htmlPlugin, copyPlugin, modePlugin];
+
+  if (isDev) plugins.push(hotRefreshPlugin);
 
   if (isProd) plugins.push(miniCssPlugin);
 

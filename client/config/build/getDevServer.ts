@@ -5,5 +5,6 @@ export const getDevServer = (port: BuildOptions['port']): WebpackOptionsNormaliz
   return {
     port,
     historyApiFallback: true,
+    hot: true,
   };
 };
