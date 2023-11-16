@@ -4,7 +4,8 @@
   "description": "",
   "scripts": {
     "server": "cd server & npm run dev",
-    "client": "cd client & npm start"
+    "client": "cd client & npm start",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/justaplaya/my_garage/issues"
   },
-  "homepage": "https://github.com/justaplaya/my_garage#readme"
+  "homepage": "https://github.com/justaplaya/my_garage#readme",
+  "devDependencies": {
+    "husky": "^8.0.3"
+  }
 }
