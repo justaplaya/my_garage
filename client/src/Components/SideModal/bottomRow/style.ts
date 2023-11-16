@@ -12,7 +12,7 @@ export const Container = styled.div`
   padding: 10px;
   background: ${(props) => props.theme.colors.secondary(0.75)};
   backdrop-filter: blur(2px);
-  width: calc(100% - ${scrollBarWidth});
+  width: 100%;
 `;
 export const ApplyButton = styled.button<{ $isDisabled: boolean }>`
   position: relative;

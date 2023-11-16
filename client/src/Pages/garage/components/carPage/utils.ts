@@ -1,40 +1,53 @@
+import Subaru from 'img/garage/brands/subaru.png';
+import Mitsubishi from 'img/garage/brands/mitsubishi.png';
+import Toyota from 'img/garage/brands/toyota.png';
+import Kia from 'img/garage/brands/kia.png';
+import Hyundai from 'img/garage/brands/hyundai.png';
+import Ssangyong from 'img/garage/brands/ssangyong.png';
+import Haval from 'img/garage/brands/haval.png';
+import Chery from 'img/garage/brands/chery.png';
+import Exeed from 'img/garage/brands/exeed.png';
+import NoName from 'img/garage/brands/noName.webp';
+import Japan from 'img/garage/countries/japan.webp';
+import Korea from 'img/garage/countries/korea.webp';
+import China from 'img/garage/countries/china.webp';
 import { Brand } from 'Pages/garage/models/car';
 import { Country } from 'Pages/garage/types';
 
 export const getBrandIcon = (brand: Brand | null) => {
   switch (brand) {
     case 'subaru':
-      return 'https://raw.githubusercontent.com/justaplaya/my_garage/e6d302c72b857a9f259a8b3cb7cd757ef99d64aa/client/src/img/garage/brands/subaru.png';
+      return Subaru;
     case 'mitsubishi':
-      return 'https://raw.githubusercontent.com/justaplaya/my_garage/e6d302c72b857a9f259a8b3cb7cd757ef99d64aa/client/src/img/garage/brands/mitsubishi.png';
+      return Mitsubishi;
     case 'toyota':
-      return 'https://raw.githubusercontent.com/justaplaya/my_garage/e6d302c72b857a9f259a8b3cb7cd757ef99d64aa/client/src/img/garage/brands/toyota.png';
+      return Toyota;
     case 'kia':
-      return 'https://raw.githubusercontent.com/justaplaya/my_garage/e6d302c72b857a9f259a8b3cb7cd757ef99d64aa/client/src/img/garage/brands/kia.png';
+      return Kia;
     case 'hyundai':
-      return 'https://raw.githubusercontent.com/justaplaya/my_garage/e6d302c72b857a9f259a8b3cb7cd757ef99d64aa/client/src/img/garage/brands/hyundai.png';
+      return Hyundai;
     case 'ssangyong':
-      return 'https://raw.githubusercontent.com/justaplaya/my_garage/e6d302c72b857a9f259a8b3cb7cd757ef99d64aa/client/src/img/garage/brands/ssangyong.png';
+      return Ssangyong;
     case 'haval':
-      return 'https://raw.githubusercontent.com/justaplaya/my_garage/e6d302c72b857a9f259a8b3cb7cd757ef99d64aa/client/src/img/garage/brands/haval.png';
+      return Haval;
     case 'chery':
-      return 'https://raw.githubusercontent.com/justaplaya/my_garage/e6d302c72b857a9f259a8b3cb7cd757ef99d64aa/client/src/img/garage/brands/chery.png';
+      return Chery;
     case 'exeed':
-      return 'https://raw.githubusercontent.com/justaplaya/my_garage/e6d302c72b857a9f259a8b3cb7cd757ef99d64aa/client/src/img/garage/brands/exeed.png';
+      return Exeed;
     default:
-      return 'https://raw.githubusercontent.com/justaplaya/my_garage/e6d302c72b857a9f259a8b3cb7cd757ef99d64aa/client/src/img/garage/brands/noName.webp';
+      return NoName;
   }
 };
 
 export const getCountryBg = (country: Country) => {
   switch (country) {
     case 'japan':
-      return 'https://raw.githubusercontent.com/justaplaya/my_garage/e6d302c72b857a9f259a8b3cb7cd757ef99d64aa/client/src/img/garage/countries/japan.webp';
+      return Japan;
     case 'korea':
-      return 'https://raw.githubusercontent.com/justaplaya/my_garage/e6d302c72b857a9f259a8b3cb7cd757ef99d64aa/client/src/img/garage/countries/korea.webp';
+      return Korea;
     case 'china':
-      return 'https://raw.githubusercontent.com/justaplaya/my_garage/e6d302c72b857a9f259a8b3cb7cd757ef99d64aa/client/src/img/garage/countries/china.webp';
+      return China;
     default:
-      return '';
+      return Japan;
   }
 };
