@@ -53,7 +53,7 @@ export const getLoaders = (mode: BuildOptions['mode']): ModuleOptions['rules'] =
     exclude: /node_modules/,
     use: {
       loader: 'ts-loader',
-      options: { compilerOptions: { noEmit: false } },
+      options: { compilerOptions: { noEmit: false }, transpileOnly: isDev },
     },
   };
 

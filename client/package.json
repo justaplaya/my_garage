@@ -31,7 +31,8 @@
     "start:prod": "node server.js",
     "build": "webpack --env mode=production",
     "build:analyze": "webpack --env mode=production --env analyze=true",
-    "test": "jest"
+    "test": "jest",
+    "typecheck": "tsc"
   },
   "browserslist": {
     "production": [
