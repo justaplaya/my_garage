@@ -31,7 +31,7 @@ export const loaders = (mode: BuildOptions['mode']): ModuleOptions['rules'] => {
   const urlLoader = {
     test: /\.(png|gif|woff|woff2|eot|ttf|webp)$/,
     loader: 'url-loader',
-    options: { limit: 10000000, name: 'assets/[hash].[ext]' },
+    options: { limit: 1, name: 'assets/[hash].[ext]' },
   };
 
   const svgLoader = {
