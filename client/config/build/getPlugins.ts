@@ -35,11 +35,14 @@ export const getPlugins = (
 
   const hotRefreshPlugin = new ReactRefreshWebpackPlugin();
 
-  const plugins = [htmlPlugin, copyPlugin, definePlugin];
+  const plugins = [htmlPlugin, definePlugin];
 
   if (isDev) plugins.push(hotRefreshPlugin);
 
-  if (isProd) plugins.push(miniCssPlugin);
+  if (isProd) {
+    plugins.push(miniCssPlugin);
+    plugins.push(copyPlugin);
+  }
 
   if (analyze) plugins.push(analyzePlugin);
 
