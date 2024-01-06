@@ -13,7 +13,12 @@ export const Api = ({ onDeleteSuccess }: ApiTypes.Props) => {
         },
       },
     });
-    action.then(() => onDeleteSuccess());
+    action.then(
+      () => onDeleteSuccess(),
+      (e) => {
+        console.log(e);
+      },
+    );
   };
   return { deleteCarFunction };
 };

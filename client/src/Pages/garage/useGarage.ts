@@ -30,7 +30,6 @@ export const useGarage = () => {
     if (data?.getAllCars && !error) {
       !error && setAllCars(data.getAllCars);
       setLoading(false);
-      // TODO error handler
     }
   }, [data]);
 

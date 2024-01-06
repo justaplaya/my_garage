@@ -1,11 +1,11 @@
 import { useDispatch } from 'react-redux';
-import { changeTheme } from 'reducer';
+import { SharedActions } from 'reducer/shared';
 import { Line, Moon, Sun, Toggle } from '../style';
 
 export const PickTheme = () => {
   const dispatch = useDispatch();
 
-  const toggleTheme = () => dispatch(changeTheme());
+  const toggleTheme = () => dispatch(SharedActions.changeTheme());
 
   return (
     <Line onClick={toggleTheme}>

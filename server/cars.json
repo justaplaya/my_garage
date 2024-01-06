@@ -1,0 +1,30 @@
+[
+  {
+    "brand": "subaru",
+    "model": "Impreza 2003",
+    "year": "2005",
+    "maxSpeed": "329",
+    "timeUpTo100": "2.3"
+  },
+  {
+    "brand": "chery",
+    "model": null,
+    "year": null,
+    "maxSpeed": null,
+    "timeUpTo100": null
+  },
+  {
+    "brand": "mitsubishi",
+    "model": "Lancer Evo VII",
+    "year": "2002",
+    "maxSpeed": "305",
+    "timeUpTo100": "2.7"
+  },
+  {
+    "brand": "hyundai",
+    "model": "accent",
+    "year": "2007",
+    "maxSpeed": "294",
+    "timeUpTo100": "3.1"
+  }
+]

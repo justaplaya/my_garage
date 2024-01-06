@@ -6,7 +6,7 @@ import { Car } from 'Pages/garage/models/car';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Props } from './types';
 
-export const List = ({ cars, loading, searchValue, setShowModal }: Props.Common) => {
+export const List = ({ cars, loading, searchValue, setShowModal }: Props.List) => {
   const centerItems = !cars.length && !loading;
   const props = { notFound: { searchValue, setShowModal } };
   return (
@@ -19,8 +19,8 @@ export const List = ({ cars, loading, searchValue, setShowModal }: Props.Common)
 const Content = ({ cars }: Props.Content) => {
   return (
     <>
-      {cars.map((car, index) => (
-        <Card car={car} key={index} />
+      {cars.map((car) => (
+        <Card car={car} key={car.id} />
       ))}
     </>
   );

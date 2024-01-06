@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Original = styled.span`
+export const Loader = styled.span`
   width: 60px;
   height: 40px;
   position: relative;

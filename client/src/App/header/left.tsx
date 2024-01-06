@@ -1,6 +1,8 @@
 import { useTranslation } from 'react-i18next';
 import { Head, Link, LinkIconWrapper } from '../style';
 import { ReactComponent as GarageIcon } from 'img/pageIcons/garage.svg';
+import { useAppSelector } from 'reducer';
+import { AuthSelectors } from 'Pages/auth/reducer/selectors';
 
 export const Left = () => {
   const { t } = useTranslation();
@@ -9,15 +11,21 @@ export const Left = () => {
     incidents: t('links.incidents'),
   };
 
+  const isLoggedIn = useAppSelector(AuthSelectors.login);
+
   return (
     <Head.Left>
-      <Link to={'/garage'}>
-        <LinkIconWrapper>
-          <GarageIcon />
-        </LinkIconWrapper>
-        {text.garage}
-      </Link>
-      <Link to={'/incidents'}>{text.incidents}</Link>
+      {isLoggedIn && (
+        <>
+          <Link to={'/garage'}>
+            <LinkIconWrapper>
+              <GarageIcon />
+            </LinkIconWrapper>
+            {text.garage}
+          </Link>
+          <Link to={'/incidents'}>{text.incidents}</Link>
+        </>
+      )}
     </Head.Left>
   );
 };

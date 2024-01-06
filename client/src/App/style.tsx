@@ -1,9 +1,8 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import MoonIcon from 'img/garage/theme/moon.png';
 import SunIcon from 'img/garage/theme/sun.png';
 import { NavLink } from 'react-router-dom';
-
-export const HeaderHeight = '75px';
+import { HeaderHeight } from './config';
 
 export namespace Head {
   export const Container = styled.div`
@@ -26,8 +25,12 @@ export namespace Head {
     justify-content: center;
     height: inherit;
   `;
-  export const Right = styled(Left)`
-    padding-right: 20px;
+  export const Right = styled(Left)<{ $isLoggedIn: boolean }>`
+    ${({ $isLoggedIn }) =>
+      !$isLoggedIn &&
+      css`
+        padding-right: 20px;
+      `};
     display: flex;
     align-items: center;
     justify-content: center;
@@ -76,7 +79,14 @@ export const Link = styled(NavLink)`
   gap: 10px;
   position: relative;
 `;
-export const LinkIconWrapper = styled.div`
+export const LogoutLink = styled(Link)`
+  padding: 5px;
+  background: ${(props) => props.theme.colors.primary()} !important;
+`;
+export const LinkIconWrapper = styled.div<{ $width?: number; $height?: number }>`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: relative;
   height: ${HeaderHeight};
   width: ${HeaderHeight};
@@ -85,6 +95,16 @@ export const LinkIconWrapper = styled.div`
   > svg {
     height: ${HeaderHeight};
     width: ${HeaderHeight};
+    ${({ $width }) =>
+      $width &&
+      css`
+        width: ${$width}px;
+      `};
+    ${({ $height }) =>
+      $height &&
+      css`
+        height: ${$height}px;
+      `};
     fill: ${(props) => props.theme.colors.secondary()};
   }
 `;

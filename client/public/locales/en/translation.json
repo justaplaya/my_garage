@@ -68,6 +68,15 @@
         "kmPerHour": "km/h",
         "seconds": "sec."
       }
+    },
+    "auth": {
+      "login": "Login",
+      "password": "Password",
+      "logIn": "Log in",
+      "notifications": {
+        "noToken": "Active session token is absent",
+        "invalidCreds": "Provided credentials don't match any known to server"
+      }
     }
   }
 }

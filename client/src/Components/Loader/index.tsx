@@ -1,3 +1,3 @@
-import { Original } from './style';
+import { Loader as LoaderComponent } from './style';
 
-export const Loader = () => <Original />;
+export const Loader = () => <LoaderComponent />;

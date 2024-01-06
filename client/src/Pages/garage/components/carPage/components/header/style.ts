@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import { Country } from 'Pages/garage/types';
 import { getCountryBg } from 'Pages/garage/components/carPage/utils';
 import { blurredBack, scrollBar } from 'mixins';
-import { Button } from 'Components/Button';
 
 export const Container = styled.div<{ $country: Country | null }>`
   position: relative;
@@ -65,7 +64,7 @@ export const HeaderTopRow = styled.div`
   height: 50px;
   gap: 10px;
 `;
-export const EditButton = styled(Button)`
+export const EditButton = styled.button`
   border: none;
   border-radius: 5px;
   height: 50px;
@@ -77,7 +76,7 @@ export const EditButton = styled(Button)`
   background: ${(props) => props.theme.colors.secondary()};
   cursor: pointer;
 `;
-export const DeleteButton = styled(Button)`
+export const DeleteButton = styled.button`
   border: none;
   border-radius: 5px;
   height: 50px;

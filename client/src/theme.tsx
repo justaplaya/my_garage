@@ -1,6 +1,7 @@
 import { ThemeProvider } from 'styled-components';
 import { useAppSelector } from './reducer';
-import { ThemeType } from './reducer/types';
+import { ThemeType } from './reducer/shared/types';
+import { SharedSelectors } from './reducer/shared/selectors';
 
 /**
  * каждый цвет это функция, опционально принимающая альфа-канал. если аргумент не пришёл, в альфа-канал ставится 1
@@ -9,18 +10,18 @@ type Alpha = number | undefined;
 export type GlobalThemeType = {
   theme: ThemeType;
   colors: {
-    primary: (Alpha) => string;
-    primaryLite3: (Alpha) => string;
-    primaryLite6: (Alpha) => string;
-    primaryLite12: (Alpha) => string;
-    primaryLite24: (Alpha) => string;
-    secondary: (Alpha) => string;
-    primaryContrast: (Alpha) => string;
+    primary: (alpha: Alpha) => string;
+    primaryLite3: (alpha: Alpha) => string;
+    primaryLite6: (alpha: Alpha) => string;
+    primaryLite12: (alpha: Alpha) => string;
+    primaryLite24: (alpha: Alpha) => string;
+    secondary: (alpha: Alpha) => string;
+    primaryContrast: (alpha: Alpha) => string;
   };
 };
 
 export const useTheme = (): GlobalThemeType => {
-  const theme = useAppSelector((state) => state.common.theme);
+  const theme = useAppSelector(SharedSelectors.theme);
   const isDark = theme === 'dark';
   const darkBlue = {
     original: '16, 24, 39',

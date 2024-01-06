@@ -3,112 +3,72 @@ const { graphqlHTTP } = require("express-graphql");
 const cors = require("cors");
 const schema = require("./schema");
 const { GraphQLError } = require("graphql/error");
+const shared = require('./shared.json');
 const app = express();
 const WSServer = require("express-ws")(app);
 const aWss = WSServer.getWss();
 const PORT = process.env.PORT || 5000;
+const users = require('./users');
+carsFromFile = require('./cars');
+const {
+  minutesToMs,
+  delay,
+  throwError,
+  checkHeaders: _checkHeaders,
+  getRandId,
+  createCarFunction,
+  getRandIncident,
+} = require("./utils");
 
-app.use(cors());
-
+const corsOptions = {
+  credentials: true,
+};
+app.use(cors(corsOptions));
 app.use(express.json());
-
 app.ws("/", () => {});
 
-/** отдаёт рандомное число, помноженное на multiplier и округлённое вверх */
-const getRand = (multiplier) => Math.ceil(Math.random() * multiplier);
-const getRandId = () => Date.now() * Math.trunc(Math.random() * 10000);
+const checkHeaders = (headers) => _checkHeaders(headers, shared.tokenKey, users)
+const cars = carsFromFile.map((car) => createCarFunction(car));
 
-const periods = ["week", "month", "year"];
-const incidents = ["evacuation", "violation", "crash"];
-
-/** отдаёт объект [период]: количество инцидентов  */
-const getIncidentData = () =>
-  periods.reduce((acc, item, index) => {
-    return { ...acc, [item]: getRand(Math.pow(10, index + 1)) };
-  }, {});
-
-const createCarFunction = (input) => {
-  const id = getRandId();
-  const _incidents = incidents.reduce((acc, item) => {
-    return { ...acc, [item]: getIncidentData() };
-  }, {});
-
-  return {
-    id,
-    incidents: _incidents,
-    ...input,
-  };
-};
-const mock = [
-  {
-    brand: "subaru",
-    model: "Impreza 2003",
-    year: 2005,
-    maxSpeed: 329,
-    timeUpTo100: 2.3,
-  },
-  {
-    brand: "chery",
-    model: null,
-    year: null,
-    maxSpeed: null,
-    timeUpTo100: null,
-  },
-  {
-    brand: "mitsubishi",
-    model: "Lancer Evo VII",
-    year: 2002,
-    maxSpeed: 305,
-    timeUpTo100: 2.7,
-  },
-  {
-    brand: "hyundai",
-    model: "accent",
-    year: 2007,
-    maxSpeed: 294,
-    timeUpTo100: 3.1,
-  },
-];
-const cars = mock.map((car) => createCarFunction(car));
-
-const updateCar = (input) => {
-  return cars.find((car) => car.id === input.id);
-};
-const delay = (ms) => {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve();
-    }, ms);
-    // }, 0);
-  });
-};
 const root = {
-  getAllCars: async () => {
+  getAllCars: async (parent, args) => {
     await delay(2000);
-    return await cars;
+    checkHeaders(args.headers);
+
+    return cars;
   },
-  getOneCar: async ({ id }) => {
+  getOneCar: async ({ id }, args) => {
     await delay(2000);
+    checkHeaders(args.headers);
+
     if (!cars.find((car) => car.id === Number(id))) {
+      throwError.notFound()
+    }
+
+    return cars.find((car) => car.id === Number(id));
+  },
+  createCar: async ({ input }, args) => {
+    await delay(2000);
+    checkHeaders(args.headers);
+
+    const car = createCarFunction(input);
+    cars.push(car);
+    return car;
+  },
+  updateCar: async ({ input }, args) => {
+    await delay(2000);
+    checkHeaders(args.headers);
+
+    const carsCopy = JSON.parse(JSON.stringify(cars));
+    const newCar = carsCopy.find((i) => i.id === Number(input.id));
+    if (!newCar) {
       throw new GraphQLError("car not found", {
         extensions: {
           code: "404",
         },
       });
     }
-    return await cars.find((car) => car.id === Number(id));
-  },
-  createCar: async ({ input }) => {
-    await delay(2000);
-    const car = createCarFunction(input);
-    cars.push(car);
-    return car;
-  },
-  updateCar: async ({ input }) => {
-    await delay(2000);
-    const carsCopy = JSON.parse(JSON.stringify(cars));
-    const newCar = carsCopy.find((i) => i.id === Number(input.id));
-    if (!newCar) return; // exception
+
     const index = carsCopy.indexOf(newCar);
     newCar.brand = input.brand;
     newCar.model = input.model;
@@ -116,15 +76,27 @@ const root = {
     newCar.maxSpeed = input.maxSpeed;
     newCar.timeUpTo100 = input.timeUpTo100;
     cars.splice(index, 1, newCar);
-    return await newCar;
+
+    return newCar;
   },
-  deleteCar: async ({ input }) => {
+  deleteCar: async ({ input }, args) => {
     await delay(2000);
+    checkHeaders(args.headers);
+
     const carsCopy = JSON.parse(JSON.stringify(cars));
     const car = carsCopy.find((i) => i.id === Number(input.id));
-    if (!car) return; // exception
+
+    if (!car) {
+      throw new GraphQLError("car not found", {
+        extensions: {
+          code: "404",
+        },
+      });
+    }
+
     const index = carsCopy.indexOf(car);
     cars.splice(index, 1);
+
     return {
       id: -1,
       brand: "",
@@ -137,23 +109,14 @@ const root = {
   },
 };
 
-const getRandIntBetween = (min, max) => {
-  return Math.floor(Math.random() * (max - min + 1) + min);
-};
 
-const getRandIncident = () => {
-  const id = getRandId();
-  const car = cars[getRandIntBetween(0, cars.length - 1)];
-  const incident = incidents[getRandIntBetween(0, incidents.length - 1)];
-
-  return { id, car, incident };
-};
 
 setInterval(async () => {
   await delay(Math.trunc(Math.random() * 10000));
+
   aWss.clients.forEach((client) => {
     client.send(
-      JSON.stringify({ method: "new_incident", data: getRandIncident() }),
+      JSON.stringify({ method: "new_incident", data: getRandIncident(cars) }),
     );
   });
 }, 1500);
@@ -167,4 +130,4 @@ app.use(
   }),
 );
 
-app.listen(PORT, () => console.log("server been running"));
+app.listen(PORT, () => console.log(`Main server is running on ${PORT} port`));

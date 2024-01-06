@@ -8,7 +8,7 @@ export default (env: EnvVars) => {
     html: path.resolve(__dirname, 'public', 'index.html'),
     output: path.join(__dirname, 'dist'),
   };
-  const port = env.port ?? 3030;
+  const port = env.port ?? 3000;
   const mode = env.mode ?? 'development';
   const analyze = env.analyze ?? false;
 
