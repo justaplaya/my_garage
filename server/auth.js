@@ -2,9 +2,9 @@ const express = require('express');
 const app = express();
 const crypto = require('crypto');
 const fs = require('fs');
-const users = require('./users');
-const usersPath = './users.json'
-const shared = require('./shared.json');
+const users = require('./data/users.json');
+const usersPath = './data/users.json'
+const shared = require('./data/shared.json');
 const cors = require("cors");
 const { minutesToMs, delay } = require("./utils");
 
@@ -45,7 +45,6 @@ app.post('/api/auth', async (req, res) => {
                 JSON.stringify({
                     id: user.id,
                     login: user.login,
-                    password: user.password,
                 })
             ).toString('base64');
             const signature = crypto

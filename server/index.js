@@ -3,19 +3,17 @@ const { graphqlHTTP } = require("express-graphql");
 const cors = require("cors");
 const schema = require("./schema");
 const { GraphQLError } = require("graphql/error");
-const shared = require('./shared.json');
+const shared = require('./data/shared.json');
 const app = express();
 const WSServer = require("express-ws")(app);
 const aWss = WSServer.getWss();
 const PORT = process.env.PORT || 5000;
-const users = require('./users');
-carsFromFile = require('./cars');
+const users = require('./data/users.json');
+const carsFromFile = require('./data/cars.json');
 const {
-  minutesToMs,
   delay,
   throwError,
   checkHeaders: _checkHeaders,
-  getRandId,
   createCarFunction,
   getRandIncident,
 } = require("./utils");
