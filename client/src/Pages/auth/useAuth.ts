@@ -37,7 +37,6 @@ export const useAuth = () => {
     auth.login(data).then(
       (response: LoginResponse) => {
         const { login, token, expires } = response.data;
-        document.cookie = `token=${token}; expires=${expires}`;
         dispatch(AuthActions.login(login));
         navigate('/');
       },

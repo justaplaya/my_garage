@@ -10,9 +10,25 @@ const { minutesToMs, delay } = require("./utils");
 
 const port = 7000;
 
-app.use(cors());
+const corsOptions = {
+    origin: true,
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'PATCH' , 'DELETE', 'OPTIONS'],
+    preflightContinue: true,
+}
+
+app.use(cors(corsOptions));
 
 app.use(express.json());
+
+app.use((req, res, next) => {
+    if (req.method === 'OPTIONS') {
+        res.header('Access-Control-Allow-Origin', req.headers.origin);
+        res.sendStatus(200);
+    } else {
+        next();
+    }
+});
 
 app.post('/api/auth', async (req, res) => {
     await delay(2000)
@@ -49,7 +65,9 @@ app.post('/api/auth', async (req, res) => {
                 console.log(data)
             });
 
-            return res.status(200).json({
+            return res.status(200).set({
+                'Set-Cookie': `token=${token}; path=/; expires=${expires}`,
+            }).json({
                 id: user.id,
                 login: user.login,
                 token,
