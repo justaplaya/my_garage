@@ -45,6 +45,10 @@
       "timeUpTo100": "Seconds up to 100 km/h",
       "create": "Create",
       "update": "Update"
+    },
+    "errorBoundary": {
+      "title": "Suddenly an error occurred",
+      "description": "Please reload the page or contact support"
     }
   },
   "pages": {
