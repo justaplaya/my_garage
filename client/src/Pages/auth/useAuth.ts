@@ -35,8 +35,10 @@ export const useAuth = () => {
     };
 
     auth.login(data).then(
-      (response: LoginResponse) => {
-        const { login, token, expires } = response.data;
+      async (response) => {
+        const data: LoginResponse = await response.json();
+
+        const { login } = data;
         dispatch(AuthActions.login(login));
         navigate('/');
       },

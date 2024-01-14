@@ -4,13 +4,13 @@
         "login": "north",
         "password": "side",
         "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6Imp3dCJ9.eyJpZCI6IjEiLCJsb2dpbiI6Im5vcnRoIn0=.ZIa7FGNgqhir73cHm6bXH2P4rysj8dqKQQ5n1jsvMmo=",
-        "expires": "Sat, 13 Jan 2024 11:41:05 GMT"
+        "expires": "Sun, 14 Jan 2024 19:25:33 GMT"
     },
     "2": {
         "id": "2",
         "login": "any",
         "password": "other",
-        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6Imp3dCJ9.eyJpZCI6IjIiLCJsb2dpbiI6ImFueSIsInBhc3N3b3JkIjoib3RoZXIifQ==.2YBX4oWQO7BhHt168SVrS3uS3lg0bt8rrw9yD1DhsSg=",
-        "expires": "Mon, 08 Jan 2024 06:58:48 GMT"
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6Imp3dCJ9.eyJpZCI6IjIiLCJsb2dpbiI6ImFueSJ9.7vhfxKIeUbSRdcIMBqBLy2RziJOmFiLnCNdhS/B37M0=",
+        "expires": "Sun, 14 Jan 2024 19:27:03 GMT"
     }
 }

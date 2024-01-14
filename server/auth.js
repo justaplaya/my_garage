@@ -13,7 +13,7 @@ const port = 7000;
 const corsOptions = {
     origin: true,
     credentials: true,
-    methods: ['GET', 'POST', 'PUT', 'PATCH' , 'DELETE', 'OPTIONS'],
+    methods: ['POST', 'OPTIONS'],
     preflightContinue: true,
 }
 
