@@ -1,4 +1,4 @@
-import { SetState } from 'utils/types';
+import { SetState } from 'global/typesWithImports';
 import { ControllerProps } from 'Components/Controller/types';
 import { Brand } from '../../../models/car';
 import { ReactNode } from 'react';

@@ -1,4 +1,4 @@
-import { SetState } from 'utils/types';
+import { SetState } from 'global/typesWithImports';
 import { DefaultSortOptionType, SortOptionType } from '../../types';
 
 export type Props = {

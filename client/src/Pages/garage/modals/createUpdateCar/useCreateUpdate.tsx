@@ -5,10 +5,10 @@ import { CREATE_CAR as CREATE_CAR_MUTATION, UPDATE_CAR as UPDATE_CAR_MUTATION } 
 import { useTranslation } from 'react-i18next';
 import { getBrandIcon } from '../../components/carPage/utils';
 import { Controller } from 'Components/Controller';
-import { toStr } from 'utils/helpers';
 import { CtxType } from './ctx/types';
 import { PropsType } from './types';
 import { brands as _brands } from '../../config';
+import { toStr } from 'utils/helpers/coverters';
 
 export const useCreateUpdate = ({ show, setShow, refetch, setLoading, car }: PropsType): CtxType => {
   const { t } = useTranslation();

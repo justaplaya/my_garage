@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { Option, Select, Text } from './style';
 import { useOnClickOutside } from 'Hooks/useOnClickOutside';
-import { SetState } from 'utils/types';
+import { SetState } from 'global/typesWithImports';
 
 export type Props<T> = {
   show: boolean;

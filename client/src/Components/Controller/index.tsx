@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react';
-import { isEvent } from 'utils/helpers';
 import { ControllerProps } from './types';
+import { isEvent } from 'utils/helpers/checks';
 
 export const Controller = <T,>(initialValue: T): ControllerProps<T> => {
   const [value, setValue] = useState<T>(initialValue);

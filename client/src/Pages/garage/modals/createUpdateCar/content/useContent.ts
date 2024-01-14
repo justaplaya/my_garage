@@ -1,5 +1,4 @@
 import { ChangeEvent, useContext } from 'react';
-import { InputOrTextArea } from 'utils/types';
 import { CreateCtx } from '../ctx';
 import { iconSrc } from '../useCreateUpdate';
 import { Brand } from '../../../models/car';

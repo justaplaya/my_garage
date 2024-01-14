@@ -1,6 +1,5 @@
 import { useTranslation } from 'react-i18next';
 import React, { useState } from 'react';
-import { Language } from 'utils/types';
 import { Dropdown, Props as DropProps } from 'Components/Dropdown';
 import { DropWrap, LinkIconWrapper } from '../style';
 import { ReactComponent as Globe } from 'img/garage/globe.svg';

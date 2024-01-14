@@ -16,7 +16,7 @@ const httpLink = createHttpLink({
 
 const authLink = setContext((_, { headers }) => {
   const token = getCookie('token');
-
+  console.log(__MODE__);
   return {
     headers: {
       ...headers,

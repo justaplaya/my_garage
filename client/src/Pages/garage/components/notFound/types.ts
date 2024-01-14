@@ -1,4 +1,4 @@
-import { SetState } from 'utils/types';
+import { SetState } from 'global/typesWithImports';
 
 export type Props = {
   searchValue: string;

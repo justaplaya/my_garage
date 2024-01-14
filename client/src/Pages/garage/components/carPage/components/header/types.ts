@@ -1,5 +1,5 @@
 import { Car } from 'Pages/garage/models/car';
-import { SetState } from 'utils/types';
+import { SetState } from 'global/typesWithImports';
 import { ApolloError } from '@apollo/client';
 
 export type Props = {
