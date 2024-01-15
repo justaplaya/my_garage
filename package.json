@@ -3,9 +3,19 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "server": "cd server & npm run dev",
+    "auth": "cd server & npm run auth",
     "client": "cd client & npm start",
-    "prepare": "husky install"
+    "install_client": "cd client && npm install --legacy-peer-deps",
+    "install_server": "cd server && npm install --legacy-peer-deps",
+    "prepare": "husky install",
+    "run_all_servers": "run-p auth server",
+    "run_client": "run-p client",
+    "server": "cd server & npm run dev",
+    "setup": "npm install && npm run setup_all",
+    "setup_all": "run-p setup_client setup_server",
+    "setup_client": "run-s install_client run_client",
+    "setup_server": "run-s install_server run_all_servers",
+    "start": "run-p client auth server"
   },
   "repository": {
     "type": "git",
@@ -18,6 +28,7 @@
   },
   "homepage": "https://github.com/justaplaya/my_garage#readme",
   "devDependencies": {
-    "husky": "^8.0.3"
+    "husky": "^8.0.3",
+    "npm-run-all": "^4.1.5"
   }
 }
