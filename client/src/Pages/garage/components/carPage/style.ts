@@ -2,10 +2,11 @@ import styled from 'styled-components';
 import { Country } from 'Pages/garage/types';
 import { getCountryBg } from 'Pages/garage/components/carPage/utils';
 import { blurredBack, scrollBar } from 'mixins';
+import { HeaderHeight } from 'mixins/config';
 
 export const Container = styled.div<{ $country: Country | null }>`
   position: relative;
-  min-height: calc(100vh - 75px);
+  min-height: calc(100vh - ${HeaderHeight});
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -19,7 +20,7 @@ export const Container = styled.div<{ $country: Country | null }>`
   background-position: top;
   ${scrollBar('dark')};
   overflow: auto;
-  height: calc(100vh - 75px);
+  height: calc(100vh - ${HeaderHeight});
   padding: 10px 20px;
   gap: 10px;
 `;

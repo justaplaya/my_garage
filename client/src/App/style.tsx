@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 import MoonIcon from 'img/garage/theme/moon.png';
 import SunIcon from 'img/garage/theme/sun.png';
 import { NavLink } from 'react-router-dom';
-import { HeaderHeight } from './config';
+import { HeaderHeight } from 'mixins/config';
 
 export namespace Head {
   export const Container = styled.div`

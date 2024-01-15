@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { HeaderHeight } from 'mixins/config';
 
 export const Container = styled.div`
   @property --myColor1 {
@@ -13,7 +14,7 @@ export const Container = styled.div`
   }
 
   display: flex;
-  height: calc(100vh - 75px);
+  height: calc(100vh - ${HeaderHeight});
   background-attachment: fixed;
   background-size: cover;
   flex-direction: column;

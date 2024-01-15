@@ -1,5 +1,4 @@
 import styled, { css } from 'styled-components';
-import { scrollBarWidth } from 'mixins';
 
 export const Container = styled.div`
   position: fixed;

@@ -1,18 +1,16 @@
 import { css } from 'styled-components';
-
-type ScrollBarMode = 'light' | 'dark';
+import { ScrollBarMode } from './types';
+import { ScrollBarWidth } from './config';
 
 export const blurredBack = (alpha?: number) => css`
   background: rgba(245, 245, 245, ${alpha || 0.5});
   backdrop-filter: blur(6px);
 `;
 
-export const scrollBarWidth = `10px`;
-
 export const scrollBar = (mode: ScrollBarMode) => css`
   -webkit-overflow-scrolling: touch;
   &::-webkit-scrollbar {
-    width: ${scrollBarWidth};
+    width: ${ScrollBarWidth};
   }
   &::-webkit-scrollbar-track {
     background: ${(props) => (mode === 'dark' ? props.theme.colors.primary() : props.theme.colors.secondary())};

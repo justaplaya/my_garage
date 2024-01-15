@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components';
 import { scrollBar } from 'mixins';
 import TextureDark from 'img/garage/textures/dark.webp';
 import TextureLight from 'img/garage/textures/light.webp';
+import { HeaderHeight } from 'mixins/config';
 
 export const Row = styled.div`
   display: flex;
@@ -41,7 +42,7 @@ export const CreateBtn = styled.button<{ $disabled: boolean }>`
 `;
 export const Container = styled.div`
   display: flex;
-  height: calc(100vh - 75px);
+  height: calc(100vh - ${HeaderHeight});
   background: ${(props) =>
     props.theme.theme === 'dark' ? `url(${TextureDark}) no-repeat` : `url(${TextureLight}) no-repeat`};
   background-attachment: fixed;

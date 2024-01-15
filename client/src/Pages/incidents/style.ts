@@ -1,11 +1,12 @@
 import styled from 'styled-components';
-import TextureDark from '../../img/garage/textures/dark.webp';
-import TextureLight from '../../img/garage/textures/light.webp';
+import TextureDark from 'img/garage/textures/dark.webp';
+import TextureLight from 'img/garage/textures/light.webp';
 import { scrollBar } from 'mixins';
+import { HeaderHeight } from 'mixins/config';
 
 export const Container = styled.div`
   display: flex;
-  height: calc(100vh - 75px);
+  height: calc(100vh - ${HeaderHeight});
   background: ${(props) =>
     props.theme.theme === 'dark' ? `url(${TextureDark}) no-repeat` : `url(${TextureLight}) no-repeat`};
   background-attachment: fixed;
