@@ -1,4 +1,4 @@
-import { Theme } from 'theme';
+import { ThemeWrapper } from 'theme';
 import { Header } from './header';
 import { AllRoutes } from './routes';
 import { ToastContainer } from 'react-toastify';
@@ -8,7 +8,7 @@ import { ErrorBoundary } from 'Components/ErrorBoundary';
 const App = () => {
   return (
     <ErrorBoundary>
-      <Theme>
+      <ThemeWrapper>
         <Header />
         <AllRoutes />
         <ToastContainer
@@ -23,7 +23,7 @@ const App = () => {
           pauseOnHover
           theme="colored"
         />
-      </Theme>
+      </ThemeWrapper>
     </ErrorBoundary>
   );
 };

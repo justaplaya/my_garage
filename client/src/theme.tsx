@@ -1,6 +1,5 @@
 import { ThemeProvider } from 'styled-components';
 import { useAppSelector } from './reducer';
-import { ThemeType } from './reducer/shared/types';
 import { SharedSelectors } from './reducer/shared/selectors';
 
 /**
@@ -8,7 +7,7 @@ import { SharedSelectors } from './reducer/shared/selectors';
  */
 type Alpha = number | undefined;
 export type GlobalThemeType = {
-  theme: ThemeType;
+  theme: Theme;
   colors: {
     primary: (alpha: Alpha) => string;
     primaryLite3: (alpha: Alpha) => string;
@@ -67,4 +66,4 @@ export const useTheme = (): GlobalThemeType => {
     },
   };
 };
-export const Theme = ({ children }: any) => <ThemeProvider theme={useTheme()}>{children}</ThemeProvider>;
+export const ThemeWrapper = ({ children }: any) => <ThemeProvider theme={useTheme()}>{children}</ThemeProvider>;
