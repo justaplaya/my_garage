@@ -21,6 +21,10 @@ export const Incidents = () => {
           break;
       }
     };
+
+    return () => {
+      socket.close();
+    };
   }, []);
 
   return (
