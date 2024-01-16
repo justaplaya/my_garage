@@ -1,4 +1,4 @@
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { useEffect, useMemo, useState } from 'react';
 import { Car } from './models/car';
 import { figureSortOutput, useSortOptions } from 'Pages/garage/utils';
@@ -10,7 +10,6 @@ import { DefaultSortOptionType, SortOptionType } from './types';
 
 export const useGarage = () => {
   const location = useLocation();
-  const navigate = useNavigate();
   const sortOptions = useSortOptions();
   const { t, i18n } = useTranslation();
 
@@ -46,7 +45,6 @@ export const useGarage = () => {
   }, [allCars, searchValue, sortValue]);
 
   useEffect(() => {
-    location && location.pathname === '/' && navigate('/garage');
     if (location && location.state && location.state.refetchRequired) {
       refetch();
       setLoading(true);
