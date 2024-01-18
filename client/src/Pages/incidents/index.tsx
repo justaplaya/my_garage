@@ -1,5 +1,5 @@
 import { Incidents } from './Incidents';
 
-const IncidentsIndex = () => <Incidents />;
+const IncidentsPage = () => <Incidents />;
 
-export default IncidentsIndex;
+export default IncidentsPage;

@@ -9,6 +9,7 @@ export const Left = () => {
   const text = {
     garage: t('links.garage'),
     incidents: t('links.incidents'),
+    goals: t('links.goals'),
   };
 
   const isLoggedIn = useAppSelector(AuthSelectors.login);
@@ -24,6 +25,7 @@ export const Left = () => {
             {text.garage}
           </Link>
           <Link to={'/incidents'}>{text.incidents}</Link>
+          <Link to={'/goals'}>{text.goals}</Link>
         </>
       )}
     </Head.Left>

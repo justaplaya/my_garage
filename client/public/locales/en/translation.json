@@ -1,7 +1,8 @@
 {
   "links": {
     "garage": "Garage",
-    "incidents": "Incidents"
+    "incidents": "Incidents",
+    "goals": "Goals"
   },
   "incidents": {
     "incidents": "incidents",

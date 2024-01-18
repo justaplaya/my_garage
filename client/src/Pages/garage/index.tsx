@@ -1,5 +1,5 @@
 import { Garage } from './Garage';
 
-const GarageIndex = () => <Garage />;
+const GaragePage = () => <Garage />;
 
-export default GarageIndex;
+export default GaragePage;

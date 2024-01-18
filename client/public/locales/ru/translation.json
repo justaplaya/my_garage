@@ -1,7 +1,8 @@
 {
   "links": {
     "garage": "Гараж",
-    "incidents": "Инциденты"
+    "incidents": "Инциденты",
+    "goals": "Цели"
   },
   "incidents": {
     "incidents": "происшествия",
