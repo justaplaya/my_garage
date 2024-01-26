@@ -1,0 +1,24 @@
+{
+  "folderId1": {
+    "id": "folderId1",
+    "order":0,
+    "title": "Self-consciousness",
+    "description":"Fundamentals",
+    "color": "100,50,255",
+    "isClosed": true
+  },
+  "folderId2": {
+    "id": "folderId2",
+    "order":1,
+    "title": "Second folder",
+    "color": "200,50,155",
+    "isClosed": true
+  },
+  "folderId3": {
+    "id": "folderId3",
+    "order":2,
+    "title": "Third folder",
+    "color": "20,255,155",
+    "isClosed": true
+  }
+}

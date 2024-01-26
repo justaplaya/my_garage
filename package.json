@@ -8,14 +8,15 @@
     "install_client": "cd client && npm install --legacy-peer-deps",
     "install_server": "cd server && npm install --legacy-peer-deps",
     "prepare": "husky install",
-    "run_all_servers": "run-p auth server",
+    "restServer": "cd server & npm run restServer",
+    "run_all_servers": "run-p auth server restServer",
     "run_client": "run-p client",
     "server": "cd server & npm run dev",
     "setup": "npm install && npm run setup_all",
     "setup_all": "run-p setup_client setup_server",
     "setup_client": "run-s install_client run_client",
     "setup_server": "run-s install_server run_all_servers",
-    "start": "run-p client auth server"
+    "start": "run-p client auth server restServer"
   },
   "repository": {
     "type": "git",

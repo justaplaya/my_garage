@@ -4,11 +4,12 @@ import './GlobalStyles';
 import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import store, { persistor } from './reducer';
+import store, { persistor } from 'reducer';
 import { PersistGate } from 'redux-persist/integration/react';
 import { Suspense } from 'react';
 import { setContext } from '@apollo/client/link/context';
-import { getCookie } from './utils/helpers/auth';
+import { getCookie } from 'utils/helpers/auth';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 const httpLink = createHttpLink({
   uri: __MODE__ === 'development' ? 'http://localhost:5000/graphql' : 'http://45.84.227.97:5000/graphql',
@@ -16,7 +17,7 @@ const httpLink = createHttpLink({
 
 const authLink = setContext((_, { headers }) => {
   const token = getCookie('token');
-  console.log(__MODE__);
+
   return {
     headers: {
       ...headers,
@@ -30,18 +31,22 @@ export const client = new ApolloClient({
   link: authLink.concat(httpLink),
 });
 
+const queryClient = new QueryClient();
+
 const root = ReactDOM.createRoot(document.getElementById('root')!);
 
 root.render(
   <Suspense fallback={<></>}>
-    <ApolloProvider client={client}>
-      <BrowserRouter>
-        <Provider store={store}>
-          <PersistGate loading={null} persistor={persistor}>
-            <App />
-          </PersistGate>
-        </Provider>
-      </BrowserRouter>
-    </ApolloProvider>
+    <QueryClientProvider client={queryClient}>
+      <ApolloProvider client={client}>
+        <BrowserRouter>
+          <Provider store={store}>
+            <PersistGate loading={null} persistor={persistor}>
+              <App />
+            </PersistGate>
+          </Provider>
+        </BrowserRouter>
+      </ApolloProvider>
+    </QueryClientProvider>
   </Suspense>,
 );

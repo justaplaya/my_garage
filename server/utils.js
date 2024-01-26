@@ -33,7 +33,7 @@ const throwError = {
 }
 
 /** проверяет хэдеры на валидность токена, кидает 401 если не валиден */
-const checkHeaders = (headers, tokenKey, users) => {
+const checkHeaders = (headers, tokenKey, users, isREST) => {
     if (headers.authorization) {
         const token = headers.authorization.split(' ')[1];
         const tokenParts = token.split('.');
@@ -47,12 +47,15 @@ const checkHeaders = (headers, tokenKey, users) => {
                 user => user.token === token && new Date().getTime() < new Date(user.expires).getTime()
             )
         ) {
-            throwError.unauthorized()
+           !isREST && throwError.unauthorized();
+           return false;
         }
 
+        return true;
 
     } else {
-        throwError.unauthorized()
+        !isREST && throwError.unauthorized();
+        return false;
     }
 }
 

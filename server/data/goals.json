@@ -1,0 +1,43 @@
+{
+  "goalId1": {
+    "id": "goalId1",
+    "folderId":"folderId1",
+    "order": 0,
+    "title":"Everything you've ever wanted",
+    "description": "is on the other side of fear",
+    "isDone":true,
+    "status": "finished",
+    "importance":"high",
+    "imageUrl": ""
+  },
+  "goalId2": {
+    "id": "goalId2",
+    "folderId":"folderId1",
+    "order": 1,
+    "title":"Goal 2",
+    "isDone":false,
+    "status": "notStarted",
+    "importance":"low",
+    "imageUrl": ""
+  },
+  "goalId3": {
+    "id": "goalId3",
+    "folderId":"folderId1",
+    "order": 2,
+    "title":"Goal 3",
+    "isDone":false,
+    "status": "inProgress",
+    "importance":"medium",
+    "imageUrl": ""
+  },
+  "goalId4": {
+    "id": "goalId4",
+    "folderId":"folderId2",
+    "order": 0,
+    "title":"Goal 4",
+    "isDone":false,
+    "status": "nearlyFinished",
+    "importance":"medium",
+    "imageUrl": ""
+  }
+}

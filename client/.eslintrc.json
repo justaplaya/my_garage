@@ -7,7 +7,6 @@
     "prettier/prettier": ["error"],
     "import/no-anonymous-default-export": ["off"],
     "react-hooks/exhaustive-deps": "off",
-    "react/jsx-key": ["error", { "checkFragmentShorthand": true }],
-    "import/no-extraneous-dependencies": ["error", {"devDependencies": true}]
+    "react/jsx-key": ["error", { "checkFragmentShorthand": true }]
   }
 }
