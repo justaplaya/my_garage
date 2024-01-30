@@ -1,8 +1,8 @@
 import axios from 'axios';
 import { useQuery, useQueryClient, useMutation } from '@tanstack/react-query';
 import { getCookie } from 'utils/helpers/auth';
-import { Folder } from '../../models/folder';
-import { Goal } from '../../models/goal';
+import { Folder } from '../models/folder';
+import { Goal } from '../models/goal';
 
 export const instance = (token: string | null) =>
   axios.create({
@@ -15,7 +15,7 @@ export const instance = (token: string | null) =>
 
 export const useGetFolders = () => {
   return useQuery({
-    queryKey: ['folder'],
+    queryKey: ['folder', 'multiple'],
     queryFn: async () => {
       const { data } = await instance(getCookie('token')).get<{ data: Folder[] }>('getFolders');
       const folders: Folder[] = data.data;
@@ -27,12 +27,27 @@ export const useGetFolders = () => {
 
 export const useGetGoals = () => {
   return useQuery({
-    queryKey: ['goal'],
+    queryKey: ['goal', 'multiple'],
     queryFn: async () => {
       const { data } = await instance(getCookie('token')).get<{ data: Goal[] }>('getGoals');
       const goals: Goal[] = data.data;
 
       return goals;
+    },
+  });
+};
+
+export const useGetGoal = (id: string | null) => {
+  return useQuery({
+    queryKey: ['goal', 'single'],
+    queryFn: async () => {
+      // if (!id) throw new Error('no goal id');
+      // console.log('===id', id);
+      const { data } = await instance(getCookie('token')).get<{ data: Goal }>(`getGoal?id=${id}`);
+      // const { data } = await instance(getCookie('token')).get<{ data: Goal }>('7845');
+      const goal: Goal = data.data;
+
+      return goal;
     },
   });
 };
@@ -57,6 +72,20 @@ export const useChangeGoal = () => {
 
   return useMutation({
     mutationKey: ['goal'],
+    mutationFn: async (data: { id: string; change: Partial<Goal> }) => {
+      const { id, change } = data;
+      await instance(getCookie('token')).post<{ message: string }>('changeGoal', { id, change });
+    },
+    onSuccess: () => {
+      client.invalidateQueries({ queryKey: ['goal'] });
+    },
+  });
+};
+export const useChangeGoalWithId = (goalId: string | null) => {
+  const client = useQueryClient();
+
+  return useMutation({
+    mutationKey: ['goal', String(goalId)],
     mutationFn: async (data: { id: string; change: Partial<Goal> }) => {
       const { id, change } = data;
       await instance(getCookie('token')).post<{ message: string }>('changeGoal', { id, change });

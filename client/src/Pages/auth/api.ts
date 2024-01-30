@@ -2,7 +2,7 @@ import { LoginRequest } from './types';
 
 export const root = () => ({
   login(credentials: LoginRequest) {
-    return fetch('http://localhost:7000/api/auth', {
+    return fetch('http://localhost:7070/api/auth', {
       method: 'POST',
       mode: 'cors',
       credentials: 'include',

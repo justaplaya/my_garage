@@ -30,7 +30,7 @@ export const getLoaders = (mode: BuildOptions['mode']): ModuleOptions['rules'] =
   };
 
   const urlLoader = {
-    test: /\.(png|gif|woff|woff2|eot|ttf|webp)$/,
+    test: /\.(png|jpg|gif|woff|woff2|eot|ttf|webp)$/,
     loader: 'url-loader',
     options: { limit: 1, name: 'assets/[hash].[ext]' },
   };

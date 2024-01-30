@@ -7,7 +7,7 @@ const shared = require('./data/shared.json');
 const app = express();
 const WSServer = require("express-ws")(app);
 const aWss = WSServer.getWss();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5050;
 const users = require('./data/users.json');
 const carsFromFile = require('./data/cars.json');
 const {

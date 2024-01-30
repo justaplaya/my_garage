@@ -5,39 +5,31 @@
     "order": 0,
     "title":"Everything you've ever wanted",
     "description": "is on the other side of fear",
-    "isDone":true,
     "status": "finished",
-    "importance":"high",
-    "imageUrl": ""
+    "importance":"high"
   },
   "goalId2": {
     "id": "goalId2",
     "folderId":"folderId1",
     "order": 1,
-    "title":"Goal 2",
-    "isDone":false,
+    "title":"Many men",
     "status": "notStarted",
-    "importance":"low",
-    "imageUrl": ""
+    "importance":"low"
   },
   "goalId3": {
     "id": "goalId3",
     "folderId":"folderId1",
     "order": 2,
-    "title":"Goal 3",
-    "isDone":false,
+    "title":"А поутру в поле крёстная сила, поутру в поле — боже, как красиво! Боже, как красиво, моё сердце на воле",
     "status": "inProgress",
-    "importance":"medium",
-    "imageUrl": ""
+    "importance":"medium"
   },
   "goalId4": {
     "id": "goalId4",
     "folderId":"folderId2",
     "order": 0,
-    "title":"Goal 4",
-    "isDone":false,
+    "title":"Вот мы поутру в поле",
     "status": "nearlyFinished",
-    "importance":"medium",
-    "imageUrl": ""
+    "importance":"medium"
   }
 }

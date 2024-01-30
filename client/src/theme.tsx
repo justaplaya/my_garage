@@ -1,6 +1,7 @@
 import { ThemeProvider } from 'styled-components';
 import { useAppSelector } from './reducer';
 import { SharedSelectors } from './reducer/shared/selectors';
+import { ReactNode } from 'react';
 
 /**
  * каждый цвет это функция, опционально принимающая альфа-канал. если аргумент не пришёл, в альфа-канал ставится 1
@@ -9,13 +10,13 @@ type Alpha = number | undefined;
 export type GlobalThemeType = {
   theme: Theme;
   colors: {
-    primary: (alpha: Alpha) => string;
-    primaryLite3: (alpha: Alpha) => string;
-    primaryLite6: (alpha: Alpha) => string;
-    primaryLite12: (alpha: Alpha) => string;
-    primaryLite24: (alpha: Alpha) => string;
-    secondary: (alpha: Alpha) => string;
-    primaryContrast: (alpha: Alpha) => string;
+    primary: (alpha?: Alpha) => string;
+    primaryLite3: (alpha?: Alpha) => string;
+    primaryLite6: (alpha?: Alpha) => string;
+    primaryLite12: (alpha?: Alpha) => string;
+    primaryLite24: (alpha?: Alpha) => string;
+    secondary: (alpha?: Alpha) => string;
+    primaryContrast: (alpha?: Alpha) => string;
   };
 };
 
@@ -40,18 +41,18 @@ export const useTheme = (): GlobalThemeType => {
   const maroon = '135, 0, 10';
   const white = '245, 245, 245';
   const black = '0, 0, 0';
-  const darkOr = (dark: string, light: string, alpha: Alpha) => `rgba(${isDark ? dark : light}, ${alpha ?? 1})`;
+  const darkOr = (dark: string, light: string, alpha?: Alpha) => `rgba(${isDark ? dark : light}, ${alpha ?? 1})`;
 
-  const primary = (alpha: Alpha) => darkOr(darkBlue.original, wheat, alpha);
-  const primaryContrast = (alpha: Alpha) => darkOr(white, black, alpha);
-  const secondary = (alpha: Alpha) => darkOr(raspberry.original, maroon, alpha);
+  const primary = (alpha?: Alpha) => darkOr(darkBlue.original, wheat, alpha);
+  const primaryContrast = (alpha?: Alpha) => darkOr(white, black, alpha);
+  const secondary = (alpha?: Alpha) => darkOr(raspberry.original, maroon, alpha);
   /** цвета, осветлённые/затемнённые на x % в зависимости от выбранной темы
    * eg при тёмной теме primaryLite3 будет на 3% светлее primary, при светлой - темнее
    */
-  const primaryLite3 = (alpha: Alpha) => darkOr(darkBlue.lite3, raspberry.lite3, alpha);
-  const primaryLite6 = (alpha: Alpha) => darkOr(darkBlue.lite6, raspberry.lite6, alpha);
-  const primaryLite12 = (alpha: Alpha) => darkOr(darkBlue.lite12, raspberry.lite12, alpha);
-  const primaryLite24 = (alpha: Alpha) => darkOr(darkBlue.lite24, raspberry.lite24, alpha);
+  const primaryLite3 = (alpha?: Alpha) => darkOr(darkBlue.lite3, raspberry.lite3, alpha);
+  const primaryLite6 = (alpha?: Alpha) => darkOr(darkBlue.lite6, raspberry.lite6, alpha);
+  const primaryLite12 = (alpha?: Alpha) => darkOr(darkBlue.lite12, raspberry.lite12, alpha);
+  const primaryLite24 = (alpha?: Alpha) => darkOr(darkBlue.lite24, raspberry.lite24, alpha);
 
   return {
     theme,
@@ -67,3 +68,6 @@ export const useTheme = (): GlobalThemeType => {
   };
 };
 export const ThemeWrapper = ({ children }: any) => <ThemeProvider theme={useTheme()}>{children}</ThemeProvider>;
+// export const ThemeWrapper = <T,>({ children, theme }: { children: ReactNode; theme: T }) => (
+//   <ThemeProvider theme={theme}>{children}</ThemeProvider>
+// );

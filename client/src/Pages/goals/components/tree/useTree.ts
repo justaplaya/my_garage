@@ -1,22 +1,31 @@
-import { useChangeFolder, useChangeGoal, useGetFolders, useGetGoals } from './api';
+import { useChangeFolder, useChangeGoal, useGetFolders, useGetGoals } from '../../api';
 import { DragEvent, useState } from 'react';
 import { Folder } from '../../models/folder';
 import { Goal } from '../../models/goal';
+import { Props } from './types';
+import { useNavigate } from 'react-router-dom';
 
-export const useTree = () => {
+export const useTree = ({ focusedId, setFocusedId, openedFolderIds, setOpenedFolderIds }: Props.Common) => {
   const { data: folders } = useGetFolders();
   const { data: goals } = useGetGoals();
   const { mutate: changeFolder } = useChangeFolder();
   const { mutate: changeGoal } = useChangeGoal();
-
+  const navigate = useNavigate();
   const [draggingId, setDraggingId] = useState<string | null>(null);
   const [draggedOverId, setDraggedOverId] = useState<string | null>(null);
 
-  const displayedFolders = folders?.sort((a, b) => a.order - b.order) ?? [];
+  const displayedFolders =
+    folders
+      ?.sort((a, b) => a.order - b.order)
+      ?.map((folder) => ({ ...folder, isOpened: openedFolderIds.includes(folder.id) })) ?? [];
   const getDisplayedGoals = (folderId: string): Goal[] =>
     goals?.filter((goal) => goal.folderId === folderId)?.sort((a, b) => a.order - b.order) ?? [];
 
   const goalAction = {
+    onClick(goalId: string) {
+      navigate(`/goals/id=${goalId}`);
+      setFocusedId(goalId);
+    },
     onDragLeave(goal: Goal) {
       if (draggingId !== goal.id) {
         setDraggedOverId(null);
@@ -70,10 +79,10 @@ export const useTree = () => {
       }
     },
     onClick(folder: Folder) {
-      changeFolder({
-        id: folder.id,
-        change: { isClosed: !folder.isClosed },
-      });
+      setOpenedFolderIds((ids) =>
+        ids.includes(folder.id) ? ids.filter((id) => id !== folder.id) : [...ids, folder.id],
+      );
+      setFocusedId(folder.id);
     },
     onDragStart(e: DragEvent, folderId: string) {
       e.dataTransfer.setData('folderId', folderId);
@@ -102,6 +111,7 @@ export const useTree = () => {
               change: { order: goal.order + 1 },
             }),
           );
+        setOpenedFolderIds((ids) => [...new Set([...ids, folderId])]);
       }
       if (receivedFolderId) {
         const myOrder = folders.find((folder) => folder.id === folderId)?.order;
@@ -126,10 +136,6 @@ export const useTree = () => {
       setDraggingId(null);
     },
   };
-  //TODO refactor
-  // push
-  // loading FUCK LOADING
-  // error handling FUCK ERROR HANDLING
 
   const getFolderProps = (folder: Folder) => ({
     $background: folder.color,
@@ -146,13 +152,14 @@ export const useTree = () => {
   const getGoalProps = (goal: Goal, folderId: string) => ({
     $status: goal.status,
     draggable: true,
+    onClick: () => goalAction.onClick(goal.id),
     onDragStart: (e) => goalAction.onDragStart(e, goal.id),
     onDragOver: (e) => goalAction.onDragOver(e, goal.id),
     onDrop: (e) => goalAction.onDrop(e, folderId, goal.id),
     onDragLeave: () => goalAction.onDragLeave(goal),
     onDragEnter: () => goalAction.onDragEnter(goal),
     $draggedOverDown: goal.id === draggedOverId,
-    $isDone: goal.isDone,
+    $isFinished: goal.status === 'finished',
   });
 
   return {

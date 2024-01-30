@@ -10,10 +10,7 @@ export const Body = (props: Props.Common) => {
     </BodyWrapper>
   );
 };
-const Content = ({ car }: Props.Content) => {
-  //TODO no incs case(falsy or nullish)
-  return <Graph incidents={car.incidents} />;
-};
+const Content = ({ car }: Props.Content) => <Graph incidents={car.incidents} />;
 const Loading = () => {
   return (
     <>

@@ -8,8 +8,7 @@ export type Goal = {
   order: number;
   title: string;
   description?: string;
-  isDone: boolean;
   status: GoalStatus;
   importance: GoalImportance;
-  imageUrl?: string;
+  imageDataUrl?: string;
 };
