@@ -16,11 +16,16 @@ export namespace Tree {
     background: ${(props) =>
       props.theme.theme === 'dark' ? props.theme.colors.primary(0.5) : props.theme.colors.primary(0.5)};
   `;
+
   const GoalHeight = 35;
   export const Goal = styled.div<{ $status: GoalStatus; $draggedOverDown: boolean; $isDone: boolean }>`
     transition: all 0.3s ease-in-out;
     position: relative;
-    display: flex;
+    display: grid;
+    grid-template: 100% / ${`${GoalHeight}px`} 1fr ${`${GoalHeight}px`};
+    //grid-template: 100% / 35px calc(100% - 70px - 20px) 35px;
+    text-align: left;
+    white-space: nowrap;
     width: 100%;
     align-items: center;
     justify-content: flex-start;
@@ -57,7 +62,10 @@ export namespace Tree {
         `};
     }
   `;
-
+  export const GoalTitle = styled.h5`
+    text-overflow: ellipsis;
+    overflow: hidden;
+  `;
   const FolderHeight = '40px';
   export const Folder = styled.div<{ $background: string; $draggedOverDown: boolean }>`
     position: relative;
@@ -106,5 +114,15 @@ export namespace Tree {
         : css`
             transform: rotate(0deg);
           `}
+  `;
+  export const GoalImportanceImgWrap = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    height: 100%;
+  `;
+  export const GoalImportanceImg = styled.img`
+    ${ImgStyle};
+    opacity: 0.75;
   `;
 }

@@ -4,11 +4,18 @@ import FolderIcon from 'img/goals/folder.png';
 import ArrowIcon from 'img/goals/arrow.png';
 import { Tree as Style } from './style';
 import { ReactComponent as CheckboxIcon } from 'img/goals/checkbox.svg';
+import { Props } from './types';
+import { goalImportanceToImg } from '../../utils';
 
-export const Tree = () => {
-  const { displayedFolders, getDisplayedGoals, getFolderProps, getGoalProps } = useTree();
-  const { Goal, Folder, FolderIconWrap, FolderArrowWrap } = Style;
-
+export const Tree = ({ focusedId, setFocusedId, openedFolderIds, setOpenedFolderIds }: Props) => {
+  const { displayedFolders, getDisplayedGoals, getFolderProps, getGoalProps } = useTree({
+    focusedId,
+    setFocusedId,
+    openedFolderIds,
+    setOpenedFolderIds,
+  });
+  const { Goal, Folder, FolderIconWrap, FolderArrowWrap, GoalImportanceImg, GoalImportanceImgWrap, GoalTitle } = Style;
+  // const isOpenedFolder = (id: string) => openedFolderIds.includes(id);
   return (
     <Style.Container>
       {displayedFolders.map((folder) => (
@@ -16,13 +23,16 @@ export const Tree = () => {
           <Folder {...getFolderProps(folder)}>
             <FolderIconWrap src={FolderIcon} />
             <p>{folder.title}</p>
-            <FolderArrowWrap src={ArrowIcon} $closed={folder.isClosed} />
+            <FolderArrowWrap src={ArrowIcon} $closed={folder.isOpened} />
           </Folder>
-          {!folder.isClosed &&
+          {folder.isOpened &&
             getDisplayedGoals(folder.id).map((goal) => (
               <Goal key={goal.id} {...getGoalProps(goal, folder.id)}>
                 <CheckboxIcon />
-                <h5>{goal.title}</h5>
+                <GoalTitle>{goal.title}</GoalTitle>
+                <GoalImportanceImgWrap>
+                  <GoalImportanceImg src={goalImportanceToImg(goal.importance)} />
+                </GoalImportanceImgWrap>
               </Goal>
             ))}
         </Fragment>

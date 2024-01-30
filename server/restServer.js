@@ -24,8 +24,8 @@ const corsOptions = {
 }
 
 app.use(cors(corsOptions));
-
-app.use(express.json());
+// app.use(express.bodyParser({limit: '50mb'}));
+app.use(express.json({limit: '50mb'}));
 
 app.use((req, res, next) => {
     if (req.method === 'OPTIONS') {
@@ -88,6 +88,24 @@ app.post('/api/changeGoal',async (req, res) => {
     return res
       .status(200)
       .json({ message: 'OK' });
+} )
+
+app.get('/api/getGoal',async (req, res) => {
+    await authCheck(req,res)
+
+    const id = req.query.id;
+    // console.log(req.query)
+    const goal = goals[id]
+
+    if(!goal) {
+        return res
+          .status(404)
+          .json({ message: 'Not found' });
+    }
+
+    return res
+      .status(200)
+      .json({ data: goal });
 } )
 
 app.listen(port, () =>

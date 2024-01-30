@@ -26,7 +26,7 @@ export const PickLanguage = () => {
     <LinkIconWrapper>
       <Globe onClick={click} />
       <DropWrap>
-        <Dropdown<Language> {...dropdownProps} />
+        <Dropdown<Language> {...dropdownProps}></Dropdown>
       </DropWrap>
     </LinkIconWrapper>
   );

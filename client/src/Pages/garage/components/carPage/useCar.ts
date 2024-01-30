@@ -4,6 +4,7 @@ import { Car } from '../../models/car';
 import { useQuery } from '@apollo/client';
 import { GET_ONE_CAR } from 'Apollo/query/quecar.js';
 import { getCountry } from 'Pages/garage/utils';
+import { useGetSearchQueryKey } from '../../../../Hooks/useGetQueryParam';
 
 export const useCar = () => {
   const location = useLocation();
@@ -13,7 +14,7 @@ export const useCar = () => {
   const [showModal, setShowModal] = useState<boolean>(false);
   const [loading, setLoading] = useState(true);
 
-  const id = Number(location.pathname.split('id=')[location.pathname.split('id=').length - 1]);
+  const id = Number(useGetSearchQueryKey());
 
   const { data, error } = useQuery(GET_ONE_CAR, {
     variables: {

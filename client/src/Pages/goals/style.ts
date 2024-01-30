@@ -5,7 +5,7 @@ import TextureLight from 'img/garage/textures/light.webp';
 
 export const Container = styled.div`
   display: grid;
-  grid-template: 1fr / 30vw 60vw;
+  grid-template: 1fr / 30vw 70vw;
   height: calc(100vh - ${HeaderHeight});
   background: ${(props) =>
     props.theme.theme === 'dark' ? `url(${TextureDark}) no-repeat` : `url(${TextureLight}) no-repeat`};

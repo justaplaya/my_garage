@@ -7,37 +7,33 @@
     "description": "is on the other side of fear",
     "isDone":true,
     "status": "finished",
-    "importance":"high",
-    "imageUrl": ""
+    "importance":"high"
   },
   "goalId2": {
     "id": "goalId2",
     "folderId":"folderId1",
     "order": 1,
-    "title":"Goal 2",
+    "title":"Many men",
     "isDone":false,
     "status": "notStarted",
-    "importance":"low",
-    "imageUrl": ""
+    "importance":"low"
   },
   "goalId3": {
     "id": "goalId3",
     "folderId":"folderId1",
     "order": 2,
-    "title":"Goal 3",
+    "title":"А поутру в поле крёстная сила, поутру в поле — боже, как красиво! Боже, как красиво, моё сердце на воле",
     "isDone":false,
     "status": "inProgress",
-    "importance":"medium",
-    "imageUrl": ""
+    "importance":"medium"
   },
   "goalId4": {
     "id": "goalId4",
     "folderId":"folderId2",
     "order": 0,
-    "title":"Goal 4",
+    "title":"Вот мы поутру в поле",
     "isDone":false,
     "status": "nearlyFinished",
-    "importance":"medium",
-    "imageUrl": ""
+    "importance":"medium"
   }
 }

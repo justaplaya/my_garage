@@ -11,5 +11,5 @@ export type Goal = {
   isDone: boolean;
   status: GoalStatus;
   importance: GoalImportance;
-  imageUrl?: string;
+  imageDataUrl?: string;
 };

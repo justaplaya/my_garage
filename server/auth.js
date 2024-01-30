@@ -53,7 +53,7 @@ app.post('/api/auth', async (req, res) => {
                 .digest('base64');
             const token = `${head}.${body}.${signature}`;
             let expires = new Date();
-            expires.setTime(expires.getTime() + minutesToMs(30))
+            expires.setTime(expires.getTime() + minutesToMs(120))
             expires = expires.toUTCString();
 
             const newUsers = JSON.parse(fs.readFileSync(usersPath));
