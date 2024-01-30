@@ -7,6 +7,7 @@ import { ErrorBoundary } from 'Components/ErrorBoundary';
 import { RangeSlider, RangeSliderFilledTrack, RangeSliderThumb, RangeSliderTrack } from '@chakra-ui/react';
 import { ChakraProvider } from '@chakra-ui/react';
 const App = () => {
+  const mychange = 59;
   return (
     <ChakraProvider>
       <ErrorBoundary>
