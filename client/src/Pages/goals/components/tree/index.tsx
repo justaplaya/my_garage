@@ -5,7 +5,7 @@ import ArrowIcon from 'img/goals/arrow.png';
 import { Tree as Style } from './style';
 import { ReactComponent as CheckboxIcon } from 'img/goals/checkbox.svg';
 import { Props } from './types';
-import { GoalImportanceImg } from './goalImportanceImg';
+import { GoalImportanceImg } from './components/goalImportanceImg';
 
 export const Tree = ({ focusedId, setFocusedId, openedFolderIds, setOpenedFolderIds }: Props.Common) => {
   const { displayedFolders, getDisplayedGoals, getFolderProps, getGoalProps } = useTree({

@@ -14,7 +14,7 @@ export const useTree = ({ focusedId, setFocusedId, openedFolderIds, setOpenedFol
   const [draggingId, setDraggingId] = useState<string | null>(null);
   const [draggedOverId, setDraggedOverId] = useState<string | null>(null);
 
-  const displayedFolders =
+  const displayedFolders: Folder[] =
     folders
       ?.sort((a, b) => a.order - b.order)
       ?.map((folder) => ({ ...folder, isOpened: openedFolderIds.includes(folder.id) })) ?? [];
@@ -138,7 +138,6 @@ export const useTree = ({ focusedId, setFocusedId, openedFolderIds, setOpenedFol
   };
 
   const getFolderProps = (folder: Folder) => ({
-    $background: folder.color,
     onClick: () => folderAction.onClick(folder),
     onDragOver: (e) => folderAction.onDragOver(e, folder.id),
     onDrop: (e) => folderAction.onDrop(e, folder.id),

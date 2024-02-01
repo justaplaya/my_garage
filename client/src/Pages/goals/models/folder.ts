@@ -3,6 +3,12 @@ export type Folder = {
   order: number;
   title: string;
   description?: string;
-  color: string;
-  isClosed: boolean;
+  isOpened: boolean;
+};
+
+export type FolderOutDTO = {
+  id: string;
+  order: number;
+  title: string;
+  description?: string;
 };

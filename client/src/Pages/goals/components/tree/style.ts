@@ -66,7 +66,7 @@ export namespace Tree {
     overflow: hidden;
   `;
   const FolderHeight = '40px';
-  export const Folder = styled.div<{ $background: string; $draggedOverDown: boolean }>`
+  export const Folder = styled.div<{ $draggedOverDown: boolean }>`
     position: relative;
     width: 100%;
     background: ${(props) =>

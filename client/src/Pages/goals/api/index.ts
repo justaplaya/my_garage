@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useQuery, useQueryClient, useMutation } from '@tanstack/react-query';
 import { getCookie } from 'utils/helpers/auth';
-import { Folder } from '../models/folder';
+import { FolderOutDTO } from '../models/folder';
 import { Goal } from '../models/goal';
 
 export const instance = (token: string | null) =>
@@ -17,10 +17,8 @@ export const useGetFolders = () => {
   return useQuery({
     queryKey: ['folder', 'multiple'],
     queryFn: async () => {
-      const { data } = await instance(getCookie('token')).get<{ data: Folder[] }>('getFolders');
-      const folders: Folder[] = data.data;
-
-      return folders;
+      const { data } = await instance(getCookie('token')).get<{ data: FolderOutDTO[] }>('getFolders');
+      return data.data;
     },
   });
 };
@@ -30,9 +28,7 @@ export const useGetGoals = () => {
     queryKey: ['goal', 'multiple'],
     queryFn: async () => {
       const { data } = await instance(getCookie('token')).get<{ data: Goal[] }>('getGoals');
-      const goals: Goal[] = data.data;
-
-      return goals;
+      return data.data;
     },
   });
 };
@@ -42,9 +38,7 @@ export const useGetGoal = (id: string | null) => {
     queryKey: ['goal', 'single'],
     queryFn: async () => {
       const { data } = await instance(getCookie('token')).get<{ data: Goal }>(`getGoal?id=${id}`);
-      const goal: Goal = data.data;
-
-      return goal;
+      return data.data;
     },
   });
 };
@@ -54,7 +48,7 @@ export const useChangeFolder = () => {
 
   return useMutation({
     mutationKey: ['folder'],
-    mutationFn: async (data: { id: string; change: Partial<Folder> }) => {
+    mutationFn: async (data: { id: string; change: Partial<FolderOutDTO> }) => {
       const { id, change } = data;
       await instance(getCookie('token')).post<{ message: string }>('changeFolder', { id, change });
     },
