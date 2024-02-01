@@ -10,6 +10,7 @@ export namespace Props {
   };
 
   export type Content = {
+    focusedId: string | null;
     querySearchId: string;
     goal: Goal;
   };
