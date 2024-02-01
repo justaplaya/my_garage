@@ -1,8 +1,9 @@
 import axios from 'axios';
-import { useQuery, useQueryClient, useMutation } from '@tanstack/react-query';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { getCookie } from 'utils/helpers/auth';
 import { FolderOutDTO } from '../models/folder';
 import { Goal } from '../models/goal';
+import { retryFunc } from './utils';
 
 export const instance = (token: string | null) =>
   axios.create({
@@ -20,6 +21,7 @@ export const useGetFolders = () => {
       const { data } = await instance(getCookie('token')).get<{ data: FolderOutDTO[] }>('getFolders');
       return data.data;
     },
+    retry: retryFunc,
   });
 };
 
@@ -30,6 +32,7 @@ export const useGetGoals = () => {
       const { data } = await instance(getCookie('token')).get<{ data: Goal[] }>('getGoals');
       return data.data;
     },
+    retry: retryFunc,
   });
 };
 
@@ -40,6 +43,7 @@ export const useGetGoal = (id: string | null) => {
       const { data } = await instance(getCookie('token')).get<{ data: Goal }>(`getGoal?id=${id}`);
       return data.data;
     },
+    retry: retryFunc,
   });
 };
 
