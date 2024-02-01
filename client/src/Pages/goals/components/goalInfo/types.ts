@@ -9,6 +9,11 @@ export namespace Props {
     setOpenedFolderIds: SetState<string[]>;
   };
 
+  export type Content = {
+    querySearchId: string;
+    goal: Goal;
+  };
+
   export type RangeSlider = {
     querySearchId: string;
     goal: Goal;
