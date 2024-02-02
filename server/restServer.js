@@ -94,7 +94,6 @@ app.get('/api/getGoal',async (req, res) => {
     await authCheck(req,res)
 
     const id = req.query.id;
-    // console.log(req.query)
     const goal = goals[id]
 
     if(!goal) {

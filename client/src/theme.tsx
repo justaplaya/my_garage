@@ -1,7 +1,6 @@
 import { ThemeProvider } from 'styled-components';
 import { useAppSelector } from './reducer';
 import { SharedSelectors } from './reducer/shared/selectors';
-import { ReactNode } from 'react';
 
 /**
  * каждый цвет это функция, опционально принимающая альфа-канал. если аргумент не пришёл, в альфа-канал ставится 1
@@ -68,6 +67,3 @@ export const useTheme = (): GlobalThemeType => {
   };
 };
 export const ThemeWrapper = ({ children }: any) => <ThemeProvider theme={useTheme()}>{children}</ThemeProvider>;
-// export const ThemeWrapper = <T,>({ children, theme }: { children: ReactNode; theme: T }) => (
-//   <ThemeProvider theme={theme}>{children}</ThemeProvider>
-// );

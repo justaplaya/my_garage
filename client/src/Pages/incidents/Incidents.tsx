@@ -19,6 +19,8 @@ export const Incidents = () => {
         case 'new_incident':
           setIncidents((p) => [msg.data, ...p]);
           break;
+        default:
+          return;
       }
     };
 

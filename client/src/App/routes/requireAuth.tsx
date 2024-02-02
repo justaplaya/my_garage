@@ -16,7 +16,6 @@ export const RequireAuth = ({ children }) => {
   };
 
   useEffect(() => {
-    console.log('im checking');
     if (!hasToken) {
       dispatch(AuthActions.logout());
 

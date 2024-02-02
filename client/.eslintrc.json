@@ -7,6 +7,7 @@
     "prettier/prettier": ["error"],
     "import/no-anonymous-default-export": ["off"],
     "react-hooks/exhaustive-deps": "off",
-    "react/jsx-key": ["error", { "checkFragmentShorthand": true }]
+    "react/jsx-key": ["error", { "checkFragmentShorthand": true }],
+    "default-case": "error"
   }
 }

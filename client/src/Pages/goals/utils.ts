@@ -13,6 +13,8 @@ export const useGoalStatusToColor = (status: GoalStatus) => {
       return colors.secondary(0.75);
     case 'finished':
       return colors.secondary(1);
+    default:
+      return colors.secondary(0.25);
   }
 };
 export const goalStatusToTitle = (status: GoalStatus) => {
@@ -25,6 +27,8 @@ export const goalStatusToTitle = (status: GoalStatus) => {
       return 'Nearly finished';
     case 'finished':
       return 'Finished';
+    default:
+      return 'Not started';
   }
 };
 
@@ -53,5 +57,7 @@ export const goalStatusToStatusRangeValue = (status: GoalStatus): number => {
       return 50;
     case 'finished':
       return 75;
+    default:
+      return 0;
   }
 };

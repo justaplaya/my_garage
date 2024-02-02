@@ -41,10 +41,7 @@ export const useGetGoal = (id: string | null) => {
   return useQuery({
     queryKey: ['goal', 'single'],
     queryFn: async () => {
-      // if (!id) throw new Error('no goal id');
-      // console.log('===id', id);
       const { data } = await instance(getCookie('token')).get<{ data: Goal }>(`getGoal?id=${id}`);
-      // const { data } = await instance(getCookie('token')).get<{ data: Goal }>('7845');
       const goal: Goal = data.data;
 
       return goal;
