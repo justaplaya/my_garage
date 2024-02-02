@@ -10,22 +10,14 @@ export const useGoalInfo = ({ openedFolderIds, setOpenedFolderIds }: Props.Commo
   const querySearchId = useGetSearchQueryKey();
   const navigate = useNavigate();
   const location = useLocation();
-
-  useEffect(() => {
-    if (!querySearchId) {
-      navigate('/goals');
-      toast.error('Invalid query');
-    }
-  }, [querySearchId]);
-
   const { data: goal, isLoading, refetch, error } = useGetGoal(querySearchId);
 
   useEffect(() => {
-    if (getAxiosErrorStatus(error) === 404) {
+    if (getAxiosErrorStatus(error) === 404 && !isLoading) {
       navigate('/goals');
       toast.error('Not found');
     }
-  }, [error]);
+  }, [error, isLoading]);
 
   useEffect(() => {
     refetch();
