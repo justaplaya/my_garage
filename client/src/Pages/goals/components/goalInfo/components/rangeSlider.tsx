@@ -7,11 +7,11 @@ import {
 import { useTheme } from 'styled-components';
 import { useEffect, useMemo, useState } from 'react';
 import { goalStatusToStatusRangeValue, statusRangeValueToGoalStatus } from '../../../utils';
-import { useChangeGoalWithId } from '../../../api';
+import { useChangeGoal } from '../../../api';
 import { Props } from '../types';
 
-export const RangeSlider = ({ querySearchId, goal }: Props.RangeSlider) => {
-  const { mutate: changeGoal, isPending: isChangeGoalPending } = useChangeGoalWithId(querySearchId);
+export const RangeSlider = ({ goal }: Props.RangeSlider) => {
+  const { mutate: changeGoal, isPending: isChangeGoalPending } = useChangeGoal();
   const { colors } = useTheme();
 
   const defaultRangeValue = useMemo(() => goalStatusToStatusRangeValue(goal.status), [goal.status]);

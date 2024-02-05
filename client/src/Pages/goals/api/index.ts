@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { getCookie } from 'utils/helpers/auth';
-import { FolderOutDTO } from '../models/folder';
+import { Folder, FolderOutDTO } from '../models/folder';
 import { Goal } from '../models/goal';
 import { retryFunc } from './utils';
 
@@ -47,46 +47,92 @@ export const useGetGoal = (id: string | null) => {
   });
 };
 
-export const useChangeFolder = () => {
+export const useChangeFolder = (onSuccess?: () => void) => {
   const client = useQueryClient();
 
   return useMutation({
-    mutationKey: ['folder'],
+    mutationKey: ['folder', 'change'],
     mutationFn: async (data: { id: string; change: Partial<FolderOutDTO> }) => {
       const { id, change } = data;
       await instance(getCookie('token')).post<{ message: string }>('changeFolder', { id, change });
     },
     onSuccess: () => {
       client.invalidateQueries({ queryKey: ['folder'] });
+      onSuccess && onSuccess();
     },
   });
 };
 
-export const useChangeGoal = () => {
+export const useCreateFolder = (onSuccess?: () => void) => {
   const client = useQueryClient();
 
   return useMutation({
-    mutationKey: ['goal'],
+    mutationKey: ['folder', 'create'],
+    mutationFn: async (data: Pick<Folder, 'title' | 'description'>) => {
+      await instance(getCookie('token')).post<{ folder: Folder }>('createFolder', { data });
+    },
+    onSuccess: () => {
+      client.invalidateQueries({ queryKey: ['folder'] });
+      onSuccess && onSuccess();
+    },
+  });
+};
+
+export const useChangeGoal = (onSuccess?: () => void) => {
+  const client = useQueryClient();
+
+  return useMutation({
+    mutationKey: ['goal', 'change'],
     mutationFn: async (data: { id: string; change: Partial<Goal> }) => {
       const { id, change } = data;
       await instance(getCookie('token')).post<{ message: string }>('changeGoal', { id, change });
     },
     onSuccess: () => {
       client.invalidateQueries({ queryKey: ['goal'] });
+      onSuccess && onSuccess();
     },
   });
 };
-export const useChangeGoalWithId = (goalId: string | null) => {
+
+export const useCreateGoal = (onSuccess?: () => void) => {
   const client = useQueryClient();
 
   return useMutation({
-    mutationKey: ['goal', String(goalId)],
-    mutationFn: async (data: { id: string; change: Partial<Goal> }) => {
-      const { id, change } = data;
-      await instance(getCookie('token')).post<{ message: string }>('changeGoal', { id, change });
+    mutationKey: ['goal', 'create'],
+    mutationFn: async (data: Pick<Goal, 'title' | 'description'>) => {
+      await instance(getCookie('token')).post<{ goal: Goal }>('createGoal', { data });
     },
     onSuccess: () => {
       client.invalidateQueries({ queryKey: ['goal'] });
+      onSuccess && onSuccess();
+    },
+  });
+};
+export const useDeleteGoal = (onSuccess?: () => void) => {
+  const client = useQueryClient();
+
+  return useMutation({
+    mutationKey: ['goal', 'delete'],
+    mutationFn: async (id: string) => {
+      await instance(getCookie('token')).delete<{ message: string }>(`deleteGoal?id=${id}`);
+      return id;
+    },
+    onSuccess: (deletedId) => {
+      onSuccess && onSuccess();
+      client.setQueriesData<Goal[]>(
+        {
+          queryKey: ['goal', 'multiple'],
+        },
+        (p) => {
+          if (!p) return p;
+
+          return p.filter((goal) => goal.id !== deletedId);
+        },
+      );
+      client.invalidateQueries({
+        queryKey: ['goal', 'single'],
+        refetchType: 'none',
+      });
     },
   });
 };

@@ -5,6 +5,8 @@ import { isAuthorized } from 'utils/helpers/auth';
 import { useEffect } from 'react';
 import { AuthActions } from 'Pages/auth/reducer';
 import { toast } from 'react-toastify';
+import { useAppSelector } from '../../reducer';
+import { AuthSelectors } from 'Pages/auth/reducer/selectors';
 
 export const RequireAuth = ({ children }) => {
   const location = useLocation();
@@ -14,12 +16,12 @@ export const RequireAuth = ({ children }) => {
   const text = {
     noToken: t('pages.auth.notifications.noToken'),
   };
-
+  const isLoggedIn = useAppSelector(AuthSelectors.login);
   useEffect(() => {
     if (!hasToken) {
       dispatch(AuthActions.logout());
 
-      if (location.pathname !== '/') toast.info(text.noToken);
+      if (isLoggedIn) toast.info(text.noToken);
     }
   }, [location.pathname]);
 

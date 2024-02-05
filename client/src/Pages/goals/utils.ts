@@ -6,11 +6,11 @@ export const useGoalStatusToColor = (status: GoalStatus) => {
 
   switch (status) {
     case 'notStarted':
-      return colors.secondary(0.25);
-    case 'inProgress':
       return colors.secondary(0.5);
+    case 'inProgress':
+      return colors.secondary(0.7);
     case 'nearlyFinished':
-      return colors.secondary(0.75);
+      return colors.secondary(0.9);
     case 'finished':
       return colors.secondary(1);
     default:

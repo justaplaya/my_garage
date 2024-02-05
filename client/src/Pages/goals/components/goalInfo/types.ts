@@ -13,15 +13,20 @@ export namespace Props {
     focusedId: string | null;
     querySearchId: string;
     goal: Goal;
+    setShow: SetState<boolean>;
   };
 
   export type RangeSlider = {
-    querySearchId: string;
     goal: Goal;
   };
 
   export type DropArea = {
-    querySearchId: string;
+    goal: Goal;
+  };
+
+  export type ButtonsSection = {
+    setIsCreateModal: SetState<boolean>;
+    setShow: SetState<boolean>;
     goal: Goal;
   };
 }

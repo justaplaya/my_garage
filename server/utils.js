@@ -2,6 +2,12 @@ const crypto = require("crypto");
 const {GraphQLError} = require("graphql/error");
 const { periods, incidents, MINUTE } = require("./config");
 
+const uuidv4 = () => {
+    return "10000000-1000-4000-8000-100000000000".replace(/[018]/g, c =>
+      (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
+    );
+}
+
 /** переводит минуты в милисекунды */
 const minutesToMs = (minutes) => minutes * MINUTE;
 
@@ -99,4 +105,13 @@ const getRandIncident = (cars) => {
     return { id, car, incident };
 };
 
-module.exports = { minutesToMs, delay, throwError, checkHeaders, getRandId, createCarFunction, getRandIncident };
+module.exports = {
+    minutesToMs,
+    delay,
+    throwError,
+    checkHeaders,
+    getRandId,
+    createCarFunction,
+    getRandIncident,
+    uuidv4
+};

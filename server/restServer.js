@@ -11,7 +11,7 @@ const shared = require('./data/shared.json');
 const cors = require("cors");
 const { minutesToMs,
     delay,
-    checkHeaders: _checkHeaders
+    checkHeaders: _checkHeaders,uuidv4
 } = require("./utils");
 
 const port = 6060;
@@ -70,6 +70,19 @@ app.post('/api/changeFolder',async (req, res) => {
       .json({ message: 'OK' });
     } )
 
+app.post('/api/createFolder',async (req, res) => {
+    await authCheck(req,res)
+
+    const { data } = req.body;
+    const newId=uuidv4()
+    const folder = { ...data, id: newId }
+    folders[newId] = folder;
+
+    return res
+      .status(200)
+      .json({ folder });
+} )
+
 /** GOALS */
 app.get('/api/getGoals', async (req, res) => {
     await authCheck(req,res)
@@ -84,6 +97,38 @@ app.post('/api/changeGoal',async (req, res) => {
 
     const { id, change } = req.body;
     goals[id] = { ...goals[id], ...change };
+
+    return res
+      .status(200)
+      .json({ message: 'OK' });
+} )
+
+app.post('/api/createGoal',async (req, res) => {
+    await authCheck(req,res)
+
+    const { data } = req.body;
+    const newId=uuidv4()
+    const folderId = Object.values(folders)[0].id
+    const goal= {
+        ...data,
+        id: newId,
+        folderId,
+        order: Object.values(goals).filter(goal => goal.folderId === folderId).length,
+        status: 'notStarted',
+        importance: 'medium'
+    }
+    goals[newId] = goal;
+
+    return res
+      .status(200)
+      .json({ goal });
+} )
+
+app.delete('/api/deleteGoal',async (req, res) => {
+    await authCheck(req,res)
+
+    const id = req.query.id;
+    delete goals[id]
 
     return res
       .status(200)

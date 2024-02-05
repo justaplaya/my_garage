@@ -6,7 +6,6 @@ export const Container = styled.div`
   align-items: flex-start;
   justify-content: flex-start;
   flex-direction: column;
-  ${blurredBack()};
   gap: 10px;
   padding: 15px;
   transition: all 0.3s ease-in-out;
@@ -76,15 +75,25 @@ export const RangeContainer = styled.div`
   justify-content: center;
 `;
 export const ButtonsContainer = styled.div`
-  position: absolute;
-  top: 10px;
-  right: 10px;
+  position: relative;
+  width: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
   gap: 10px;
 `;
-
+export const CreateButton = styled.button`
+  border: none;
+  border-radius: 5px;
+  height: 50px;
+  padding: 10px 20px;
+  font-size: 25px;
+  font-weight: 700;
+  transition: 0.3s ease-in-out;
+  color: ${(props) => props.theme.colors.primary()};
+  background: ${(props) => props.theme.colors.primaryContrast(0.75)};
+  cursor: pointer;
+`;
 export const EditButton = styled.button`
   border: none;
   border-radius: 5px;
@@ -107,8 +116,10 @@ export const DeleteButton = styled.button`
   font-size: 25px;
   font-weight: 700;
   transition: 0.3s ease-in-out;
-  color: ${(props) =>
-    props.theme.theme === 'dark' ? props.theme.colors.primary() : props.theme.colors.primaryContrast()};
-  ${blurredBack()};
+  color: ${(props) => props.theme.colors.primary()};
+  background: ${(props) => props.theme.colors.primaryContrast(0.5)};
+  color: ${(props) => props.theme.colors.secondary()};
+  background: ${(props) => props.theme.colors.primary()};
+  border: ${(props) => `dashed 2px ${props.theme.colors.secondary()}`};
   cursor: pointer;
 `;

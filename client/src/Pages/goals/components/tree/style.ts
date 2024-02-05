@@ -37,7 +37,7 @@ export namespace Tree {
       props.theme.theme === 'dark' ? props.theme.colors.primary() : props.theme.colors.primaryContrast()};
     border-radius: 5px;
     height: ${`${GoalHeight}px`};
-    background: ${({ $status }) => `linear-gradient(to top, rgba(245,245,245,0.5), ${useGoalStatusToColor($status)});`};
+    background: ${({ $status }) => useGoalStatusToColor($status)};
     box-shadow: rgba(0, 0, 0, 0.25) 0px 5px 10px 2.5px;
     ${({ $draggedOverDown }) =>
       $draggedOverDown &&
@@ -93,6 +93,9 @@ export namespace Tree {
     gap: 10px;
     color: ${(props) =>
       props.theme.theme === 'dark' ? props.theme.colors.primaryContrast() : props.theme.colors.primary()};
+    ${blurredBack()};
+    backdrop-filter: none;
+    color: ${(props) => (props.theme.theme === 'dark' ? props.theme.colors.primary() : props.theme.colors.secondary())};
   `;
   const ImgStyle = css`
     object-fit: cover;

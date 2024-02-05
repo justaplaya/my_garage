@@ -1,21 +1,11 @@
-import {
-  ButtonsContainer,
-  DeleteButton,
-  Description,
-  EditButton,
-  ImportanceTitle,
-  RangeContainer,
-  Separator,
-  StatusTitle,
-  Title,
-} from '../style';
+import { Description, ImportanceTitle, RangeContainer, Separator, StatusTitle, Title } from '../style';
 import { DropArea } from './dropArea';
 import { goalStatusToTitle } from '../../../utils';
 import { RangeSlider } from './rangeSlider';
 import { Props } from '../types';
 
 export const Content = (_props: Props.Content) => {
-  const { goal, querySearchId, focusedId } = _props;
+  const { goal, querySearchId, focusedId, setShow } = _props;
   const { title, importance, status, description } = goal;
   const props = {
     dropArea: { goal, querySearchId },
@@ -25,10 +15,6 @@ export const Content = (_props: Props.Content) => {
   return (
     <>
       <Title>{title}</Title>
-      <ButtonsContainer>
-        <EditButton>Edit</EditButton>
-        <DeleteButton>Delete</DeleteButton>
-      </ButtonsContainer>
       <ImportanceTitle>Importance: {importance}</ImportanceTitle>
       <Separator />
       <DropArea {...props.dropArea} />

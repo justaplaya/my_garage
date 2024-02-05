@@ -21,7 +21,13 @@ export const SideModal = ({
   });
 
   const props = {
-    bottonRow: { apply, close, applyDisable, applyText, loading: localLoading },
+    bottonRow: {
+      apply,
+      close,
+      applyDisable,
+      applyText,
+      loading: localLoading,
+    },
   };
 
   return (
