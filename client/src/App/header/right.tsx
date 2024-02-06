@@ -1,12 +1,13 @@
 import { Head, LinkIconWrapper, LogoutLink } from '../style';
-import { PickTheme } from './pickTheme';
-import { PickLanguage } from './pickLanguage';
+import { PickTheme } from './components/pickTheme';
+import { PickLanguage } from './components/pickLanguage';
 import { AuthActions } from 'Pages/auth/reducer';
 import { useDispatch } from 'react-redux';
 import { deleteCookie } from 'utils/helpers/auth';
 import { useAppSelector } from 'reducer';
 import { AuthSelectors } from 'Pages/auth/reducer/selectors';
 import { ReactComponent as LogoutIcon } from 'img/shared/logout.svg';
+import { ReportIssue } from './components/reportIssue';
 
 export const Right = () => {
   const dispatch = useDispatch();
@@ -20,6 +21,7 @@ export const Right = () => {
 
   return (
     <Head.Right $isLoggedIn={!!login}>
+      <ReportIssue />
       <PickLanguage />
       <PickTheme />
       {login && (

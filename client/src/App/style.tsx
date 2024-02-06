@@ -13,7 +13,6 @@ export namespace Head {
     width: 100%;
     height: ${HeaderHeight};
     background: ${(props) => props.theme.colors.primary()};
-    backdrop-filter: blur(6px);
     display: flex;
     align-items: center;
     justify-content: space-between;

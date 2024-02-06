@@ -9,14 +9,12 @@ export const Container = styled.div`
   gap: 10px;
   padding: 15px;
   transition: all 0.3s ease-in-out;
-  background: ${(props) =>
-    props.theme.theme === 'dark' ? props.theme.colors.primary(0.75) : props.theme.colors.primary(0.75)};
+  background: ${(props) => props.theme.colors.primary(0.75)};
 `;
 export const Title = styled.p`
   font-size: 40px;
   font-weight: 700;
-  color: ${(props) =>
-    props.theme.theme === 'dark' ? props.theme.colors.secondary(1) : props.theme.colors.secondary(1)};
+  color: ${(props) => props.theme.colors.secondary(1)};
   text-decoration: underline;
   display: -webkit-box;
   overflow: hidden;
@@ -29,21 +27,18 @@ export const Title = styled.p`
 export const ImportanceTitle = styled.p`
   font-size: 20px;
   font-weight: 700;
-  color: ${(props) =>
-    props.theme.theme === 'dark' ? props.theme.colors.secondary(1) : props.theme.colors.secondary(1)};
+  color: ${(props) => props.theme.colors.secondary(1)};
 `;
 export const StatusTitle = styled.p`
   font-size: 20px;
   font-weight: 700;
-  color: ${(props) =>
-    props.theme.theme === 'dark' ? props.theme.colors.secondary(1) : props.theme.colors.secondary(1)};
+  color: ${(props) => props.theme.colors.secondary(1)};
 `;
 
 export const Description = styled.p`
   font-size: 20px;
   font-weight: 700;
-  color: ${(props) =>
-    props.theme.theme === 'dark' ? props.theme.colors.secondary(1) : props.theme.colors.secondary(1)};
+  color: ${(props) => props.theme.colors.secondary(1)};
 `;
 export const DropAreaComponent = styled.div`
   height: 300px;
