@@ -25,7 +25,7 @@ export const useDeleteGoal = (onSuccess?: () => void) => {
         },
       );
       client.invalidateQueries({
-        queryKey: ['goal', 'single'],
+        queryKey: ['goal', deletedId],
         refetchType: 'none',
       });
     },

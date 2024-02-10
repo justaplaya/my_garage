@@ -3,12 +3,14 @@ import { Folder } from '../../models/folder';
 import { Goal } from '../../models/goal';
 import { Props } from './types';
 import { useNavigate } from 'react-router-dom';
-import { useGetFolders } from '../../api/query';
+import { getGoalQueryFn, useGetFolders } from '../../api/query';
 import { useGetGoals } from '../../api/query';
 import { useChangeFolder } from '../../api/mutation';
 import { useChangeGoal } from '../../api/mutation';
+import { useQueryClient } from '@tanstack/react-query';
 
 export const useTree = ({ focusedId, setFocusedId, openedFolderIds, setOpenedFolderIds }: Props.Common) => {
+  const client = useQueryClient();
   const { data: folders } = useGetFolders();
   const { data: goals } = useGetGoals();
   const { mutate: changeFolder } = useChangeFolder();
@@ -25,6 +27,12 @@ export const useTree = ({ focusedId, setFocusedId, openedFolderIds, setOpenedFol
     goals?.filter((goal) => goal.folderId === folderId)?.sort((a, b) => a.order - b.order) ?? [];
 
   const goalAction = {
+    onMouseEnter(id: string) {
+      client.prefetchQuery({
+        queryKey: ['goal', id],
+        queryFn: () => getGoalQueryFn(id),
+      });
+    },
     onClick(goalId: string) {
       navigate(`/goals/id=${goalId}`);
       setFocusedId(goalId);
@@ -154,6 +162,7 @@ export const useTree = ({ focusedId, setFocusedId, openedFolderIds, setOpenedFol
   const getGoalProps = (goal: Goal, folderId: string) => ({
     $status: goal.status,
     draggable: true,
+    onMouseEnter: () => goalAction.onMouseEnter(goal.id),
     onClick: () => goalAction.onClick(goal.id),
     onDragStart: (e) => goalAction.onDragStart(e, goal.id),
     onDragOver: (e) => goalAction.onDragOver(e, goal.id),

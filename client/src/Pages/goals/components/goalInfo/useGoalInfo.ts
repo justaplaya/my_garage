@@ -7,7 +7,7 @@ import { toast } from 'react-toastify';
 import { useGetGoal } from '../../api/query';
 
 export const useGoalInfo = ({ openedFolderIds, setOpenedFolderIds }: Props.Commom) => {
-  const querySearchId = useGetSearchQueryKey();
+  const querySearchId = useGetSearchQueryKey() ?? '';
   const navigate = useNavigate();
   const location = useLocation();
 

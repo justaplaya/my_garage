@@ -20,7 +20,7 @@
     "id": "goalId3",
     "folderId":"folderId1",
     "order": 2,
-    "title":"А поутру в поле крёстная сила, поутру в поле — боже, как красиво! Боже, как красиво, моё сердце на воле",
+    "title":"Like a little splinter buried in your skin: someone else can carve it out, but when you've got the pin it hurts a little less and you can even push it further in",
     "status": "inProgress",
     "importance":"medium"
   },
@@ -28,8 +28,16 @@
     "id": "goalId4",
     "folderId":"folderId2",
     "order": 0,
-    "title":"Вот мы поутру в поле",
+    "title":"And the rearview only blinds you",
     "status": "nearlyFinished",
     "importance":"medium"
+  },
+  "goalId5": {
+    "id": "goalId5",
+    "folderId":"folderId2",
+    "order": 1,
+    "title":"You get taller, bolder, stronger",
+    "status": "inProgress",
+    "importance":"high"
   }
 }
