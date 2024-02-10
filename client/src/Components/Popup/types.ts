@@ -6,4 +6,5 @@ export type Props = PropsWithChildren & {
   closeAction: () => void;
   description?: string;
   closeText?: string;
+  noClose?: boolean;
 };
