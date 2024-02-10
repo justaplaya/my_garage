@@ -7,8 +7,8 @@ import {
 import { useTheme } from 'styled-components';
 import { useEffect, useMemo, useState } from 'react';
 import { goalStatusToStatusRangeValue, statusRangeValueToGoalStatus } from '../../../utils';
-import { useChangeGoal } from '../../../api';
 import { Props } from '../types';
+import { useChangeGoal } from '../../../api/mutation';
 
 export const RangeSlider = ({ goal }: Props.RangeSlider) => {
   const { mutate: changeGoal, isPending: isChangeGoalPending } = useChangeGoal();

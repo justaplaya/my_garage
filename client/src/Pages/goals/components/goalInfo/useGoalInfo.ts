@@ -1,10 +1,10 @@
 import { useGetSearchQueryKey } from 'Hooks/useGetQueryParam';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { useGetGoal } from '../../api';
 import { useEffect, useState } from 'react';
 import { Props } from './types';
 import { getAxiosErrorStatus } from 'utils/helpers/getters';
 import { toast } from 'react-toastify';
+import { useGetGoal } from '../../api/query';
 
 export const useGoalInfo = ({ openedFolderIds, setOpenedFolderIds }: Props.Commom) => {
   const querySearchId = useGetSearchQueryKey();

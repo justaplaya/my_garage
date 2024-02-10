@@ -1,9 +1,12 @@
-import { useChangeFolder, useChangeGoal, useGetFolders, useGetGoals } from '../../api';
 import { DragEvent, useState } from 'react';
 import { Folder } from '../../models/folder';
 import { Goal } from '../../models/goal';
 import { Props } from './types';
 import { useNavigate } from 'react-router-dom';
+import { useGetFolders } from '../../api/query';
+import { useGetGoals } from '../../api/query';
+import { useChangeFolder } from '../../api/mutation';
+import { useChangeGoal } from '../../api/mutation';
 
 export const useTree = ({ focusedId, setFocusedId, openedFolderIds, setOpenedFolderIds }: Props.Common) => {
   const { data: folders } = useGetFolders();

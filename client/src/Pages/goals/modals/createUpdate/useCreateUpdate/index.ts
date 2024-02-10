@@ -1,10 +1,13 @@
 import { ChangeEvent, useEffect } from 'react';
 import { InputKey, InputType, Props } from '../types';
-import { useChangeFolder, useChangeGoal, useCreateFolder, useCreateGoal } from '../../../api';
 import { getInitValueByType, inputChange } from './utils';
 import { useGetStates } from './useGetStates';
 import { applyText, schemas } from './config';
 import { InputHandler } from './types';
+import { useChangeFolder } from '../../../api/mutation';
+import { useCreateFolder } from '../../../api/mutation';
+import { useChangeGoal } from '../../../api/mutation';
+import { useCreateGoal } from '../../../api/mutation';
 
 export const useCreateUpdateModal = (props: Props.Common) => {
   const { type, show, setShow } = props;

@@ -3,8 +3,8 @@ import { Loader } from 'Components/Loader';
 import { Props } from '../types';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
-import { useDeleteGoal } from '../../../api';
 import { useNavigate } from 'react-router-dom';
+import { useDeleteGoal } from '../../../api/mutation';
 
 export const ButtonsSection = ({ setIsCreateModal, setShow, goal }: Props.ButtonsSection) => {
   const navigate = useNavigate();

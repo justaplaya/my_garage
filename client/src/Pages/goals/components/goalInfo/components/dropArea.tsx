@@ -2,8 +2,8 @@ import { GoalImage } from '../style';
 import NoImage from 'img/goals/noimage.jpg';
 import { DropAreaComponent } from '../style';
 import { DragEvent } from 'react';
-import { useChangeGoal } from '../../../api';
 import { Props } from '../types';
+import { useChangeGoal } from '../../../api/mutation';
 
 export const DropArea = ({ goal }: Props.DropArea) => {
   const { mutate: changeGoal } = useChangeGoal();
