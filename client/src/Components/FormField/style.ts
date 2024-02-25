@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { Input } from '../Input';
 import { TextArea } from '../TextArea';
 

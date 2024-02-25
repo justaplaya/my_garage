@@ -1,5 +1,6 @@
 import { WebpackPluginInstance } from 'webpack';
 import { BuildOptions } from './types';
+//eslint-disable-next-line @typescript-eslint/no-unused-vars
 import webpack = require('webpack');
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import { DefinePlugin } from 'webpack';

@@ -3,4 +3,4 @@
 
 cd client
 npm test
-npm run typecheck
+npm run check

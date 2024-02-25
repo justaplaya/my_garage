@@ -37,10 +37,12 @@
     "zod": "^3.22.4"
   },
   "scripts": {
-    "start": "webpack serve --env mode=development",
-    "start:prod": "node server.js",
     "build": "webpack --env mode=production",
     "build:analyze": "webpack --env mode=production --env analyze=true",
+    "check": "eslint . & tsc",
+    "lint": "eslint .",
+    "start": "webpack serve --env mode=development",
+    "start:prod": "node server.js",
     "test": "jest",
     "typecheck": "tsc"
   },

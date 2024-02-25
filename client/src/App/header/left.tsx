@@ -5,7 +5,7 @@ import { useAppSelector } from 'reducer';
 import { AuthSelectors } from 'Pages/auth/reducer/selectors';
 
 export const Left = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const text = {
     garage: t('links.garage'),
     incidents: t('links.incidents'),

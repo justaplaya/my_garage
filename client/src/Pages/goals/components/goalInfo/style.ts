@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { blurredBack } from 'mixins';
 
 export const Container = styled.div`
   display: flex;

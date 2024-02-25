@@ -5,7 +5,7 @@ import { RangeSlider } from './rangeSlider';
 import { Props } from '../types';
 
 export const Content = (_props: Props.Content) => {
-  const { goal, querySearchId, focusedId, setShow } = _props;
+  const { goal, querySearchId } = _props;
   const { title, importance, status, description } = goal;
   const props = {
     dropArea: { goal, querySearchId },

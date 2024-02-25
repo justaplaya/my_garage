@@ -20,11 +20,10 @@ export const ActiveLine = styled.div<{ $offset: number; $width: number }>`
   background: ${(props) => props.theme.colors.secondary()};
   bottom: -2.5px;
   transition: 0.3s ease-in-out all;
-  ${({ $offset, $width }) =>
-    css`
-      left: ${$offset}px;
-      width: ${$width}px;
-    `};
+  ${({ $offset, $width }) => css`
+    left: ${$offset}px;
+    width: ${$width}px;
+  `};
 `;
 export const Period = styled.div<{ $active: boolean }>`
   text-transform: capitalize;

@@ -1,4 +1,5 @@
 import webpack = require('webpack');
+//eslint-disable-next-line @typescript-eslint/no-unused-vars
 import * as webpackDevServer from 'webpack-dev-server';
 import { getLoaders } from './getLoaders';
 import { BuildOptions } from './types';
